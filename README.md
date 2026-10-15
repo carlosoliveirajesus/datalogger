@@ -25,10 +25,10 @@ Projeto desenvolvido para o **Desafio do Processo Seletivo da Payload — EPTA (
 ## Estrutura do repositório
 
 ```
-├── firmware/datalogger/   Projeto STM32CubeIDE (STM32Cube FW_U5 V1.8.0)
-├── hardware/datalogger/   Projeto Altium Designer: esquemático e PCB
-├── docs/                  Enunciado, referências, diagramas, fotos e testes
-├── scripts/               Análise dos CSVs em Python
+├── fw-datalogger/datalogger/   Projeto STM32CubeIDE (STM32Cube FW_U5 V1.8.0)
+├── hw-datalogger/datalogger/   Projeto Altium Designer: esquemático e PCB
+├── docs/                         Enunciado, referências, diagramas, fotos e testes
+├── scripts/                      Análise dos CSVs em Python
 └── README.md
 ```
 
@@ -63,7 +63,7 @@ _A definir._ Previsão: `timestamp_ms, ax_g, ay_g, az_g, gx_dps, gy_dps, gz_dps,
    ```bash
    git clone https://github.com/carlosoliveirajesus/datalogger.git
    ```
-2. No STM32CubeIDE: **File → Import → Existing Projects into Workspace** e selecione `firmware/datalogger`.
+2. No STM32CubeIDE: **File → Import → Existing Projects into Workspace** e selecione `fw-datalogger/datalogger`.
 3. **Project → Build Project**.
 4. Conecte a Nucleo pela porta USB do ST-LINK e use **Run → Debug** (ou **Run**) para gravar.
 
