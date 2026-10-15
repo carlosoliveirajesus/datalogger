@@ -46,9 +46,7 @@ Project Logs for */
 *.Dat
 ~$*
 .~lock*
-# Saídas automáticas do OutJob. Os arquivos de fabricação finais
-# (Gerbers, BOM, posicionamento, PDF do esquemático) devem ser
-# copiados para hardware/fabricacao/ e versionados lá.
+# Saídas automáticas do OutJob.
 Project Outputs for */
 
 # ---------- Python (scripts de análise) ----------
@@ -59,11 +57,9 @@ venv/
 .ipynb_checkpoints/
 
 # ---------- Documentação ----------
-# Manuais e datasheets de terceiros: são grandes e protegidos por direitos
-# autorais. Os links ficam em docs/referencias.md.
+# Os links ficam em docs/referencias.md.
 docs/datasheets/
 
 # ---------- Dados ----------
-# Logs brutos de teste. O CSV de exemplo que vai na entrega fica em
-# docs/testes/ (não é ignorado).
+# Logs brutos de teste.
 /logs/

@@ -1,6 +1,6 @@
 # Referências
 
-Datasheets e manuais usados no projeto. As cópias locais ficam em `docs/datasheets/` (fora do Git).
+Datasheets e manuais usados no projeto.
 
 ## Microcontrolador e placa de desenvolvimento
 - **STM32U5A5xx — Datasheet (DS)**: https://www.st.com/resource/en/datasheet/stm32u5a5rj.pdf
