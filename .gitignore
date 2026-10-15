@@ -1,0 +1,69 @@
+# ============================================================
+#  Datalogger EPTA - .gitignore
+#  STM32CubeIDE (firmware) + Altium Designer (hardware) + Python (scripts)
+# ============================================================
+
+# ---------- Sistema operacional ----------
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# ---------- Editores ----------
+.vscode/
+.idea/
+*.swp
+*~
+
+# ---------- STM32CubeIDE / Eclipse ----------
+# Workspace local do CubeIDE (logs, índices, preferências da máquina)
+.metadata/
+RemoteSystemsTempFiles/
+# Saídas de build (o binário final vai para o Release do GitHub)
+Debug/
+Release/
+*.o
+*.d
+*.su
+*.cyclo
+*.elf
+*.map
+*.list
+*.hex
+*.bin
+# Backup do .ioc gerado pelo CubeMX
+*.ioc.bak
+
+# ---------- Altium Designer ----------
+History/
+__Previews/
+Project Logs for */
+*.PrjPcbStructure
+*.SchDocPreview
+*.PcbDocPreview
+*.LOG
+*.Dat
+~$*
+.~lock*
+# Saídas automáticas do OutJob. Os arquivos de fabricação finais
+# (Gerbers, BOM, posicionamento, PDF do esquemático) devem ser
+# copiados para hardware/fabricacao/ e versionados lá.
+Project Outputs for */
+
+# ---------- Python (scripts de análise) ----------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# ---------- Documentação ----------
+# Manuais e datasheets de terceiros: são grandes e protegidos por direitos
+# autorais. Os links ficam em docs/referencias.md.
+docs/datasheets/
+
+# ---------- Dados ----------
+# Logs brutos de teste. O CSV de exemplo que vai na entrega fica em
+# docs/testes/ (não é ignorado).
+/logs/
