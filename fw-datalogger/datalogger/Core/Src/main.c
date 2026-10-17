@@ -22,13 +22,13 @@
 #include "i2c.h"
 #include "icache.h"
 #include "rtc.h"
-#include "sdmmc.h"
 #include "spi.h"
 #include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "hal.h"
 
 /* USER CODE END Includes */
 
@@ -101,10 +101,11 @@ int main(void)
   MX_ADC1_Init();
   MX_I2C3_Init();
   MX_ICACHE_Init();
-  MX_SDMMC1_SD_Init();
   MX_SPI1_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  /* Inicializa hal/ + port/ e chama app_init() */
+  hal_init();
 
   /* USER CODE END 2 */
 
@@ -115,6 +116,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    hal_loop();
   }
   /* USER CODE END 3 */
 }
