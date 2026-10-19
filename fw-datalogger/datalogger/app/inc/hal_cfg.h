@@ -34,7 +34,7 @@
     HAL_GPIO_LED_ERROR,      /* PB7  LD2 */ \
     HAL_GPIO_BTN,            /* PC13 B1  */ \
     HAL_GPIO_IMU_CS,         /* PA4      */ \
-    HAL_GPIO_IMU_INT1,       /* PB0      */ \
+    HAL_GPIO_IMU_INT1,       /* PB1      */ \
     HAL_GPIO_IMU_INT2,       /* PB2      */ \
     HAL_GPIO_SD_CD           /* PA8      */
 

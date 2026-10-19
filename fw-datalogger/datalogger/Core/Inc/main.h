@@ -74,9 +74,9 @@ void Error_Handler(void);
 #define IMU_MISO_GPIO_Port GPIOA
 #define IMU_MOSI_Pin GPIO_PIN_7
 #define IMU_MOSI_GPIO_Port GPIOA
-#define IMU_INT1_Pin GPIO_PIN_0
+#define IMU_INT1_Pin GPIO_PIN_1
 #define IMU_INT1_GPIO_Port GPIOB
-#define IMU_INT1_EXTI_IRQn EXTI0_IRQn
+#define IMU_INT1_EXTI_IRQn EXTI1_IRQn
 #define IMU_INT2_Pin GPIO_PIN_2
 #define IMU_INT2_GPIO_Port GPIOB
 #define IMU_INT2_EXTI_IRQn EXTI2_IRQn
