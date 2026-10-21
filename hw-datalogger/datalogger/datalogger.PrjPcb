@@ -22,7 +22,7 @@ DefaultPcbProtel=1
 DefaultPcbPcad=0
 ReorderDocumentsOnCompile=1
 NameNetsHierarchically=0
-PowerPortNamesTakePriority=0
+PowerPortNamesTakePriority=1
 AutoSheetNumbering=1
 AutoCrossReferences=1
 NewIndexingOfSheetSymbols=1
@@ -269,6 +269,10 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
+
+[GeneratedDocument1]
+DocumentPath=Project Outputs for datalogger\Design Rule Check - PCB_A1.html
+DItemRevisionGUID=
 
 [Configuration1]
 Name=Sources
@@ -997,7 +1001,7 @@ Type28=1
 Type29=1
 Type30=1
 Type31=1
-Type32=1
+Type32=0
 Type33=1
 Type34=1
 Type35=1
@@ -1028,7 +1032,7 @@ Type59=1
 Type60=1
 Type61=1
 Type62=1
-Type63=1
+Type63=0
 Type64=1
 Type65=1
 Type66=1
