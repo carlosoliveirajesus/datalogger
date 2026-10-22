@@ -49,6 +49,14 @@ Project Logs for */
 # Saídas automáticas do OutJob.
 Project Outputs for */
 
+# ---------- Microsoft Office ----------
+# Arquivos temporários de bloqueio criados enquanto a planilha/documento está aberto
+# (ex.: hw-datalogger/fabricacao/BOM/~$Bill of Materials-datalogger.xlsx).
+~$*.xlsx
+~$*.xls
+~$*.docx
+~$*.pptx
+
 # ---------- Python (scripts de análise) ----------
 __pycache__/
 *.py[cod]

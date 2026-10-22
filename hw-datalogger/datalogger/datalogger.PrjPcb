@@ -234,7 +234,7 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=OHPIGOMF
 
 [Document12]
 DocumentPath=lib\USBLC6-2SC6\USBLC6-2SC6\SOT95P280X145-6N.PcbLib
@@ -268,10 +268,212 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
+DocumentUniqueId=NRUSVEMU
+
+[Document14]
+DocumentPath=dataloggerOutJob.OutJob
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
+[Document15]
+DocumentPath=CAMtastic1.Cam
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
 DocumentUniqueId=
 
 [GeneratedDocument1]
+DocumentPath=Project Outputs for Free Documents\BOM\Bill of Materials-datalogger.xlsx
+DItemRevisionGUID=
+
+[GeneratedDocument2]
+DocumentPath=..\fabricacao\BOM\Bill of Materials-datalogger.xlsx
+DItemRevisionGUID=
+
+[GeneratedDocument3]
 DocumentPath=Project Outputs for datalogger\Design Rule Check - PCB_A1.html
+DItemRevisionGUID=
+
+[GeneratedDocument4]
+DocumentPath=Project Outputs for Free Documents\NC Drill\PCB_A1-RoundHoles.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument5]
+DocumentPath=..\fabricacao\NC Drill\PCB_A1-RoundHoles.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument6]
+DocumentPath=Project Outputs for Free Documents\NC Drill\PCB_A1-SlotHoles.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument7]
+DocumentPath=..\fabricacao\NC Drill\PCB_A1-SlotHoles.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument8]
+DocumentPath=Project Outputs for Free Documents\NC Drill\PCB_A1.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument9]
+DocumentPath=..\fabricacao\NC Drill\PCB_A1.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=Project Outputs for Free Documents\Gerber\PCB_A1.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=..\fabricacao\Gerber\PCB_A1.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=Project Outputs for Free Documents\Gerber\PCB_A1.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=..\fabricacao\Gerber\PCB_A1.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=Project Outputs for Free Documents\Gerber\PCB_A1.GBO
+DItemRevisionGUID=
+
+[GeneratedDocument15]
+DocumentPath=..\fabricacao\Gerber\PCB_A1.GBO
+DItemRevisionGUID=
+
+[GeneratedDocument16]
+DocumentPath=Project Outputs for Free Documents\Gerber\PCB_A1.GBP
+DItemRevisionGUID=
+
+[GeneratedDocument17]
+DocumentPath=..\fabricacao\Gerber\PCB_A1.GBP
+DItemRevisionGUID=
+
+[GeneratedDocument18]
+DocumentPath=Project Outputs for Free Documents\Gerber\PCB_A1.GBS
+DItemRevisionGUID=
+
+[GeneratedDocument19]
+DocumentPath=..\fabricacao\Gerber\PCB_A1.GBS
+DItemRevisionGUID=
+
+[GeneratedDocument20]
+DocumentPath=Project Outputs for Free Documents\Gerber\PCB_A1.GM
+DItemRevisionGUID=
+
+[GeneratedDocument21]
+DocumentPath=..\fabricacao\Gerber\PCB_A1.GM
+DItemRevisionGUID=
+
+[GeneratedDocument22]
+DocumentPath=Project Outputs for Free Documents\Gerber\PCB_A1.GM1
+DItemRevisionGUID=
+
+[GeneratedDocument23]
+DocumentPath=..\fabricacao\Gerber\PCB_A1.GM1
+DItemRevisionGUID=
+
+[GeneratedDocument24]
+DocumentPath=Project Outputs for Free Documents\Gerber\PCB_A1.GP1
+DItemRevisionGUID=
+
+[GeneratedDocument25]
+DocumentPath=..\fabricacao\Gerber\PCB_A1.GP1
+DItemRevisionGUID=
+
+[GeneratedDocument26]
+DocumentPath=Project Outputs for Free Documents\Gerber\PCB_A1.GP2
+DItemRevisionGUID=
+
+[GeneratedDocument27]
+DocumentPath=..\fabricacao\Gerber\PCB_A1.GP2
+DItemRevisionGUID=
+
+[GeneratedDocument28]
+DocumentPath=Project Outputs for Free Documents\Gerber\PCB_A1.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument29]
+DocumentPath=..\fabricacao\Gerber\PCB_A1.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument30]
+DocumentPath=Project Outputs for Free Documents\Gerber\PCB_A1.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument31]
+DocumentPath=..\fabricacao\Gerber\PCB_A1.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument32]
+DocumentPath=Project Outputs for Free Documents\Gerber\PCB_A1.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument33]
+DocumentPath=..\fabricacao\Gerber\PCB_A1.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument34]
+DocumentPath=Project Outputs for Free Documents\Gerber\PCB_A1.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument35]
+DocumentPath=..\fabricacao\Gerber\PCB_A1.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument36]
+DocumentPath=Project Outputs for Free Documents\NC Drill\PCB_A1.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument37]
+DocumentPath=..\fabricacao\NC Drill\PCB_A1.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument38]
+DocumentPath=Project Outputs for Free Documents\Gerber\PCB_A1.REP
+DItemRevisionGUID=
+
+[GeneratedDocument39]
+DocumentPath=..\fabricacao\Gerber\PCB_A1.REP
+DItemRevisionGUID=
+
+[GeneratedDocument40]
+DocumentPath=Project Outputs for Free Documents\ExportSTEP\PCB_A1.step
+DItemRevisionGUID=
+
+[GeneratedDocument41]
+DocumentPath=..\fabricacao\ExportSTEP\PCB_A1.step
+DItemRevisionGUID=
+
+[GeneratedDocument42]
+DocumentPath=Project Outputs for Free Documents\Pick Place\Pick Place for PCB_A1.txt
+DItemRevisionGUID=
+
+[GeneratedDocument43]
+DocumentPath=..\fabricacao\Pick Place\Pick Place for PCB_A1.txt
 DItemRevisionGUID=
 
 [Configuration1]
