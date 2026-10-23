@@ -26,9 +26,9 @@ bool lsm6dsox_init(lsm6dsox_t* dev, const lsm6dsox_bus_t* bus)
     dev->accel_scale = 0.0f;
     dev->gyro_scale = 0.0f;
 
-    /* Desliga o I2C antes de tudo: com CS em SPI, ruído em SDA/SCL pode
-       confundir a interface I2C (DS12814, CTRL4_C). */
-    if(!reg_write(dev, LSM6DSOX_REG_CTRL4_C, LSM6DSOX_CTRL4_C_I2C_DIS))
+    /* Em SPI, desliga o I2C antes de tudo: ruído em SDA/SCL pode confundir
+       a interface I2C (DS12814, CTRL4_C). Em I2C isso cortaria a conversa. */
+    if(bus->is_spi && !reg_write(dev, LSM6DSOX_REG_CTRL4_C, LSM6DSOX_CTRL4_C_I2C_DIS))
         return false;
 
     if(!lsm6dsox_who_am_i_get(dev, &val) || val != LSM6DSOX_WHO_AM_I_VALUE)
@@ -50,9 +50,10 @@ bool lsm6dsox_init(lsm6dsox_t* dev, const lsm6dsox_bus_t* bus)
     if(val & LSM6DSOX_CTRL3_C_SW_RESET)
         return false;
 
-    /* O reset volta o I2C a ligado. BDU evita ler LSB e MSB de amostras
-       diferentes; IF_INC permite ler os 12 bytes de saída de uma vez. */
-    if(!reg_write(dev, LSM6DSOX_REG_CTRL4_C, LSM6DSOX_CTRL4_C_I2C_DIS))
+    /* O reset volta o I2C a ligado (em SPI, desliga de novo). BDU evita ler
+       LSB e MSB de amostras diferentes; IF_INC permite ler os 12 bytes de
+       saída de uma vez, em SPI ou em I2C. */
+    if(bus->is_spi && !reg_write(dev, LSM6DSOX_REG_CTRL4_C, LSM6DSOX_CTRL4_C_I2C_DIS))
         return false;
     if(!reg_write(dev, LSM6DSOX_REG_CTRL3_C, LSM6DSOX_CTRL3_C_BDU | LSM6DSOX_CTRL3_C_IF_INC))
         return false;

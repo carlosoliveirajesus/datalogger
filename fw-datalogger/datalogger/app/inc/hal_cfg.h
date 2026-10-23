@@ -53,7 +53,16 @@
 
 /* ------------------------------------------------------------- sensores */
 #define HAL_IMU_DEVS \
-    HAL_IMU_DEV_LSM6DSOX = 0 /* SPI1 */
+    HAL_IMU_DEV_LSM6DSOX = 0 /* SPI1 ou I2C, ver HAL_IMU_BUS */
+
+/* Barramento do LSM6DSOX:
+ *   HAL_IMU_BUS_SPI  SPI1 (PA4 CS, PA5 SCK, PA6 MISO, PA7 MOSI). É o da PCB.
+ *   HAL_IMU_BUS_I2C  módulo montado para I2C (só protótipo). O handle do
+ *                    I2C é escolhido em port/stm32u5a5/imu.c (IMU_I2C_HANDLE).
+ * INT1 (PB1) vale para os dois modos. */
+#define HAL_IMU_BUS_SPI 0
+#define HAL_IMU_BUS_I2C 1
+#define HAL_IMU_BUS     HAL_IMU_BUS_SPI
 
 #define HAL_ENV_DEVS \
     HAL_ENV_DEV_BME280 = 0 /* I2C3 */

@@ -1,20 +1,28 @@
 /**
  * @file imu.c
- * @brief Port de hal_imu: tabela de chips e barramento SPI1 do LSM6DSOX.
+ * @brief Port de hal_imu: tabela de chips e barramento do LSM6DSOX.
+ *
+ * O barramento é escolhido em hal_cfg.h (HAL_IMU_BUS):
+ *   SPI: SPI1, modo 3, CS em PA4 (placa final).
+ *   I2C: módulo LSM6DSOX montado para I2C (protótipo). Mesma lógica do port
+ *        I2C do fw-slamming: HAL_I2C_Mem_Read/Write com endereço de
+ *        registrador de 8 bits. O endereço (0x6A ou 0x6B, pino SA0) é
+ *        detectado no init.
  *
  * Para adicionar outro chip: criar imu/<chip>.c com a mesma ideia de
  * barramento injetado, uma entrada em HAL_IMU_DEVS (hal_cfg.h) e uma
  * entrada em port_imu_drv[].
  */
 #include "main.h"
-#include "spi.h"
 #include "hal.h"
 #include "imu/lsm6dsox.h"
 
+#if HAL_IMU_BUS == HAL_IMU_BUS_SPI
+/* ------------------------------------------------ barramento SPI1 */
+#include "spi.h"
+
 #define IMU_SPI_TIMEOUT_MS 10U
 #define IMU_SPI_READ_BIT   0x80U
-
-/* ------------------------------------------------ barramento SPI1 */
 
 static bool lsm6dsox_spi_read(uint8_t reg, uint8_t* data, uint16_t len)
 {
@@ -46,7 +54,85 @@ static const lsm6dsox_bus_t lsm6dsox_bus = {
     .read = lsm6dsox_spi_read,
     .write = lsm6dsox_spi_write,
     .delay_ms = HAL_Delay,
+    .is_spi = true,
 };
+
+static bool imu_bus_prepare(void)
+{
+    return true; /* nada a detectar em SPI */
+}
+
+static void imu_bus_print(void)
+{
+    UTL_DBG_PRINTF(UTL_DBG_MOD_IMU, "LSM6DSOX em SPI1\r\n");
+}
+
+#elif HAL_IMU_BUS == HAL_IMU_BUS_I2C
+/* ------------------------------------------------- barramento I2C */
+#include "i2c.h"
+
+/* Handle do I2C da IMU. Padrão: I2C1 no conector Arduino da Nucleo
+ * (PB8 = D15 SCL, PB9 = D14 SDA), que precisa ser habilitado no CubeMX.
+ * Alternativa sem mexer no CubeMX: hi2c3, o mesmo barramento do BME280
+ * (PC0/PC1); os endereços não colidem (0x6A/0x6B contra 0x76/0x77). */
+#ifndef IMU_I2C_HANDLE
+#define IMU_I2C_HANDLE hi2c1
+#endif
+
+#define IMU_I2C_TIMEOUT_MS 10U
+#define IMU_I2C_PROBE_TRIES 3U
+
+static uint8_t imu_i2c_addr = 0; /* 7 bits; 0 = não detectado */
+
+static bool lsm6dsox_i2c_read(uint8_t reg, uint8_t* data, uint16_t len)
+{
+    return HAL_I2C_Mem_Read(&IMU_I2C_HANDLE, (uint16_t) (imu_i2c_addr << 1), reg, I2C_MEMADD_SIZE_8BIT, data, len,
+                            IMU_I2C_TIMEOUT_MS) == HAL_OK;
+}
+
+static bool lsm6dsox_i2c_write(uint8_t reg, const uint8_t* data, uint16_t len)
+{
+    return HAL_I2C_Mem_Write(&IMU_I2C_HANDLE, (uint16_t) (imu_i2c_addr << 1), reg, I2C_MEMADD_SIZE_8BIT,
+                             (uint8_t*) data, len, IMU_I2C_TIMEOUT_MS) == HAL_OK;
+}
+
+static const lsm6dsox_bus_t lsm6dsox_bus = {
+    .read = lsm6dsox_i2c_read,
+    .write = lsm6dsox_i2c_write,
+    .delay_ms = HAL_Delay,
+    .is_spi = false,
+};
+
+/* Procura o chip em 0x6A (SA0 em GND) e depois em 0x6B (SA0 em VDD). */
+static bool imu_bus_prepare(void)
+{
+    static const uint8_t addrs[] = { LSM6DSOX_I2C_ADDR_SA0_LOW, LSM6DSOX_I2C_ADDR_SA0_HIGH };
+
+    imu_i2c_addr = 0;
+
+    for(size_t n = 0; n < UTL_ARRAY_SIZE(addrs); n++)
+    {
+        if(HAL_I2C_IsDeviceReady(&IMU_I2C_HANDLE, (uint16_t) (addrs[n] << 1), IMU_I2C_PROBE_TRIES,
+                                 IMU_I2C_TIMEOUT_MS) == HAL_OK)
+        {
+            imu_i2c_addr = addrs[n];
+            return true;
+        }
+    }
+
+    UTL_DBG_PRINTF(UTL_DBG_MOD_IMU, "LSM6DSOX nao respondeu em I2C (0x%02X/0x%02X)\r\n", LSM6DSOX_I2C_ADDR_SA0_LOW,
+                   LSM6DSOX_I2C_ADDR_SA0_HIGH);
+    return false;
+}
+
+static void imu_bus_print(void)
+{
+    UTL_DBG_PRINTF(UTL_DBG_MOD_IMU, "LSM6DSOX em I2C @0x%02X\r\n", imu_i2c_addr);
+}
+
+#else
+#error "HAL_IMU_BUS deve ser HAL_IMU_BUS_SPI ou HAL_IMU_BUS_I2C (hal_cfg.h)"
+#endif
 
 static lsm6dsox_t lsm6dsox_dev;
 
@@ -55,7 +141,13 @@ static lsm6dsox_t lsm6dsox_dev;
 static bool port_lsm6dsox_init(void)
 {
     uint8_t id = 0;
-    bool ok = lsm6dsox_init(&lsm6dsox_dev, &lsm6dsox_bus);
+    bool ok;
+
+    if(!imu_bus_prepare())
+        return false;
+
+    imu_bus_print();
+    ok = lsm6dsox_init(&lsm6dsox_dev, &lsm6dsox_bus);
 
     (void) lsm6dsox_who_am_i_get(&lsm6dsox_dev, &id);
     UTL_DBG_PRINTF(UTL_DBG_MOD_IMU, "LSM6DSOX WHO_AM_I=0x%02X (esperado 0x%02X) %s\r\n", id,
