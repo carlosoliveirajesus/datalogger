@@ -1,0 +1,206 @@
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:196] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:227] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:234] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:256] LSM6DSOX setup OK
+[47][ENV][env.c:97] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:156] BME280 setup OK
+[75][SD][app.c:283] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[81][APP][app.c:147] Estado INIT -> IDLE
+[85][APP][app.c:472] Pronto: aperte o botao para gravar
+[1000][APP][app.c:451] [ENV] T=24.19 C P=913.46 hPa UR=36.7 % | [IMU] 379/s (INT1 380, erros 0, resgates 1) acc=-0.191 +0.011 +1.007 g gyr=-0.49 +0.21 +0.00 dps | [LOG] parado
+[2000][APP][app.c:451] [ENV] T=24.20 C P=913.45 hPa UR=36.6 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.193 +0.002 +1.008 g gyr=+1.05 -0.07 +0.00 dps | [LOG] parado
+[3000][APP][app.c:451] [ENV] T=24.20 C P=913.49 hPa UR=36.5 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.189 -0.003 +1.005 g gyr=+1.54 -0.63 -0.28 dps | [LOG] parado
+[4000][APP][app.c:451] [ENV] T=24.20 C P=913.48 hPa UR=36.7 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.037 -0.150 +0.951 g gyr=+17.08 +25.83 -14.35 dps | [LOG] parado
+[5000][APP][app.c:451] [ENV] T=24.22 C P=913.47 hPa UR=37.6 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.322 -0.004 +0.956 g gyr=-0.70 -0.42 -0.35 dps | [LOG] parado
+[5090][APP][app.c:616] estado=IDLE erros=0x00
+[5846][APP][app.c:596] Botao
+[5870][SD][app.c:283] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[5913][LOGGER][logger.c:292] Gravando em LOG_0010.CSV
+[5918][APP][app.c:147] Estado IDLE -> LOGGING
+[6000][APP][app.c:451] [ENV] T=24.23 C P=913.47 hPa UR=39.4 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.308 -0.010 +0.973 g gyr=-0.21 +0.14 +0.14 dps | [LOG] LOG_0010.CSV 36 linhas, 0 perdidas, buffer max 4
+[7000][APP][app.c:451] [ENV] T=24.27 C P=913.48 hPa UR=42.6 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.317 -0.021 +0.971 g gyr=-0.07 -1.12 +0.14 dps | [LOG] LOG_0010.CSV 450 linhas, 0 perdidas, buffer max 9
+[8000][APP][app.c:451] [ENV] T=24.32 C P=913.47 hPa UR=44.1 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.311 -0.014 +0.974 g gyr=+0.28 +0.28 +0.00 dps | [LOG] LOG_0010.CSV 865 linhas, 0 perdidas, buffer max 10
+[9000][APP][app.c:451] [ENV] T=24.34 C P=913.49 hPa UR=44.9 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.313 -0.012 +0.975 g gyr=-0.42 +0.14 +0.14 dps | [LOG] LOG_0010.CSV 1280 linhas, 0 perdidas, buffer max 10
+[10000][APP][app.c:451] [ENV] T=24.37 C P=913.49 hPa UR=46.2 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.311 -0.014 +0.974 g gyr=+0.07 +0.21 -0.14 dps | [LOG] LOG_0010.CSV 1695 linhas, 0 perdidas, buffer max 10
+[10090][APP][app.c:616] estado=LOGGING erros=0x00
+[11000][APP][app.c:451] [ENV] T=24.38 C P=913.48 hPa UR=46.3 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.311 -0.012 +0.970 g gyr=+0.77 -0.07 -0.14 dps | [LOG] LOG_0010.CSV 2110 linhas, 0 perdidas, buffer max 10
+[12009][APP][app.c:451] [ENV] T=24.39 C P=913.47 hPa UR=45.3 % | [IMU] 419/s (INT1 419, erros 0, resgates 1) acc=-0.307 -0.011 +0.972 g gyr=+0.77 +0.35 -0.07 dps | [LOG] LOG_0010.CSV 2523 linhas, 0 perdidas, buffer max 10
+[13009][APP][app.c:451] [ENV] T=24.40 C P=913.48 hPa UR=45.0 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.313 -0.013 +0.976 g gyr=+0.07 +0.00 +0.07 dps | [LOG] LOG_0010.CSV 2943 linhas, 0 perdidas, buffer max 16
+[14009][APP][app.c:451] [ENV] T=24.42 C P=913.51 hPa UR=45.8 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.312 -0.014 +0.979 g gyr=+0.35 +0.98 -0.14 dps | [LOG] LOG_0010.CSV 3358 linhas, 0 perdidas, buffer max 16
+[15009][APP][app.c:451] [ENV] T=24.44 C P=913.49 hPa UR=46.3 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.314 -0.011 +0.972 g gyr=+0.42 -0.84 +0.07 dps | [LOG] LOG_0010.CSV 3773 linhas, 0 perdidas, buffer max 16
+[15090][APP][app.c:616] estado=LOGGING erros=0x00
+[16009][APP][app.c:451] [ENV] T=24.43 C P=913.48 hPa UR=44.7 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.309 -0.015 +0.974 g gyr=+0.91 -0.42 -0.07 dps | [LOG] LOG_0010.CSV 4188 linhas, 0 perdidas, buffer max 16
+[17011][APP][app.c:451] [ENV] T=24.44 C P=913.47 hPa UR=43.9 % | [IMU] 416/s (INT1 416, erros 0, resgates 1) acc=-0.318 -0.012 +0.966 g gyr=+1.19 -0.42 -0.84 dps | [LOG] LOG_0010.CSV 4604 linhas, 0 perdidas, buffer max 16
+[17917][LOGGER][logger.c:386] escrita falhou (FRESULT 1)
+[17923][LOGGER][logger.c:307] LOG_0010.CSV fechado: 4981 linhas, 0 perdidas
+[17931][APP][app.c:147] Estado LOGGING -> ERROR
+[18010][APP][app.c:451] [ENV] T=24.46 C P=913.47 hPa UR=44.8 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.290 -0.031 +0.972 g gyr=+2.31 -3.57 +0.28 dps | [LOG] parado
+[19010][APP][app.c:451] [ENV] T=24.48 C P=913.47 hPa UR=46.2 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.311 -0.016 +0.975 g gyr=+0.21 -0.07 -0.07 dps | [LOG] parado
+[19933][SD][sd.c:120] HAL_SD_Init falhou (erro 0x10000000)
+[19940][SD][sd.c:75] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[19945][SD][sd.c:80] diag CMD0   err=0x00000000
+[19951][SD][sd.c:84] diag CMD8   err=0x00000004 resp=0x00000000
+[19958][SD][sd.c:89] diag CMD55  err=0x00000004 resp=0x00000000
+[19965][SD][app.c:277] Falha ao iniciar o cartao (2)
+[20010][APP][app.c:451] [ENV] T=24.50 C P=913.50 hPa UR=45.5 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.312 -0.015 +0.976 g gyr=+0.28 +0.00 -0.07 dps | [LOG] parado
+[20090][APP][app.c:616] estado=ERROR erros=0x08
+[21010][APP][app.c:451] [ENV] T=24.50 C P=913.47 hPa UR=45.2 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.305 -0.016 +0.973 g gyr=+0.14 +0.00 -0.07 dps | [LOG] parado
+[21933][SD][sd.c:120] HAL_SD_Init falhou (erro 0x10000000)
+[21940][SD][sd.c:75] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[21945][SD][sd.c:80] diag CMD0   err=0x00000000
+[21951][SD][sd.c:84] diag CMD8   err=0x00000004 resp=0x00000000
+[21958][SD][sd.c:89] diag CMD55  err=0x00000004 resp=0x00000000
+[21965][SD][app.c:277] Falha ao iniciar o cartao (2)
+[22010][APP][app.c:451] [ENV] T=24.53 C P=913.49 hPa UR=47.0 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.308 -0.015 +0.975 g gyr=+0.35 +0.49 -0.07 dps | [LOG] parado
+[23010][APP][app.c:451] [ENV] T=24.53 C P=913.48 hPa UR=46.0 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.313 -0.014 +0.972 g gyr=+0.77 +0.21 -0.07 dps | [LOG] parado
+[23933][SD][sd.c:120] HAL_SD_Init falhou (erro 0x10000000)
+[23940][SD][sd.c:75] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[23946][SD][sd.c:80] diag CMD0   err=0x00000000
+[23951][SD][sd.c:84] diag CMD8   err=0x00000004 resp=0x00000000
+[23958][SD][sd.c:89] diag CMD55  err=0x00000004 resp=0x00000000
+[23965][SD][app.c:277] Falha ao iniciar o cartao (2)
+[24010][APP][app.c:451] [ENV] T=24.55 C P=913.48 hPa UR=45.9 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.310 -0.017 +0.974 g gyr=-0.07 -0.35 +0.21 dps | [LOG] parado
+[25010][APP][app.c:451] [ENV] T=24.57 C P=913.47 hPa UR=46.6 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.309 -0.013 +0.973 g gyr=+0.49 -0.42 +0.00 dps | [LOG] parado
+[25090][APP][app.c:616] estado=ERROR erros=0x08
+[25933][SD][sd.c:120] HAL_SD_Init falhou (erro 0x10000000)
+[25940][SD][sd.c:75] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[25946][SD][sd.c:80] diag CMD0   err=0x00000000
+[25951][SD][sd.c:84] diag CMD8   err=0x00000004 resp=0x00000000
+[25958][SD][sd.c:89] diag CMD55  err=0x00000004 resp=0x00000000
+[25965][SD][app.c:277] Falha ao iniciar o cartao (2)
+[26010][APP][app.c:451] [ENV] T=24.56 C P=913.49 hPa UR=45.1 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.303 -0.014 +0.971 g gyr=+0.14 +0.28 +0.21 dps | [LOG] parado
+[27010][APP][app.c:451] [ENV] T=24.57 C P=913.49 hPa UR=43.7 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.309 -0.010 +0.976 g gyr=+0.35 -0.21 -0.21 dps | [LOG] parado
+[28183][SD][app.c:283] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[28224][LOGGER][logger.c:292] Gravando em LOG_0011.CSV
+[28230][APP][app.c:147] Estado ERROR -> LOGGING
+[28235][APP][app.c:451] [ENV] T=24.57 C P=913.49 hPa UR=43.8 % | [IMU] 509/s (INT1 509, erros 0, resgates 1) acc=-0.310 -0.013 +0.975 g gyr=+0.14 +0.28 +0.00 dps | [LOG] LOG_0011.CSV 0 linhas, 0 perdidas, buffer max 4
+[29239][APP][app.c:451] [ENV] T=24.58 C P=913.49 hPa UR=43.4 % | [IMU] 417/s (INT1 417, erros 0, resgates 1) acc=-0.307 -0.014 +0.975 g gyr=+0.07 +0.14 -0.14 dps | [LOG] LOG_0011.CSV 415 linhas, 0 perdidas, buffer max 14
+[30090][APP][app.c:616] estado=LOGGING erros=0x00
+[30239][APP][app.c:451] [ENV] T=24.58 C P=913.46 hPa UR=43.4 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.309 -0.013 +0.974 g gyr=+0.14 +0.07 -0.14 dps | [LOG] LOG_0011.CSV 835 linhas, 0 perdidas, buffer max 16
+[31239][APP][app.c:451] [ENV] T=24.59 C P=913.46 hPa UR=43.2 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.305 -0.006 +0.974 g gyr=+0.28 +0.28 -0.14 dps | [LOG] LOG_0011.CSV 1250 linhas, 0 perdidas, buffer max 16
+[32239][APP][app.c:451] [ENV] T=24.60 C P=913.47 hPa UR=44.1 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.287 +0.005 +0.988 g gyr=+1.82 +1.19 +2.17 dps | [LOG] LOG_0011.CSV 1665 linhas, 0 perdidas, buffer max 16
+[33239][APP][app.c:451] [ENV] T=24.61 C P=913.47 hPa UR=43.9 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.275 +0.005 +0.981 g gyr=+0.21 -0.70 +0.14 dps | [LOG] LOG_0011.CSV 2080 linhas, 0 perdidas, buffer max 16
+[34241][APP][app.c:451] [ENV] T=24.57 C P=913.46 hPa UR=41.8 % | [IMU] 416/s (INT1 416, erros 0, resgates 1) acc=-0.273 +0.008 +0.982 g gyr=+0.56 -0.56 +0.07 dps | [LOG] LOG_0011.CSV 2496 linhas, 0 perdidas, buffer max 16
+[35090][APP][app.c:616] estado=LOGGING erros=0x00
+[35240][APP][app.c:451] [ENV] T=24.54 C P=913.45 hPa UR=40.3 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.273 +0.008 +0.982 g gyr=+0.28 -0.07 -0.07 dps | [LOG] LOG_0011.CSV 2910 linhas, 0 perdidas, buffer max 16
+[36241][APP][app.c:451] [ENV] T=24.53 C P=913.46 hPa UR=39.4 % | [IMU] 416/s (INT1 416, erros 0, resgates 1) acc=-0.274 +0.011 +0.982 g gyr=+0.21 -0.21 -0.07 dps | [LOG] LOG_0011.CSV 3326 linhas, 0 perdidas, buffer max 16
+[37241][APP][app.c:451] [ENV] T=24.53 C P=913.47 hPa UR=39.5 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.261 +0.010 +0.985 g gyr=+0.91 -0.28 +0.07 dps | [LOG] LOG_0011.CSV 3740 linhas, 0 perdidas, buffer max 16
+[38241][APP][app.c:451] [ENV] T=24.52 C P=913.48 hPa UR=39.3 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.264 +0.007 +0.985 g gyr=+0.42 +0.14 -0.21 dps | [LOG] LOG_0011.CSV 4155 linhas, 0 perdidas, buffer max 16
+[39241][APP][app.c:451] [ENV] T=24.51 C P=913.48 hPa UR=39.4 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.270 +0.013 +0.987 g gyr=+0.14 +0.14 +0.00 dps | [LOG] LOG_0011.CSV 4570 linhas, 0 perdidas, buffer max 16
+[40090][APP][app.c:616] estado=LOGGING erros=0x00
+[40241][APP][app.c:451] [ENV] T=24.50 C P=913.47 hPa UR=38.7 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.265 +0.013 +0.984 g gyr=+0.07 +0.35 +0.00 dps | [LOG] LOG_0011.CSV 4985 linhas, 0 perdidas, buffer max 16
+[41241][APP][app.c:451] [ENV] T=24.46 C P=913.46 hPa UR=38.0 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.264 +0.012 +0.988 g gyr=+0.00 -0.07 +0.21 dps | [LOG] LOG_0011.CSV 5400 linhas, 0 perdidas, buffer max 16
+[42243][APP][app.c:451] [ENV] T=24.44 C P=913.46 hPa UR=37.6 % | [IMU] 416/s (INT1 416, erros 0, resgates 1) acc=-0.264 +0.012 +0.986 g gyr=+0.14 +0.14 +0.00 dps | [LOG] LOG_0011.CSV 5816 linhas, 0 perdidas, buffer max 16
+[43243][APP][app.c:451] [ENV] T=24.40 C P=913.49 hPa UR=37.2 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.266 +0.013 +0.986 g gyr=+0.21 -0.14 +0.14 dps | [LOG] LOG_0011.CSV 6230 linhas, 0 perdidas, buffer max 16
+[44243][APP][app.c:451] [ENV] T=24.37 C P=913.49 hPa UR=37.3 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.264 +0.014 +0.989 g gyr=+0.21 +0.42 +0.07 dps | [LOG] LOG_0011.CSV 6645 linhas, 0 perdidas, buffer max 16
+[45090][APP][app.c:616] estado=LOGGING erros=0x00
+[45243][APP][app.c:451] [ENV] T=24.38 C P=913.49 hPa UR=37.1 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.265 +0.012 +0.985 g gyr=+0.42 -0.07 +0.21 dps | [LOG] LOG_0011.CSV 7060 linhas, 0 perdidas, buffer max 16
+[46243][APP][app.c:451] [ENV] T=24.37 C P=913.48 hPa UR=37.3 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.264 +0.014 +0.987 g gyr=+0.00 +0.14 -0.07 dps | [LOG] LOG_0011.CSV 7475 linhas, 0 perdidas, buffer max 16
+[47243][APP][app.c:451] [ENV] T=24.37 C P=913.47 hPa UR=37.3 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.264 +0.012 +0.987 g gyr=+0.28 +0.21 +0.14 dps | [LOG] LOG_0011.CSV 7890 linhas, 0 perdidas, buffer max 16
+[48243][APP][app.c:451] [ENV] T=24.33 C P=913.46 hPa UR=37.1 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.267 -0.017 +0.996 g gyr=-2.66 +2.24 +0.28 dps | [LOG] LOG_0011.CSV 8305 linhas, 0 perdidas, buffer max 16
+[49243][APP][app.c:451] [ENV] T=24.30 C P=913.47 hPa UR=36.9 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.295 +0.004 +0.992 g gyr=-2.31 +0.98 +0.49 dps | [LOG] LOG_0011.CSV 8720 linhas, 0 perdidas, buffer max 16
+[50090][APP][app.c:616] estado=LOGGING erros=0x00
+[50243][APP][app.c:451] [ENV] T=24.25 C P=913.49 hPa UR=36.7 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.254 +0.007 +1.001 g gyr=-0.21 +2.10 -8.47 dps | [LOG] LOG_0011.CSV 9134 linhas, 0 perdidas, buffer max 16
+[51243][APP][app.c:451] [ENV] T=24.26 C P=913.47 hPa UR=36.8 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.296 -0.012 +0.982 g gyr=+0.14 +0.07 +0.00 dps | [LOG] LOG_0011.CSV 9549 linhas, 0 perdidas, buffer max 16
+[52244][APP][app.c:451] [ENV] T=24.23 C P=913.50 hPa UR=36.6 % | [IMU] 416/s (INT1 416, erros 0, resgates 1) acc=-0.293 -0.013 +0.978 g gyr=+0.28 -0.42 -0.07 dps | [LOG] LOG_0011.CSV 9965 linhas, 0 perdidas, buffer max 16
+[53244][APP][app.c:451] [ENV] T=24.21 C P=913.50 hPa UR=36.4 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.291 -0.008 +0.977 g gyr=+0.14 +0.28 +0.07 dps | [LOG] LOG_0011.CSV 10379 linhas, 0 perdidas, buffer max 16
+[53512][LOGGER][logger.c:386] escrita falhou (FRESULT 1)
+[53518][LOGGER][logger.c:307] LOG_0011.CSV fechado: 10492 linhas, 0 perdidas
+[53526][APP][app.c:147] Estado LOGGING -> ERROR
+[54244][APP][app.c:451] [ENV] T=24.21 C P=913.49 hPa UR=36.5 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.248 +0.008 +1.010 g gyr=+1.05 -1.19 +0.14 dps | [LOG] parado
+[55090][APP][app.c:616] estado=ERROR erros=0x08
+[55244][APP][app.c:451] [ENV] T=24.19 C P=913.47 hPa UR=36.4 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.266 +0.001 +0.984 g gyr=+0.07 +0.14 -0.07 dps | [LOG] parado
+[55528][SD][sd.c:120] HAL_SD_Init falhou (erro 0x10000000)
+[55535][SD][sd.c:75] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[55540][SD][sd.c:80] diag CMD0   err=0x00000000
+[55546][SD][sd.c:84] diag CMD8   err=0x00000004 resp=0x00000000
+[55553][SD][sd.c:89] diag CMD55  err=0x00000004 resp=0x00000000
+[55560][SD][app.c:277] Falha ao iniciar o cartao (2)
+[56244][APP][app.c:451] [ENV] T=24.19 C P=913.49 hPa UR=36.3 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.267 -0.002 +0.987 g gyr=+0.21 +0.21 -0.07 dps | [LOG] parado
+[57244][APP][app.c:451] [ENV] T=24.17 C P=913.47 hPa UR=36.2 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.273 +0.004 +0.985 g gyr=+0.07 +0.14 +0.00 dps | [LOG] parado
+[57528][SD][sd.c:120] HAL_SD_Init falhou (erro 0x10000000)
+[57535][SD][sd.c:75] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[57541][SD][sd.c:80] diag CMD0   err=0x00000000
+[57546][SD][sd.c:84] diag CMD8   err=0x00000004 resp=0x00000000
+[57553][SD][sd.c:89] diag CMD55  err=0x00000004 resp=0x00000000
+[57560][SD][app.c:277] Falha ao iniciar o cartao (2)
+[58244][APP][app.c:451] [ENV] T=24.14 C P=913.50 hPa UR=36.2 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.270 +0.000 +0.985 g gyr=+0.28 +0.07 -0.14 dps | [LOG] parado
+[59244][APP][app.c:451] [ENV] T=24.12 C P=913.50 hPa UR=36.2 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.274 +0.000 +0.984 g gyr=+0.42 -0.21 +0.00 dps | [LOG] parado
+[59529][SD][sd.c:120] HAL_SD_Init falhou (erro 0x10000000)
+[59535][SD][sd.c:75] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[59541][SD][sd.c:80] diag CMD0   err=0x00000000
+[59546][SD][sd.c:84] diag CMD8   err=0x00000004 resp=0x00000000
+[59553][SD][sd.c:89] diag CMD55  err=0x00000004 resp=0x00000000
+[59560][SD][app.c:277] Falha ao iniciar o cartao (2)
+[60090][APP][app.c:616] estado=ERROR erros=0x08
+[60244][APP][app.c:451] [ENV] T=24.12 C P=913.52 hPa UR=36.1 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.269 -0.001 +0.986 g gyr=+0.28 +0.07 -0.07 dps | [LOG] parado
+[61244][APP][app.c:451] [ENV] T=24.11 C P=913.51 hPa UR=36.1 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.270 +0.001 +0.984 g gyr=+0.14 +0.07 +0.00 dps | [LOG] parado
+[61529][SD][sd.c:120] HAL_SD_Init falhou (erro 0x10000000)
+[61535][SD][sd.c:75] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[61541][SD][sd.c:80] diag CMD0   err=0x00000000
+[61546][SD][sd.c:84] diag CMD8   err=0x00000004 resp=0x00000000
+[61553][SD][sd.c:89] diag CMD55  err=0x00000004 resp=0x00000000
+[61560][SD][app.c:277] Falha ao iniciar o cartao (2)
+[62244][APP][app.c:451] [ENV] T=24.08 C P=913.51 hPa UR=36.0 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.270 +0.000 +0.984 g gyr=+0.21 +0.07 -0.07 dps | [LOG] parado
+[63244][APP][app.c:451] [ENV] T=24.06 C P=913.49 hPa UR=36.0 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.272 +0.001 +0.984 g gyr=+0.35 +0.00 -0.07 dps | [LOG] parado
+[63528][SD][sd.c:120] HAL_SD_Init falhou (erro 0x10000000)
+[63535][SD][sd.c:75] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[63540][SD][sd.c:80] diag CMD0   err=0x00000000
+[63546][SD][sd.c:84] diag CMD8   err=0x00000004 resp=0x00000000
+[63553][SD][sd.c:89] diag CMD55  err=0x00000004 resp=0x00000000
+[63560][SD][app.c:277] Falha ao iniciar o cartao (2)
+[64244][APP][app.c:451] [ENV] T=24.08 C P=913.51 hPa UR=36.1 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.270 -0.003 +0.984 g gyr=+0.28 +0.07 +0.00 dps | [LOG] parado
+[65090][APP][app.c:616] estado=ERROR erros=0x08
+[65244][APP][app.c:451] [ENV] T=24.08 C P=913.52 hPa UR=36.2 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.269 +0.000 +0.986 g gyr=+0.14 -0.14 +0.14 dps | [LOG] parado
+[65528][SD][sd.c:120] HAL_SD_Init falhou (erro 0x10000000)
+[65535][SD][sd.c:75] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[65541][SD][sd.c:80] diag CMD0   err=0x00000000
+[65546][SD][sd.c:84] diag CMD8   err=0x00000004 resp=0x00000000
+[65553][SD][sd.c:89] diag CMD55  err=0x00000004 resp=0x00000000
+[65560][SD][app.c:277] Falha ao iniciar o cartao (2)
+[66244][APP][app.c:451] [ENV] T=24.05 C P=913.49 hPa UR=36.2 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.271 -0.001 +0.984 g gyr=+0.35 +0.07 -0.21 dps | [LOG] parado
+[67244][APP][app.c:451] [ENV] T=24.07 C P=913.51 hPa UR=36.3 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.268 -0.000 +0.991 g gyr=+0.42 +0.14 +0.14 dps | [LOG] parado
+[67528][SD][sd.c:120] HAL_SD_Init falhou (erro 0x10000000)
+[67535][SD][sd.c:75] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[67541][SD][sd.c:80] diag CMD0   err=0x00000000
+[67546][SD][sd.c:84] diag CMD8   err=0x00000004 resp=0x00000000
+[67553][SD][sd.c:89] diag CMD55  err=0x00000004 resp=0x00000000
+[67560][SD][app.c:277] Falha ao iniciar o cartao (2)
+[68244][APP][app.c:451] [ENV] T=24.05 C P=913.51 hPa UR=36.2 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.268 -0.002 +0.987 g gyr=+0.14 +0.14 -0.14 dps | [LOG] parado
+[69244][APP][app.c:451] [ENV] T=24.03 C P=913.51 hPa UR=36.2 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.271 -0.001 +0.987 g gyr=+0.28 +0.07 -0.14 dps | [LOG] parado
+[69528][SD][sd.c:120] HAL_SD_Init falhou (erro 0x10000000)
+[69535][SD][sd.c:75] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[69540][SD][sd.c:80] diag CMD0   err=0x00000000
+[69546][SD][sd.c:84] diag CMD8   err=0x00000004 resp=0x00000000
+[69553][SD][sd.c:89] diag CMD55  err=0x00000004 resp=0x00000000
+[69560][SD][app.c:277] Falha ao iniciar o cartao (2)
+[70090][APP][app.c:616] estado=ERROR erros=0x08
+[70244][APP][app.c:451] [ENV] T=24.03 C P=913.49 hPa UR=36.1 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.265 -0.008 +0.994 g gyr=-0.28 -0.14 +0.42 dps | [LOG] parado
+[71244][APP][app.c:451] [ENV] T=24.03 C P=913.49 hPa UR=36.2 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.267 -0.002 +0.988 g gyr=+0.14 +0.14 -0.28 dps | [LOG] parado
+[71547][SD][app.c:283] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[71585][LOGGER][logger.c:292] Gravando em LOG_0012.CSV
+[71591][APP][app.c:147] Estado ERROR -> LOGGING
+[72244][APP][app.c:451] [ENV] T=24.04 C P=913.50 hPa UR=36.1 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.315 +0.022 +0.972 g gyr=-2.73 +2.52 +9.17 dps | [LOG] LOG_0012.CSV 273 linhas, 0 perdidas, buffer max 4
+[73244][APP][app.c:451] [ENV] T=24.04 C P=913.51 hPa UR=36.3 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.257 -0.000 +0.983 g gyr=+0.63 -1.89 +1.68 dps | [LOG] LOG_0012.CSV 688 linhas, 0 perdidas, buffer max 10
+[74244][APP][app.c:451] [ENV] T=24.04 C P=913.51 hPa UR=36.2 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.254 +0.013 +0.990 g gyr=+0.07 +0.35 +0.00 dps | [LOG] LOG_0012.CSV 1102 linhas, 0 perdidas, buffer max 10
+[75090][APP][app.c:616] estado=LOGGING erros=0x00
+[75244][APP][app.c:451] [ENV] T=23.99 C P=913.48 hPa UR=36.1 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.255 +0.011 +0.992 g gyr=+0.35 -0.49 +0.14 dps | [LOG] LOG_0012.CSV 1517 linhas, 0 perdidas, buffer max 11
+[76244][APP][app.c:451] [ENV] T=23.96 C P=913.49 hPa UR=36.0 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.254 +0.014 +0.991 g gyr=-0.07 +0.70 -0.21 dps | [LOG] LOG_0012.CSV 1932 linhas, 0 perdidas, buffer max 11
+[77244][APP][app.c:451] [ENV] T=23.97 C P=913.48 hPa UR=36.0 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.249 +0.012 +0.990 g gyr=-0.14 -0.07 +0.28 dps | [LOG] LOG_0012.CSV 2347 linhas, 0 perdidas, buffer max 11
+[78244][APP][app.c:451] [ENV] T=23.96 C P=913.49 hPa UR=36.1 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.252 +0.019 +0.987 g gyr=+0.14 +0.21 +0.14 dps | [LOG] LOG_0012.CSV 2762 linhas, 0 perdidas, buffer max 11
+[79244][APP][app.c:451] [ENV] T=23.94 C P=913.49 hPa UR=36.0 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.249 +0.011 +0.992 g gyr=+0.21 +0.07 +0.00 dps | [LOG] LOG_0012.CSV 3177 linhas, 0 perdidas, buffer max 11
+[80090][APP][app.c:616] estado=LOGGING erros=0x00
+[80244][APP][app.c:451] [ENV] T=23.95 C P=913.49 hPa UR=36.0 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.250 +0.015 +0.990 g gyr=+0.07 +0.00 +0.00 dps | [LOG] LOG_0012.CSV 3592 linhas, 0 perdidas, buffer max 11
+[81244][APP][app.c:451] [ENV] T=23.93 C P=913.48 hPa UR=36.0 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.253 +0.014 +0.987 g gyr=+0.56 -0.21 +0.00 dps | [LOG] LOG_0012.CSV 4007 linhas, 0 perdidas, buffer max 11
+[82244][APP][app.c:451] [ENV] T=23.93 C P=913.45 hPa UR=36.0 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.250 +0.016 +0.992 g gyr=-0.28 +0.49 +0.00 dps | [LOG] LOG_0012.CSV 4421 linhas, 0 perdidas, buffer max 11
+[83244][APP][app.c:451] [ENV] T=23.94 C P=913.49 hPa UR=36.1 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.249 +0.018 +0.993 g gyr=+0.14 +0.21 +0.14 dps | [LOG] LOG_0012.CSV 4836 linhas, 0 perdidas, buffer max 11
+[84244][APP][app.c:451] [ENV] T=23.92 C P=913.47 hPa UR=36.0 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.250 +0.011 +0.993 g gyr=+0.28 -0.70 +0.21 dps | [LOG] LOG_0012.CSV 5251 linhas, 0 perdidas, buffer max 11
+[84634][APP][app.c:596] Botao
+[84654][LOGGER][logger.c:307] LOG_0012.CSV fechado: 5414 linhas, 0 perdidas
+[84662][LOGGER][app.c:486] Gravacao parada: pode remover o cartao
+[84669][APP][app.c:147] Estado LOGGING -> IDLE
+[85090][APP][app.c:616] estado=IDLE erros=0x00

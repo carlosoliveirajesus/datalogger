@@ -1,0 +1,2 @@
+# CSVs gravados pelo datalogger: guardar byte a byte (CRLF original do cartao)
+*.CSV -text

@@ -1,0 +1,80 @@
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:130] LSM6DSOX em I2C @0x6B
+[19][IMU][imu.c:153] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[28][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[32][ENV][env.c:103] BME280 setup OK
+[56][SD][app.c:107] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[62][APP][app.c:58] Estado INIT -> IDLE
+[1000][ENV][app.c:170] T=24.05 C  P=920.68 hPa  UR=39.0 %
+[2000][ENV][app.c:170] T=24.22 C  P=920.69 hPa  UR=46.3 %
+[3000][ENV][app.c:170] T=24.89 C  P=920.72 hPa  UR=54.8 %
+[4000][ENV][app.c:170] T=24.79 C  P=920.67 hPa  UR=54.7 %
+[5000][ENV][app.c:170] T=25.26 C  P=920.71 hPa  UR=58.4 %
+[5066][APP][app.c:239] estado=IDLE erros=0x00
+[6000][ENV][app.c:170] T=25.45 C  P=920.71 hPa  UR=60.4 %
+[7000][ENV][app.c:170] T=25.81 C  P=920.70 hPa  UR=63.1 %
+[8000][ENV][app.c:170] T=25.76 C  P=920.69 hPa  UR=62.4 %
+[9000][ENV][app.c:170] T=25.68 C  P=920.71 hPa  UR=61.6 %
+[10000][ENV][app.c:170] T=25.61 C  P=920.72 hPa  UR=60.9 %
+[10066][APP][app.c:239] estado=IDLE erros=0x00
+[11000][ENV][app.c:170] T=25.52 C  P=920.73 hPa  UR=56.4 %
+[12000][ENV][app.c:170] T=25.47 C  P=920.74 hPa  UR=53.8 %
+[13000][ENV][app.c:170] T=25.41 C  P=920.76 hPa  UR=51.1 %
+[14000][ENV][app.c:170] T=25.33 C  P=920.75 hPa  UR=48.5 %
+[15000][ENV][app.c:170] T=25.26 C  P=920.74 hPa  UR=46.8 %
+[15066][APP][app.c:239] estado=IDLE erros=0x00
+[16000][ENV][app.c:170] T=25.23 C  P=920.75 hPa  UR=46.2 %
+[17000][ENV][app.c:170] T=25.14 C  P=920.75 hPa  UR=44.2 %
+[18000][ENV][app.c:170] T=25.10 C  P=920.75 hPa  UR=42.9 %
+[19000][ENV][app.c:170] T=24.98 C  P=920.74 hPa  UR=41.7 %
+[20000][ENV][app.c:170] T=24.93 C  P=920.74 hPa  UR=41.4 %
+[20066][APP][app.c:239] estado=IDLE erros=0x00
+[21000][ENV][app.c:170] T=24.91 C  P=920.71 hPa  UR=41.3 %
+[22000][ENV][app.c:170] T=24.88 C  P=920.71 hPa  UR=41.1 %
+[23000][ENV][app.c:170] T=24.78 C  P=920.71 hPa  UR=40.2 %
+[24000][ENV][app.c:170] T=24.67 C  P=920.71 hPa  UR=39.7 %
+[25000][ENV][app.c:170] T=24.65 C  P=920.72 hPa  UR=39.4 %
+[25066][APP][app.c:239] estado=IDLE erros=0x00
+[26000][ENV][app.c:170] T=24.65 C  P=920.74 hPa  UR=39.5 %
+[27000][ENV][app.c:170] T=24.62 C  P=920.71 hPa  UR=39.2 %
+[28000][ENV][app.c:170] T=24.61 C  P=920.73 hPa  UR=39.1 %
+[29000][ENV][app.c:170] T=24.60 C  P=920.71 hPa  UR=38.9 %
+[30000][ENV][app.c:170] T=24.57 C  P=920.72 hPa  UR=38.7 %
+[30066][APP][app.c:239] estado=IDLE erros=0x00
+[31000][ENV][app.c:170] T=24.57 C  P=920.72 hPa  UR=38.8 %
+[32000][ENV][app.c:170] T=24.54 C  P=920.71 hPa  UR=38.6 %
+[33000][ENV][app.c:170] T=24.49 C  P=920.72 hPa  UR=38.4 %
+[34000][ENV][app.c:170] T=24.43 C  P=920.75 hPa  UR=38.2 %
+[35000][ENV][app.c:170] T=24.38 C  P=920.74 hPa  UR=38.1 %
+[35066][APP][app.c:239] estado=IDLE erros=0x00
+[36000][ENV][app.c:170] T=24.35 C  P=920.73 hPa  UR=38.2 %
+[37000][ENV][app.c:170] T=24.31 C  P=920.75 hPa  UR=38.1 %
+[38000][ENV][app.c:170] T=24.27 C  P=920.72 hPa  UR=37.9 %
+[39000][ENV][app.c:170] T=24.23 C  P=920.71 hPa  UR=37.9 %
+[40000][ENV][app.c:170] T=24.23 C  P=920.73 hPa  UR=37.9 %
+[40066][APP][app.c:239] estado=IDLE erros=0x00
+[41000][ENV][app.c:170] T=24.18 C  P=920.71 hPa  UR=37.7 %
+[42000][ENV][app.c:170] T=24.18 C  P=920.72 hPa  UR=37.9 %
+[43000][ENV][app.c:170] T=24.14 C  P=920.71 hPa  UR=37.9 %
+[44000][ENV][app.c:170] T=24.11 C  P=920.70 hPa  UR=37.8 %
+[45000][ENV][app.c:170] T=24.10 C  P=920.71 hPa  UR=38.0 %
+[45066][APP][app.c:239] estado=IDLE erros=0x00
+[46000][ENV][app.c:170] T=24.11 C  P=920.73 hPa  UR=38.0 %
+[47000][ENV][app.c:170] T=24.10 C  P=920.70 hPa  UR=38.2 %
+[48000][ENV][app.c:170] T=24.08 C  P=920.72 hPa  UR=38.5 %
+[49000][ENV][app.c:170] T=24.07 C  P=920.74 hPa  UR=38.7 %
+[50000][ENV][app.c:170] T=24.05 C  P=920.73 hPa  UR=38.9 %
+[50066][APP][app.c:239] estado=IDLE erros=0x00
+[51000][ENV][app.c:170] T=24.03 C  P=920.71 hPa  UR=38.6 %
+[52000][ENV][app.c:170] T=24.01 C  P=920.72 hPa  UR=38.4 %
+[53000][ENV][app.c:170] T=24.01 C  P=920.73 hPa  UR=38.5 %
+[54000][ENV][app.c:170] T=24.00 C  P=920.70 hPa  UR=38.4 %
+[55000][ENV][app.c:170] T=23.95 C  P=920.71 hPa  UR=38.3 %
+[55066][APP][app.c:239] estado=IDLE erros=0x00
+[56000][ENV][app.c:170] T=23.94 C  P=920.72 hPa  UR=38.6 %
+[57000][ENV][app.c:170] T=23.93 C  P=920.72 hPa  UR=38.7 %
+[58000][ENV][app.c:170] T=23.94 C  P=920.73 hPa  UR=38.8 %
+[59000][ENV][app.c:170] T=23.94 C  P=920.71 hPa  UR=38.8 %

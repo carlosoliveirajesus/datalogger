@@ -1,0 +1,60 @@
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:130] LSM6DSOX em I2C @0x6B
+[17][IMU][imu.c:153] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[23][IMU][imu.c:175] LSM6DSOX setup OK
+[30][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[34][ENV][env.c:103] BME280 setup OK
+[58][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[65][APP][app.c:134] Estado INIT -> IDLE
+[68][APP][app.c:341] Pronto: aperte o botao para gravar
+[1000][APP][app.c:314] [ENV] T=24.22 C P=912.50 hPa UR=37.3 % | [IMU] 93/s (INT1 93, erros 0, resgates 93) acc=-0.348 +0.022 +0.958 g gyr=+0.14 -0.28 -0.14 dps | [LOG] parado
+[2000][APP][app.c:314] [ENV] T=24.20 C P=912.50 hPa UR=37.3 % | [IMU] 99/s (INT1 99, erros 0, resgates 192) acc=-0.347 +0.023 +0.960 g gyr=+0.07 +0.07 +0.00 dps | [LOG] parado
+[3000][APP][app.c:314] [ENV] T=24.20 C P=912.48 hPa UR=37.3 % | [IMU] 99/s (INT1 99, erros 0, resgates 291) acc=-0.345 +0.026 +0.958 g gyr=+0.14 +0.07 -0.07 dps | [LOG] parado
+[4000][APP][app.c:314] [ENV] T=24.18 C P=912.49 hPa UR=37.4 % | [IMU] 99/s (INT1 99, erros 0, resgates 390) acc=-0.348 +0.021 +0.960 g gyr=+0.28 +0.14 -0.07 dps | [LOG] parado
+[5000][APP][app.c:314] [ENV] T=24.15 C P=912.51 hPa UR=37.4 % | [IMU] 99/s (INT1 99, erros 0, resgates 489) acc=-0.346 +0.024 +0.960 g gyr=+0.49 -0.14 -0.07 dps | [LOG] parado
+[5073][APP][app.c:485] estado=IDLE erros=0x00
+[6000][APP][app.c:314] [ENV] T=24.16 C P=912.49 hPa UR=37.6 % | [IMU] 99/s (INT1 99, erros 0, resgates 588) acc=-0.345 +0.020 +0.975 g gyr=-0.70 -0.14 +0.00 dps | [LOG] parado
+[7000][APP][app.c:314] [ENV] T=24.18 C P=912.50 hPa UR=37.5 % | [IMU] 99/s (INT1 99, erros 0, resgates 687) acc=-0.347 +0.023 +0.965 g gyr=+0.35 +0.56 -0.14 dps | [LOG] parado
+[8000][APP][app.c:314] [ENV] T=24.18 C P=912.48 hPa UR=37.4 % | [IMU] 99/s (INT1 99, erros 0, resgates 786) acc=-0.346 +0.027 +0.960 g gyr=+0.21 -0.21 -0.14 dps | [LOG] parado
+[9000][APP][app.c:314] [ENV] T=24.17 C P=912.49 hPa UR=37.3 % | [IMU] 99/s (INT1 99, erros 0, resgates 885) acc=-0.353 +0.025 +0.961 g gyr=-0.21 +0.14 +0.14 dps | [LOG] parado
+[10000][APP][app.c:314] [ENV] T=24.16 C P=912.49 hPa UR=37.4 % | [IMU] 99/s (INT1 99, erros 0, resgates 984) acc=-0.346 +0.024 +0.960 g gyr=+0.14 +0.00 +0.00 dps | [LOG] parado
+[10073][APP][app.c:485] estado=IDLE erros=0x00
+[11000][APP][app.c:314] [ENV] T=24.16 C P=912.50 hPa UR=37.4 % | [IMU] 99/s (INT1 99, erros 0, resgates 1083) acc=-0.345 +0.023 +0.960 g gyr=+0.35 -0.07 -0.07 dps | [LOG] parado
+[12000][APP][app.c:314] [ENV] T=24.15 C P=912.50 hPa UR=37.4 % | [IMU] 99/s (INT1 99, erros 0, resgates 1182) acc=-0.348 +0.024 +0.960 g gyr=+0.00 +0.21 +0.07 dps | [LOG] parado
+[13000][APP][app.c:314] [ENV] T=24.15 C P=912.49 hPa UR=37.3 % | [IMU] 99/s (INT1 99, erros 0, resgates 1281) acc=-0.350 +0.024 +0.960 g gyr=+0.35 +0.21 +0.00 dps | [LOG] parado
+[14000][APP][app.c:314] [ENV] T=24.14 C P=912.52 hPa UR=37.2 % | [IMU] 99/s (INT1 99, erros 0, resgates 1380) acc=-0.346 +0.025 +0.958 g gyr=+0.07 +0.07 +0.00 dps | [LOG] parado
+[15000][APP][app.c:314] [ENV] T=24.14 C P=912.49 hPa UR=37.2 % | [IMU] 99/s (INT1 99, erros 0, resgates 1479) acc=-0.347 +0.021 +0.963 g gyr=+0.56 -0.14 +0.07 dps | [LOG] parado
+[15073][APP][app.c:485] estado=IDLE erros=0x00
+[16000][APP][app.c:314] [ENV] T=24.13 C P=912.51 hPa UR=37.2 % | [IMU] 99/s (INT1 99, erros 0, resgates 1578) acc=-0.346 +0.020 +0.960 g gyr=+0.49 +0.07 -0.14 dps | [LOG] parado
+[17000][APP][app.c:314] [ENV] T=24.13 C P=912.50 hPa UR=37.2 % | [IMU] 99/s (INT1 99, erros 0, resgates 1677) acc=-0.346 +0.023 +0.959 g gyr=+0.28 -0.07 -0.07 dps | [LOG] parado
+[18000][APP][app.c:314] [ENV] T=24.12 C P=912.50 hPa UR=37.1 % | [IMU] 99/s (INT1 99, erros 0, resgates 1776) acc=-0.350 +0.027 +0.959 g gyr=+0.21 -0.07 -0.07 dps | [LOG] parado
+[19000][APP][app.c:314] [ENV] T=24.12 C P=912.47 hPa UR=37.3 % | [IMU] 99/s (INT1 99, erros 0, resgates 1875) acc=-0.349 +0.023 +0.961 g gyr=+0.14 +0.07 -0.07 dps | [LOG] parado
+[20000][APP][app.c:314] [ENV] T=24.12 C P=912.50 hPa UR=37.4 % | [IMU] 99/s (INT1 99, erros 0, resgates 1974) acc=-0.351 +0.026 +0.958 g gyr=+0.21 +0.07 -0.07 dps | [LOG] parado
+[20073][APP][app.c:485] estado=IDLE erros=0x00
+[21000][APP][app.c:314] [ENV] T=24.12 C P=912.51 hPa UR=37.4 % | [IMU] 99/s (INT1 99, erros 0, resgates 2073) acc=-0.346 +0.023 +0.962 g gyr=+0.35 +0.07 +0.00 dps | [LOG] parado
+[22000][APP][app.c:314] [ENV] T=24.13 C P=912.49 hPa UR=37.5 % | [IMU] 99/s (INT1 99, erros 0, resgates 2172) acc=-0.349 +0.024 +0.960 g gyr=+0.35 +0.07 +0.00 dps | [LOG] parado
+[23000][APP][app.c:314] [ENV] T=24.13 C P=912.52 hPa UR=37.5 % | [IMU] 99/s (INT1 99, erros 0, resgates 2271) acc=-0.345 +0.024 +0.960 g gyr=+0.49 +0.07 -0.07 dps | [LOG] parado
+[24000][APP][app.c:314] [ENV] T=24.12 C P=912.51 hPa UR=37.5 % | [IMU] 99/s (INT1 99, erros 0, resgates 2370) acc=-0.336 +0.031 +0.949 g gyr=+0.98 +1.05 +0.07 dps | [LOG] parado
+[25000][APP][app.c:314] [ENV] T=24.12 C P=912.50 hPa UR=37.6 % | [IMU] 99/s (INT1 99, erros 0, resgates 2469) acc=-0.324 +0.040 +0.977 g gyr=-5.18 +8.82 -2.80 dps | [LOG] parado
+[25073][APP][app.c:485] estado=IDLE erros=0x00
+[26000][APP][app.c:314] [ENV] T=24.13 C P=912.51 hPa UR=37.6 % | [IMU] 99/s (INT1 99, erros 0, resgates 2568) acc=-0.359 +0.030 +0.954 g gyr=+0.35 +1.33 -0.63 dps | [LOG] parado
+[27000][APP][app.c:314] [ENV] T=24.14 C P=912.50 hPa UR=38.0 % | [IMU] 99/s (INT1 99, erros 0, resgates 2667) acc=-0.364 +0.013 +0.955 g gyr=+0.14 -0.56 +0.14 dps | [LOG] parado
+[28000][APP][app.c:314] [ENV] T=24.14 C P=912.51 hPa UR=38.1 % | [IMU] 99/s (INT1 99, erros 0, resgates 2766) acc=-0.349 +0.023 +0.964 g gyr=-1.47 -0.21 +0.91 dps | [LOG] parado
+[29000][APP][app.c:314] [ENV] T=24.16 C P=912.51 hPa UR=38.3 % | [IMU] 99/s (INT1 99, erros 0, resgates 2865) acc=-0.353 +0.016 +0.956 g gyr=+0.84 -0.07 +0.56 dps | [LOG] parado
+[30000][APP][app.c:314] [ENV] T=24.17 C P=912.51 hPa UR=38.6 % | [IMU] 99/s (INT1 99, erros 0, resgates 2964) acc=-0.342 +0.026 +0.962 g gyr=-0.28 +0.00 +0.07 dps | [LOG] parado
+[30073][APP][app.c:485] estado=IDLE erros=0x00
+[31000][APP][app.c:314] [ENV] T=24.18 C P=912.52 hPa UR=38.6 % | [IMU] 99/s (INT1 99, erros 0, resgates 3063) acc=-0.360 +0.032 +0.943 g gyr=-2.66 +2.10 -0.70 dps | [LOG] parado
+[32000][APP][app.c:314] [ENV] T=24.20 C P=912.49 hPa UR=38.6 % | [IMU] 99/s (INT1 99, erros 0, resgates 3162) acc=-0.349 +0.030 +0.961 g gyr=+0.98 +0.07 -0.14 dps | [LOG] parado
+[33000][APP][app.c:314] [ENV] T=24.21 C P=912.49 hPa UR=38.9 % | [IMU] 99/s (INT1 99, erros 0, resgates 3261) acc=-0.349 +0.031 +0.960 g gyr=+0.00 +0.42 -0.28 dps | [LOG] parado
+[34000][APP][app.c:314] [ENV] T=24.21 C P=912.51 hPa UR=38.8 % | [IMU] 99/s (INT1 99, erros 0, resgates 3360) acc=-0.344 +0.021 +0.960 g gyr=+0.77 -1.26 +0.07 dps | [LOG] parado
+[35000][APP][app.c:314] [ENV] T=24.21 C P=912.49 hPa UR=38.5 % | [IMU] 99/s (INT1 99, erros 0, resgates 3459) acc=-0.344 +0.031 +0.960 g gyr=+0.28 -0.14 -0.21 dps | [LOG] parado
+[35073][APP][app.c:485] estado=IDLE erros=0x00
+[36000][APP][app.c:314] [ENV] T=24.23 C P=912.50 hPa UR=38.7 % | [IMU] 99/s (INT1 99, erros 0, resgates 3558) acc=-0.344 +0.026 +0.960 g gyr=-1.40 +0.98 +0.28 dps | [LOG] parado
+[37000][APP][app.c:314] [ENV] T=24.24 C P=912.48 hPa UR=39.1 % | [IMU] 100/s (INT1 100, erros 0, resgates 3657) acc=-0.344 +0.030 +0.958 g gyr=+0.28 +0.00 +0.07 dps | [LOG] parado
+[38000][APP][app.c:314] [ENV] T=24.24 C P=912.50 hPa UR=39.2 % | [IMU] 99/s (INT1 99, erros 0, resgates 3756) acc=-0.345 +0.029 +0.961 g gyr=+0.07 +0.00 +0.07 dps | [LOG] parado
+[39000][APP][app.c:314] [ENV] T=24.25 C P=912.49 hPa UR=39.2 % | [IMU] 99/s (INT1 99, erros 0, resgates 3855) acc=-0.345 +0.028 +0.960 g gyr=+0.42 +0.00 -0.07 dps | [LOG] parado
+[40000][APP][app.c:314] [ENV] T=24.25 C P=912.51 hPa UR=39.1 % | [IMU] 99/s (INT1 99, erros 0, resgates 3954) acc=-0.345 +0.027 +0.963 g gyr=-0.42 -0.14 +0.14 dps | [LOG] parado
+[40073][APP][app.c:485] estado=IDLE erros=0x00

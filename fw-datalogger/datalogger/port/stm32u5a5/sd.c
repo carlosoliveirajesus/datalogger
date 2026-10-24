@@ -6,10 +6,23 @@
  * não houver cartão. No CubeMX, em Project Manager > Advanced Settings,
  * marque "Do Not Generate Function Call" para MX_SDMMC1_SD_Init: quem
  * inicializa o cartão é este port, que só retorna erro.
+ *
+ * Timeouts da HAL: por padrão SDMMC_DATATIMEOUT (ciclos de clock do cartão)
+ * e SDMMC_SWDATATIMEOUT (ms) valem 0xFFFFFFFF, ou seja, uma leitura de dados
+ * que nunca chega (cartão recolocado com a gravação em andamento, contato
+ * ainda instável) trava o HAL_SD_Init() por minutos. Os dois são redefinidos
+ * nos símbolos do compilador (.cproject, Debug e Release):
+ *   SDMMC_DATATIMEOUT=5000000U  (0,5 s a 10 MHz)
+ *   SDMMC_SWDATATIMEOUT=1000U   (1 s)
+ * Assim a tentativa falha, e a próxima (a cada 2 s, no estado ERROR) refaz
+ * tudo do zero.
  */
 #include "main.h"
 #include "sdmmc.h"
 #include "hal.h"
+
+_Static_assert(SDMMC_SWDATATIMEOUT != 0xFFFFFFFFU && SDMMC_DATATIMEOUT != 0xFFFFFFFFU,
+               "Defina SDMMC_SWDATATIMEOUT=1000U e SDMMC_DATATIMEOUT=5000000U nos simbolos do compilador (ver topo do arquivo)");
 
 #define SD_IO_TIMEOUT_MS    1000U
 #define SD_READY_TIMEOUT_MS 1000U
@@ -122,6 +135,12 @@ static hal_sd_status_t port_sd_init(void)
 static void port_sd_deinit(void)
 {
     (void) HAL_SD_DeInit(&hsd1);
+
+    /* Reset do periférico: limpa qualquer transferência que tenha ficado
+       pela metade (DPSM/CPSM) antes da próxima tentativa. */
+    __HAL_RCC_SDMMC1_FORCE_RESET();
+    __HAL_RCC_SDMMC1_RELEASE_RESET();
+
     sd_ready = false;
 }
 

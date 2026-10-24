@@ -28,7 +28,8 @@ Projeto desenvolvido para o **Desafio do Processo Seletivo da Payload — EPTA (
 ├── fw-datalogger/datalogger/   Projeto STM32CubeIDE (STM32Cube FW_U5 V1.8.0)
 ├── hw-datalogger/datalogger/   Projeto Altium Designer: esquemático, PCB e OutJob
 ├── hw-datalogger/fabricacao/   Saídas de fabricação: Gerbers/furação (JLCPCB), BOM, posicionamento, STEP, PDF
-├── docs/                         Enunciado, referências, diagramas, fotos e testes
+├── docs/                         Enunciado, referências, diagramas e fotos
+├── docs/testes/                  CSVs reais do cartão e logs da UART (ver docs/testes/README.md)
 ├── scripts/                      Análise dos CSVs em Python
 └── README.md
 ```
@@ -189,7 +190,7 @@ t_ms,ax_g,ay_g,az_g,gx_dps,gy_dps,gz_dps,temp_c,press_hpa,hum_rh
 | `hum_rh` | %UR | 0,1 % | 0 a 100 % |
 
 - **Configuração:** LSM6DSOX com ODR de 416 Hz (medido: ~414,9 Hz, intervalo de 2,41 ms). BME280 em modo normal com oversampling T×2, P×4, H×1 e filtro IIR 4.
-- **Escrita:** as amostras passam por um buffer circular de 1024 amostras (~2,4 s) e vão para o cartão em blocos de 512 B, com `f_sync` a cada 1 s. Numa queda de energia se perde no máximo ~1 s de dados.
+- **Escrita:** as amostras passam por um buffer circular de 1024 amostras (~2,4 s) e vão para o cartão em blocos de 512 B, com `f_sync` a cada 1 s. O arquivo fica íntegro até o último `f_sync`. Numa queda de energia se perde até ~1 s de dados; na remoção do cartão, até ~2 s, porque a escrita ainda tenta por cerca de 1 s antes de desistir (ver Testes).
 - **Sem dado válido:**
   - BME280 ainda sem leitura, ou perdido: `temp_c,press_hpa,hum_rh` ficam vazias (a linha termina em `,,`).
   - IMU perdida: não saem linhas e aparece um salto em `t_ms`.
@@ -205,6 +206,42 @@ t_ms,ax_g,ay_g,az_g,gx_dps,gy_dps,gz_dps,temp_c,press_hpa,hum_rh
 2. No STM32CubeIDE: **File → Import → Existing Projects into Workspace** e selecione `fw-datalogger/datalogger`.
 3. **Project → Build Project**.
 4. Conecte a Nucleo pela porta USB do ST-LINK e use **Run → Debug** (ou **Run**) para gravar.
+
+## Testes
+
+Todos os testes foram feitos na Nucleo, com a IMU em I2C e o SD em 1 bit. Os CSVs gravados no cartão (`LOG_0001` a `LOG_0012`) e os logs da UART estão em [`docs/testes/`](docs/testes/), com um índice do que cada arquivo mostra. Os números saem da análise dos CSVs (intervalos entre linhas, número de colunas) e do log da UART.
+
+| Teste | Arquivo | Resultado |
+|---|---|---|
+| Gravação contínua, placa parada e movimentada | `LOG_0004.CSV` | 64,2 s, 26 632 linhas, 414,9 Hz, intervalos de 2,410–2,411 ms, 0 lacunas, 0 amostras perdidas |
+| IMU em repouso | `LOG_0006.CSV` | \|a\| ≈ 1,02 g (ax ≈ −0,23 g, az ≈ 0,99 g, placa levemente inclinada); giro < 1,5 °/s |
+| Perda e recuperação de sensor | `LOG_0006.CSV` | BME280 caiu 2× e IMU 1×; todos voltaram sozinhos sem trocar de arquivo (ver Problemas conhecidos) |
+| Cartão removido durante a gravação (3×) | `LOG_0007.CSV` a `LOG_0009.CSV` | ver abaixo |
+
+**Cartão removido durante a gravação.** Em cada uma das três gravações, o cartão foi tirado com a gravação em andamento.
+
+| Arquivo | Linhas no cartão | Último `t_ms` gravado | Falha detectada (`escrita falhou`) | Dados perdidos no fim |
+|---|---|---|---|---|
+| `LOG_0007.CSV` | 5 062 | 15 139,6 ms | 15 754 ms | 0,61 s |
+| `LOG_0008.CSV` | 2 944 | 11 769,9 ms | 13 697 ms | 1,93 s |
+| `LOG_0009.CSV` | 3 364 | 16 885,0 ms | 17 102 ms | 0,22 s |
+
+- O firmware detectou a falha (`FRESULT 1`, `FR_DISK_ERR`), fechou o arquivo e foi para ERROR com `erros=0x08`. O LED de erro passou a piscar rápido, e houve nova tentativa de iniciar o cartão a cada 2 s. Os sensores continuaram lendo normalmente.
+- Os três arquivos ficaram íntegros: abrem no PC, todas as linhas têm 10 colunas, terminam numa linha completa e não têm lacunas (414,9 Hz). Perde-se só o trecho depois do último `f_sync`.
+- No `LOG_0008`, a escrita ainda tentou por ~1,7 s antes de falhar. O loop ficou bloqueado nesse tempo (a linha do terminal seguinte mostra 715 amostras num só "segundo"), mas o buffer circular segurou as amostras sem perdas.
+- Nesses três primeiros testes, o firmware travou ao recolocar o cartão (ver Problemas conhecidos). Depois da correção, o teste foi repetido:
+
+**Cartão removido e recolocado sem reset** (`LOG_0010.CSV` a `LOG_0012.CSV`, uma única execução de 85 s):
+
+| Arquivo | Como começou | Como terminou | Linhas no cartão | Dados perdidos no fim |
+|---|---|---|---|---|
+| `LOG_0010.CSV` | botão | cartão removido aos 17,9 s | 4 642 | 0,82 s |
+| `LOG_0011.CSV` | cartão recolocado: `ERROR -> LOGGING` aos 28,2 s, sozinho | cartão removido aos 53,5 s | 10 129 | 0,87 s |
+| `LOG_0012.CSV` | cartão recolocado: `ERROR -> LOGGING` aos 71,6 s, sozinho | botão aos 84,6 s | 5 414 (= terminal) | 0 |
+
+- Com o cartão fora, cada tentativa falhava em ~30 ms e a seguinte vinha 2 s depois, sem travar o loop. Ao recolocar o cartão, a tentativa seguinte o iniciou, e a gravação continuou num arquivo novo.
+- Os três arquivos estão íntegros (10 colunas, 414,9 Hz, sem lacunas). O `LOG_0012`, fechado pelo botão, tem exatamente as linhas que o terminal contou.
+- Cartão cheio: a lógica existe (`LOGGER_ERR_FULL`, LED de erro aceso), mas não foi testada.
 
 ## Problemas conhecidos
 
@@ -261,6 +298,18 @@ Enquanto um sensor estiver perdido, o LED de erro dá 3 pulsos e o LED de status
 - Logo antes da perda da IMU ficaram 2 linhas repetidas (mesma amostra lida duas vezes, 0,38 ms de intervalo), que podem ser descartadas na análise.
 
 **Situação.** O firmware se recupera sozinho, sem reset e sem trocar de arquivo. A queda simultânea dos dois sensores em barramentos separados aponta para causa de hardware comum aos dois, como alimentação ou GND dos jumpers, e não para o firmware. Na PCB, sem jumpers, esse tipo de falha deve ser bem mais raro. Mesmo assim a recuperação fica como proteção para o voo.
+
+### Firmware travava ao recolocar o cartão (timeouts infinitos da HAL do SD)
+
+**Sintoma.** Depois de tirar o cartão durante a gravação, o firmware tentava iniciar o cartão de novo a cada 2 s, e cada tentativa falhava normalmente. Ao recolocar o cartão, tudo parava: nenhuma linha no terminal até um reset, nas três vezes (`LOG_0007` a `LOG_0009`).
+
+**Diagnóstico.** Com o cartão fora, o `HAL_SD_Init()` falha rápido, porque o cartão não responde nem ao CMD8. Com o cartão de volta, a sequência avança e o `HAL_SD_Init()` faz leituras de dados (status e SCR) e espera o cartão ficar pronto com os timeouts padrão da HAL: `SDMMC_DATATIMEOUT` e `SDMMC_SWDATATIMEOUT` valem 0xFFFFFFFF. Em ciclos de clock do cartão isso dá ~7 min; em ms, a espera nunca termina. Se o cartão responde ao comando mas os dados não chegam, por exemplo com o contato ainda instável logo depois de encaixar, o loop fica parado ali.
+
+**Solução adotada.**
+- Os dois timeouts foram redefinidos nos símbolos do compilador (`.cproject`, Debug e Release), sem mexer no código gerado: `SDMMC_DATATIMEOUT=5000000U` (0,5 s a 10 MHz) e `SDMMC_SWDATATIMEOUT=1000U` (1 s). Um `_Static_assert` em `port/stm32u5a5/sd.c` impede compilar sem eles.
+- O `port_sd_deinit()` passou a resetar o periférico SDMMC1 pelo RCC antes de cada nova tentativa.
+
+**Situação.** Resolvido: o cartão foi removido e recolocado duas vezes na mesma execução, e a gravação voltou sozinha nas duas (`LOG_0011`, `LOG_0012`).
 
 ## Status
 

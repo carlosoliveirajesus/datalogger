@@ -1,0 +1,226 @@
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[75][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[82][APP][app.c:134] Estado INIT -> IDLE
+[85][APP][app.c:341] Pronto: aperte o botao para gravar
+[1000][APP][app.c:314] [ENV] T=25.15 C P=912.47 hPa UR=37.7 % | [IMU] 379/s (INT1 380, erros 0, resgates 1) acc=-0.113 -0.024 +1.017 g gyr=+0.14 -0.07 -0.07 dps | [LOG] parado
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[75][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[81][APP][app.c:134] Estado INIT -> IDLE
+[85][APP][app.c:341] Pronto: aperte o botao para gravar
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[75][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[82][APP][app.c:134] Estado INIT -> IDLE
+[85][APP][app.c:341] Pronto: aperte o botao para gravar
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[75][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[81][APP][app.c:134] Estado INIT -> IDLE
+[85][APP][app.c:341] Pronto: aperte o botao para gravar
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[75][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[81][APP][app.c:134] Estado INIT -> IDLE
+[85][APP][app.c:341] Pronto: aperte o botao para gravar
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[75][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[81][APP][app.c:134] Estado INIT -> IDLE
+[85][APP][app.c:341] Pronto: aperte o botao para gravar
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[75][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[82][APP][app.c:134] Estado INIT -> IDLE
+[85][APP][app.c:341] Pronto: aperte o botao para gravar
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[75][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[81][APP][app.c:134] Estado INIT -> IDLE
+[85][APP][app.c:341] Pronto: aperte o botao para gravar
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[75][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[82][APP][app.c:134] Estado INIT -> IDLE
+[85][APP][app.c:341] Pronto: aperte o botao para gravar
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[75][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[82][APP][app.c:134] Estado INIT -> IDLE
+[85][APP][app.c:341] Pronto: aperte o botao para gravar
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[75][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[82][APP][app.c:134] Estado INIT -> IDLE
+[85][APP][app.c:341] Pronto: aperte o botao para gravar
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[75][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[81][APP][app.c:134] Estado INIT -> IDLE
+[85][APP][app.c:341] Pronto: aperte o botao para gravar
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[75][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[81][APP][app.c:134] Estado INIT -> IDLE
+[85][APP][app.c:341] Pronto: aperte o botao para gravar
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[76][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[82][APP][app.c:134] Estado INIT -> IDLE
+[86][APP][app.c:341] Pronto: aperte o botao para gravar
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[75][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[82][APP][app.c:134] Estado INIT -> IDLE
+[85][APP][app.c:341] Pronto: aperte o botao para gravar
+[1000][APP][app.c:314] [ENV] T=25.06 C P=912.46 hPa UR=37.7 % | [IMU] 378/s (INT1 379, erros 0, resgates 1) acc=-0.113 -0.026 +1.017 g gyr=+0.21 -0.14 +0.07 dps | [LOG] parado
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[75][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[81][APP][app.c:134] Estado INIT -> IDLE
+[85][APP][app.c:341] Pronto: aperte o botao para gravar
+[1000][APP][app.c:314] [ENV] T=25.06 C P=912.49 hPa UR=37.7 % | [IMU] 378/s (INT1 379, erros 0, resgates 1) acc=-0.115 -0.024 +1.017 g gyr=+0.21 +0.14 -0.14 dps | [LOG] parado
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:133] LSM6DSOX em I2C @0x6B
+[15][IMU][imu.c:162] LSM6DSOX init tentativa 1 falhou no passo 3
+[34][IMU][imu.c:169] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[40][IMU][imu.c:191] LSM6DSOX setup OK
+[47][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[51][ENV][env.c:103] BME280 setup OK
+[75][SD][app.c:214] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[81][APP][app.c:134] Estado INIT -> IDLE
+[85][APP][app.c:341] Pronto: aperte o botao para gravar
+[1000][APP][app.c:314] [ENV] T=25.04 C P=912.46 hPa UR=37.6 % | [IMU] 379/s (INT1 380, erros 0, resgates 1) acc=-0.114 -0.027 +1.021 g gyr=+0.35 -0.07 -0.07 dps | [LOG] parado
+[2000][APP][app.c:314] [ENV] T=25.04 C P=912.47 hPa UR=37.8 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.113 -0.024 +1.020 g gyr=-0.07 -0.07 +0.21 dps | [LOG] parado

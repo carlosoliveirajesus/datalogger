@@ -1,0 +1,258 @@
+[66002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[66008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[66013][SD][sd.c:67] diag CMD0   err=0x00000000
+[66017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[66024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[66029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[68002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[68008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[68013][SD][sd.c:67] diag CMD0   err=0x00000000
+[68017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[68024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[68029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[70002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[70008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=0
+[70013][SD][sd.c:67] diag CMD0   err=0x00000000
+[70017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[70024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[70029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[70067][APP][app.c:201] estado=ERROR erros=0x08
+[72002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[72008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[72013][SD][sd.c:67] diag CMD0   err=0x00000000
+[72017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[72024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[72029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:130] LSM6DSOX em I2C @0x6B
+[19][IMU][imu.c:153] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[27][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[33][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[38][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=0
+[43][SD][sd.c:67] diag CMD0   err=0x00000000
+[48][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[54][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[59][SD][app.c:87] Falha ao iniciar o cartao (2)
+[64][APP][app.c:44] Estado INIT -> ERROR
+[1][HAL][hal.c:36] Reset cause: PIN
+
+==== Datalogger EPTA v0.1.0 ====
+UID: 20313148393650060029002D
+[11][IMU][imu.c:130] LSM6DSOX em I2C @0x6B
+[19][IMU][imu.c:153] LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) OK
+[27][ENV][env.c:44] BME280 @0x76 chip_id=0x60 OK
+[33][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[38][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=0
+[43][SD][sd.c:67] diag CMD0   err=0x00000000
+[48][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[54][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[59][SD][app.c:87] Falha ao iniciar o cartao (2)
+[64][APP][app.c:44] Estado INIT -> ERROR
+[2002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[2008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[2013][SD][sd.c:67] diag CMD0   err=0x00000000
+[2017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[2023][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[2029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[4002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[4008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[4013][SD][sd.c:67] diag CMD0   err=0x00000000
+[4017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[4023][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[4029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[5067][APP][app.c:201] estado=ERROR erros=0x08
+[6002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[6008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[6013][SD][sd.c:67] diag CMD0   err=0x00000000
+[6017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[6023][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[6029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[8002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[8008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[8013][SD][sd.c:67] diag CMD0   err=0x00000000
+[8017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[8023][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[8029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[10002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[10008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=0
+[10013][SD][sd.c:67] diag CMD0   err=0x00000000
+[10017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[10024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[10029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[10067][APP][app.c:201] estado=ERROR erros=0x08
+[12002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[12008][SD][sd.c:62] diag pinos  CMD(PD2)=0 D0(PC8)=0
+[12013][SD][sd.c:67] diag CMD0   err=0x00000000
+[12017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[12024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[12029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[14002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[14008][SD][sd.c:62] diag pinos  CMD(PD2)=0 D0(PC8)=0
+[14013][SD][sd.c:67] diag CMD0   err=0x00000000
+[14017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[14024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[14029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[15067][APP][app.c:201] estado=ERROR erros=0x08
+[16002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[16008][SD][sd.c:62] diag pinos  CMD(PD2)=0 D0(PC8)=0
+[16013][SD][sd.c:67] diag CMD0   err=0x00000000
+[16017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[16024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[16029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[18002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[18008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[18013][SD][sd.c:67] diag CMD0   err=0x00000000
+[18017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[18024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[18029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[20002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[20008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[20013][SD][sd.c:67] diag CMD0   err=0x00000000
+[20017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[20024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[20029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[20067][APP][app.c:201] estado=ERROR erros=0x08
+[22002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[22008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[22013][SD][sd.c:67] diag CMD0   err=0x00000000
+[22017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[22024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[22029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[24002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[24008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[24013][SD][sd.c:67] diag CMD0   err=0x00000000
+[24017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[24024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[24029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[25067][APP][app.c:201] estado=ERROR erros=0x08
+[26002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[26008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[26013][SD][sd.c:67] diag CMD0   err=0x00000000
+[26017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[26024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[26029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[28002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[28008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=0
+[28013][SD][sd.c:67] diag CMD0   err=0x00000000
+[28017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[28024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[28029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[30002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[30008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[30013][SD][sd.c:67] diag CMD0   err=0x00000000
+[30017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[30024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[30029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[30067][APP][app.c:201] estado=ERROR erros=0x08
+[32002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[32008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[32013][SD][sd.c:67] diag CMD0   err=0x00000000
+[32017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[32024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[32029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[34002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[34008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[34013][SD][sd.c:67] diag CMD0   err=0x00000000
+[34017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[34024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[34029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[35067][APP][app.c:201] estado=ERROR erros=0x08
+[36002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[36008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[36013][SD][sd.c:67] diag CMD0   err=0x00000000
+[36017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[36024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[36029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[38002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[38008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=0
+[38013][SD][sd.c:67] diag CMD0   err=0x00000000
+[38017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[38024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[38029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[40002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[40008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[40013][SD][sd.c:67] diag CMD0   err=0x00000000
+[40017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[40024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[40029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[40067][APP][app.c:201] estado=ERROR erros=0x08
+[42002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[42008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[42013][SD][sd.c:67] diag CMD0   err=0x00000000
+[42017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[42024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[42029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[44002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[44008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=0
+[44013][SD][sd.c:67] diag CMD0   err=0x00000000
+[44017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[44024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[44029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[45067][APP][app.c:201] estado=ERROR erros=0x08
+[46002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[46008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=0
+[46013][SD][sd.c:67] diag CMD0   err=0x00000000
+[46017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[46024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[46029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[48002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[48008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=0
+[48013][SD][sd.c:67] diag CMD0   err=0x00000000
+[48017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[48024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[48029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[50002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[50008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=0
+[50013][SD][sd.c:67] diag CMD0   err=0x00000000
+[50017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[50024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[50029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[50067][APP][app.c:201] estado=ERROR erros=0x08
+[52002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[52008][SD][sd.c:62] diag pinos  CMD(PD2)=0 D0(PC8)=0
+[52013][SD][sd.c:67] diag CMD0   err=0x00000000
+[52017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[52024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[52029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[54002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[54008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=0
+[54013][SD][sd.c:67] diag CMD0   err=0x00000000
+[54017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[54024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[54029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[55067][APP][app.c:201] estado=ERROR erros=0x08
+[56002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[56008][SD][sd.c:62] diag pinos  CMD(PD2)=0 D0(PC8)=0
+[56013][SD][sd.c:67] diag CMD0   err=0x00000000
+[56017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[56024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[56029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[58002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[58008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=0
+[58013][SD][sd.c:67] diag CMD0   err=0x00000000
+[58017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[58024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[58029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[60002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[60008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=0
+[60013][SD][sd.c:67] diag CMD0   err=0x00000000
+[60017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[60024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[60029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[60067][APP][app.c:201] estado=ERROR erros=0x08
+[62002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[62008][SD][sd.c:62] diag pinos  CMD(PD2)=1 D0(PC8)=1
+[62013][SD][sd.c:67] diag CMD0   err=0x00000000
+[62017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[62024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[62029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[64002][SD][sd.c:104] HAL_SD_Init falhou (erro 0x10000000)
+[64008][SD][sd.c:62] diag pinos  CMD(PD2)=0 D0(PC8)=0
+[64013][SD][sd.c:67] diag CMD0   err=0x00000000
+[64017][SD][sd.c:71] diag CMD8   err=0x00000004 resp=0x00000000
+[64024][SD][sd.c:76] diag CMD55  err=0x00000004 resp=0x00000000
+[64029][SD][app.c:87] Falha ao iniciar o cartao (2)
+[65067][APP][app.c:201] estado=ERROR erros=0x08

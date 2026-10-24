@@ -1,0 +1,125 @@
+[5486][APP][app.c:532] Botao
+[5510][SD][app.c:220] Cartao OK: 31116288 blocos de 512 B (15193 MB)
+[5551][LOGGER][logger.c:292] Gravando em LOG_0005.CSV
+[5557][APP][app.c:140] Estado IDLE -> LOGGING
+[6000][APP][app.c:381] [ENV] T=24.11 C P=912.66 hPa UR=40.8 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.235 +0.013 +1.002 g gyr=+0.42 +0.84 -0.35 dps | [LOG] LOG_0005.CSV 187 linhas, 0 perdidas, buffer max 5
+[7001][APP][app.c:381] [ENV] T=24.11 C P=912.65 hPa UR=40.8 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.232 +0.024 +0.992 g gyr=+0.00 +0.21 +0.00 dps | [LOG] LOG_0005.CSV 602 linhas, 0 perdidas, buffer max 9
+[8000][APP][app.c:381] [ENV] T=24.10 C P=912.63 hPa UR=40.8 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.236 +0.025 +0.997 g gyr=+0.00 +0.14 -0.07 dps | [LOG] LOG_0005.CSV 1016 linhas, 0 perdidas, buffer max 10
+[9000][APP][app.c:381] [ENV] T=24.10 C P=912.67 hPa UR=40.5 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.231 +0.020 +0.996 g gyr=+0.35 +0.07 -0.07 dps | [LOG] LOG_0005.CSV 1431 linhas, 0 perdidas, buffer max 10
+[10000][APP][app.c:381] [ENV] T=24.10 C P=912.65 hPa UR=40.3 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.236 +0.024 +0.994 g gyr=-0.28 +0.07 +0.00 dps | [LOG] LOG_0005.CSV 1846 linhas, 0 perdidas, buffer max 11
+[10467][APP][app.c:552] estado=LOGGING erros=0x00
+[11000][APP][app.c:381] [ENV] T=24.10 C P=912.65 hPa UR=40.2 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.235 +0.023 +0.994 g gyr=+0.21 +0.21 -0.07 dps | [LOG] LOG_0005.CSV 2261 linhas, 0 perdidas, buffer max 11
+[12000][APP][app.c:381] [ENV] T=24.09 C P=912.67 hPa UR=40.0 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.236 +0.019 +0.997 g gyr=+0.35 +0.14 +0.00 dps | [LOG] LOG_0005.CSV 2675 linhas, 0 perdidas, buffer max 11
+[13000][APP][app.c:381] [ENV] T=24.09 C P=912.65 hPa UR=39.8 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.233 +0.019 +0.996 g gyr=+0.28 +0.21 -0.07 dps | [LOG] LOG_0005.CSV 3090 linhas, 0 perdidas, buffer max 11
+[14000][APP][app.c:381] [ENV] T=24.08 C P=912.63 hPa UR=40.0 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.241 +0.027 +0.995 g gyr=-1.61 -0.77 +0.70 dps | [LOG] LOG_0005.CSV 3505 linhas, 0 perdidas, buffer max 11
+[15000][APP][app.c:381] [ENV] T=24.49 C P=912.63 hPa UR=42.9 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.232 +0.020 +0.994 g gyr=+0.56 +0.07 -0.07 dps | [LOG] LOG_0005.CSV 3920 linhas, 0 perdidas, buffer max 11
+[15467][APP][app.c:552] estado=LOGGING erros=0x00
+[16000][APP][app.c:381] [ENV] T=25.22 C P=912.61 hPa UR=45.0 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.232 +0.035 +0.985 g gyr=-0.98 -2.38 +0.98 dps | [LOG] LOG_0005.CSV 4335 linhas, 0 perdidas, buffer max 11
+[17000][APP][app.c:381] [ENV] T=25.90 C P=912.56 hPa UR=46.5 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.225 +0.010 +0.984 g gyr=-1.75 +0.28 +1.12 dps | [LOG] LOG_0005.CSV 4750 linhas, 0 perdidas, buffer max 11
+[18000][APP][app.c:381] [ENV] T=26.44 C P=912.58 hPa UR=46.3 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.232 +0.021 +0.981 g gyr=+2.45 -1.26 +0.07 dps | [LOG] LOG_0005.CSV 5165 linhas, 0 perdidas, buffer max 11
+[19000][APP][app.c:381] [ENV] T=26.83 C P=912.57 hPa UR=45.6 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.239 +0.023 +0.991 g gyr=+0.14 +0.49 +0.00 dps | [LOG] LOG_0005.CSV 5580 linhas, 0 perdidas, buffer max 11
+[20000][APP][app.c:381] [ENV] T=27.14 C P=912.55 hPa UR=44.9 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.241 +0.022 +0.992 g gyr=+0.07 -0.14 +0.07 dps | [LOG] LOG_0005.CSV 5995 linhas, 0 perdidas, buffer max 11
+[20468][APP][app.c:552] estado=LOGGING erros=0x00
+[21000][APP][app.c:381] [ENV] T=27.43 C P=912.52 hPa UR=43.7 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.192 +0.049 +1.028 g gyr=+0.91 +4.27 +9.87 dps | [LOG] LOG_0005.CSV 6409 linhas, 0 perdidas, buffer max 11
+[22001][APP][app.c:381] [ENV] T=27.64 C P=912.53 hPa UR=41.6 % | [IMU] 416/s (INT1 416, erros 0, resgates 1) acc=-0.241 +0.017 +0.992 g gyr=+0.77 +0.14 +0.21 dps | [LOG] LOG_0005.CSV 6825 linhas, 0 perdidas, buffer max 11
+[23001][APP][app.c:381] [ENV] T=27.64 C P=912.53 hPa UR=40.5 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.244 +0.008 +0.993 g gyr=-0.56 -0.77 +0.28 dps | [LOG] LOG_0005.CSV 7239 linhas, 0 perdidas, buffer max 11
+[24001][APP][app.c:381] [ENV] T=27.65 C P=912.54 hPa UR=39.9 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.221 +0.001 +0.991 g gyr=+0.35 +3.99 +1.33 dps | [LOG] LOG_0005.CSV 7654 linhas, 0 perdidas, buffer max 11
+[25001][APP][app.c:381] [ENV] T=27.68 C P=912.54 hPa UR=38.8 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.241 +0.005 +0.989 g gyr=+0.21 -1.12 +0.70 dps | [LOG] LOG_0005.CSV 8069 linhas, 0 perdidas, buffer max 11
+[25468][APP][app.c:552] estado=LOGGING erros=0x00
+[26001][APP][app.c:381] [ENV] T=27.73 C P=912.55 hPa UR=38.6 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.252 -0.013 +0.954 g gyr=-16.45 +5.74 +38.71 dps | [LOG] LOG_0005.CSV 8484 linhas, 0 perdidas, buffer max 11
+[27001][APP][app.c:381] [ENV] T=27.67 C P=912.54 hPa UR=38.3 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.156 +0.009 +1.004 g gyr=-8.75 -1.47 -0.14 dps | [LOG] LOG_0005.CSV 8899 linhas, 0 perdidas, buffer max 11
+[28001][APP][app.c:381] [ENV] T=27.52 C P=912.54 hPa UR=38.4 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.168 +0.012 +1.007 g gyr=+0.00 -0.56 +0.00 dps | [LOG] LOG_0005.CSV 9314 linhas, 0 perdidas, buffer max 11
+[29001][APP][app.c:381] [ENV] T=27.39 C P=912.54 hPa UR=38.4 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.170 +0.007 +1.006 g gyr=+2.94 -2.10 -0.77 dps | [LOG] LOG_0005.CSV 9729 linhas, 0 perdidas, buffer max 11
+[30001][APP][app.c:381] [ENV] T=27.27 C P=912.55 hPa UR=38.4 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.115 -0.083 +1.074 g gyr=+12.46 -4.13 -2.52 dps | [LOG] LOG_0005.CSV 10143 linhas, 0 perdidas, buffer max 11
+[30468][APP][app.c:552] estado=LOGGING erros=0x00
+[31001][APP][app.c:381] [ENV] T=27.18 C P=912.55 hPa UR=40.9 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.100 -0.045 +1.007 g gyr=+8.75 -12.53 -15.75 dps | [LOG] LOG_0005.CSV 10558 linhas, 0 perdidas, buffer max 11
+[32001][APP][app.c:381] [ENV] T=27.10 C P=912.55 hPa UR=41.5 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.213 +0.030 +1.012 g gyr=+1.33 +5.53 -2.66 dps | [LOG] LOG_0005.CSV 10973 linhas, 0 perdidas, buffer max 11
+[33001][APP][app.c:381] [ENV] T=26.98 C P=912.54 hPa UR=40.6 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.187 +0.014 +0.989 g gyr=+2.24 -1.96 -3.57 dps | [LOG] LOG_0005.CSV 11388 linhas, 0 perdidas, buffer max 11
+[34010][APP][app.c:381] [ENV] T=26.90 C P=912.55 hPa UR=40.5 % | [IMU] 419/s (INT1 419, erros 0, resgates 1) acc=-0.206 +0.016 +0.959 g gyr=-5.53 +5.11 +4.41 dps | [LOG] LOG_0005.CSV 11799 linhas, 0 perdidas, buffer max 11
+[35010][APP][app.c:381] [ENV] T=26.79 C P=912.56 hPa UR=39.4 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.206 +0.016 +1.003 g gyr=-0.49 -1.05 +0.91 dps | [LOG] LOG_0005.CSV 12221 linhas, 0 perdidas, buffer max 18
+[35468][APP][app.c:552] estado=LOGGING erros=0x00
+[36013][APP][app.c:381] [ENV] T=26.71 C P=912.57 hPa UR=40.3 % | [IMU] 416/s (INT1 416, erros 0, resgates 1) acc=-0.186 +0.016 +1.006 g gyr=-0.21 -2.31 +0.28 dps | [LOG] LOG_0005.CSV 12638 linhas, 0 perdidas, buffer max 18
+[37013][APP][app.c:381] [ENV] T=26.64 C P=912.56 hPa UR=41.4 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.188 +0.012 +1.007 g gyr=+4.76 -0.77 +0.63 dps | [LOG] LOG_0005.CSV 13052 linhas, 0 perdidas, buffer max 18
+[37852][ENV][app.c:268] BME280 perdido (sem resposta): colunas vazias no CSV ate recuperar
+[38013][APP][app.c:381] [ENV] -- | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.193 +0.017 +1.007 g gyr=+1.26 -0.21 -0.35 dps | [LOG] LOG_0005.CSV 13467 linhas, 0 perdidas, buffer max 18
+[38889][ENV][env.c:94] BME280 nao respondeu em 0x76/0x77
+[39013][APP][app.c:381] [ENV] -- | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.187 +0.016 +1.004 g gyr=-0.35 +0.56 +0.14 dps | [LOG] LOG_0005.CSV 13882 linhas, 0 perdidas, buffer max 18
+[39889][ENV][env.c:94] BME280 nao respondeu em 0x76/0x77
+[40013][APP][app.c:381] [ENV] -- | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.192 +0.021 +1.004 g gyr=+0.28 -0.63 +0.14 dps | [LOG] LOG_0005.CSV 14297 linhas, 0 perdidas, buffer max 18
+[40468][APP][app.c:552] estado=LOGGING erros=0x40
+[40889][ENV][env.c:94] BME280 nao respondeu em 0x76/0x77
+[41013][APP][app.c:381] [ENV] -- | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.196 +0.026 +1.000 g gyr=+0.56 -0.21 -0.07 dps | [LOG] LOG_0005.CSV 14712 linhas, 0 perdidas, buffer max 18
+[41889][ENV][env.c:94] BME280 nao respondeu em 0x76/0x77
+[42015][APP][app.c:381] [ENV] -- | [IMU] 416/s (INT1 416, erros 0, resgates 1) acc=-0.189 +0.017 +1.001 g gyr=+0.07 +0.07 +0.00 dps | [LOG] LOG_0005.CSV 15128 linhas, 0 perdidas, buffer max 18
+[42889][ENV][env.c:94] BME280 nao respondeu em 0x76/0x77
+[43015][APP][app.c:381] [ENV] -- | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.193 +0.009 +1.015 g gyr=-0.63 +1.19 +5.67 dps | [LOG] LOG_0005.CSV 15542 linhas, 0 perdidas, buffer max 18
+[43855][ENV][env.c:97] BME280 @0x76 chip_id=0x60 OK
+[43861][ENV][env.c:156] BME280 setup OK
+[43865][ENV][app.c:295] BME280 recuperado
+[44015][APP][app.c:381] [ENV] T=25.86 C P=912.52 hPa UR=41.5 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.196 +0.021 +1.001 g gyr=+0.70 +0.63 -0.28 dps | [LOG] LOG_0005.CSV 15957 linhas, 0 perdidas, buffer max 18
+[45016][APP][app.c:381] [ENV] T=26.08 C P=912.52 hPa UR=41.7 % | [IMU] 416/s (INT1 416, erros 0, resgates 1) acc=-0.180 +0.011 +1.008 g gyr=-1.61 +2.45 -0.21 dps | [LOG] LOG_0005.CSV 16373 linhas, 0 perdidas, buffer max 18
+[45468][APP][app.c:552] estado=LOGGING erros=0x00
+[46016][APP][app.c:381] [ENV] T=26.05 C P=912.55 hPa UR=41.4 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.194 +0.012 +1.006 g gyr=+0.07 +0.21 -0.07 dps | [LOG] LOG_0005.CSV 16787 linhas, 0 perdidas, buffer max 18
+[47016][APP][app.c:381] [ENV] T=25.99 C P=912.55 hPa UR=40.5 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.190 +0.014 +1.005 g gyr=+0.28 -0.91 +0.21 dps | [LOG] LOG_0005.CSV 17202 linhas, 0 perdidas, buffer max 18
+[48016][APP][app.c:381] [ENV] T=25.94 C P=912.54 hPa UR=40.2 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.171 +0.031 +1.046 g gyr=-7.49 -8.75 +1.26 dps | [LOG] LOG_0005.CSV 17617 linhas, 0 perdidas, buffer max 18
+[49016][APP][app.c:381] [ENV] T=25.88 C P=912.54 hPa UR=39.7 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.167 +0.000 +1.021 g gyr=-2.52 +0.07 +0.98 dps | [LOG] LOG_0005.CSV 18032 linhas, 0 perdidas, buffer max 18
+[50018][APP][app.c:381] [ENV] T=25.84 C P=912.58 hPa UR=39.6 % | [IMU] 416/s (INT1 416, erros 0, resgates 1) acc=-0.164 +0.007 +1.006 g gyr=+0.21 +2.38 +0.49 dps | [LOG] LOG_0005.CSV 18448 linhas, 0 perdidas, buffer max 18
+[50468][APP][app.c:552] estado=LOGGING erros=0x00
+[51018][APP][app.c:381] [ENV] T=25.79 C P=912.58 hPa UR=39.5 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.250 +0.045 +0.860 g gyr=-28.98 +1.96 -3.22 dps | [LOG] LOG_0005.CSV 18863 linhas, 0 perdidas, buffer max 18
+[52018][APP][app.c:381] [ENV] T=25.75 C P=912.58 hPa UR=39.8 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.361 +0.102 +1.245 g gyr=-16.45 +68.11 +16.52 dps | [LOG] LOG_0005.CSV 19277 linhas, 0 perdidas, buffer max 18
+[53018][APP][app.c:381] [ENV] T=25.71 C P=912.56 hPa UR=40.1 % | [IMU] 414/s (INT1 414, erros 0, resgates 1) acc=-0.183 +0.018 +1.065 g gyr=+0.21 -4.34 +2.10 dps | [LOG] LOG_0005.CSV 19692 linhas, 0 perdidas, buffer max 18
+[54018][APP][app.c:381] [ENV] T=25.68 C P=912.57 hPa UR=40.7 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.175 +0.016 +0.997 g gyr=-0.21 +0.21 +1.61 dps | [LOG] LOG_0005.CSV 20107 linhas, 0 perdidas, buffer max 18
+[55018][APP][app.c:381] [ENV] T=25.65 C P=912.59 hPa UR=40.2 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.239 +0.036 +0.907 g gyr=-9.45 +8.40 +6.23 dps | [LOG] LOG_0005.CSV 20522 linhas, 0 perdidas, buffer max 18
+[55468][APP][app.c:552] estado=LOGGING erros=0x00
+[56018][APP][app.c:381] [ENV] T=25.61 C P=912.56 hPa UR=39.9 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.132 -0.030 +1.026 g gyr=+4.20 -2.24 -1.82 dps | [LOG] LOG_0005.CSV 20937 linhas, 0 perdidas, buffer max 18
+[57018][APP][app.c:381] [ENV] T=25.59 C P=912.58 hPa UR=40.0 % | [IMU] 415/s (INT1 415, erros 0, resgates 1) acc=-0.128 -0.025 +1.012 g gyr=-10.29 +3.29 +1.05 dps | [LOG] LOG_0005.CSV 21352 linhas, 0 perdidas, buffer max 18
+[58026][APP][app.c:381] [ENV] T=25.57 C P=912.56 hPa UR=39.8 % | [IMU] 351/s (INT1 355, erros 4, resgates 4) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[58098][ENV][app.c:268] BME280 perdido (sem resposta): colunas vazias no CSV ate recuperar
+[59032][APP][app.c:381] [ENV] -- | [IMU] 0/s (INT1 36, erros 40, resgates 40) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[59105][ENV][env.c:97] BME280 @0x76 chip_id=0x60 OK
+[59110][ENV][env.c:156] BME280 setup OK
+[59113][ENV][app.c:295] BME280 recuperado
+[60053][APP][app.c:381] [ENV] T=25.48 C P=912.58 hPa UR=38.6 % | [IMU] 0/s (INT1 38, erros 78, resgates 78) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[60490][APP][app.c:552] estado=LOGGING erros=0x00
+[61066][APP][app.c:381] [ENV] T=25.44 C P=912.56 hPa UR=38.3 % | [IMU] 0/s (INT1 38, erros 116, resgates 116) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[62075][APP][app.c:381] [ENV] T=25.41 C P=912.58 hPa UR=38.7 % | [IMU] 0/s (INT1 38, erros 154, resgates 154) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[63084][APP][app.c:381] [ENV] T=25.38 C P=912.57 hPa UR=39.3 % | [IMU] 0/s (INT1 38, erros 192, resgates 192) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[64093][APP][app.c:381] [ENV] T=25.37 C P=912.57 hPa UR=39.9 % | [IMU] 0/s (INT1 38, erros 230, resgates 230) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[65102][APP][app.c:381] [ENV] T=25.35 C P=912.57 hPa UR=40.5 % | [IMU] 0/s (INT1 38, erros 268, resgates 268) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[65513][APP][app.c:552] estado=LOGGING erros=0x00
+[66115][APP][app.c:381] [ENV] T=25.34 C P=912.55 hPa UR=41.1 % | [IMU] 0/s (INT1 38, erros 306, resgates 306) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[67124][APP][app.c:381] [ENV] T=25.32 C P=912.59 hPa UR=41.3 % | [IMU] 0/s (INT1 38, erros 344, resgates 344) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[68133][APP][app.c:381] [ENV] T=25.31 C P=912.57 hPa UR=41.5 % | [IMU] 0/s (INT1 38, erros 382, resgates 382) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[69142][APP][app.c:381] [ENV] T=25.31 C P=912.60 hPa UR=41.9 % | [IMU] 0/s (INT1 38, erros 420, resgates 420) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[70151][APP][app.c:381] [ENV] T=25.30 C P=912.59 hPa UR=42.3 % | [IMU] 0/s (INT1 38, erros 458, resgates 458) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[70536][APP][app.c:552] estado=LOGGING erros=0x00
+[71164][APP][app.c:381] [ENV] T=25.27 C P=912.57 hPa UR=41.6 % | [IMU] 0/s (INT1 38, erros 496, resgates 496) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[72173][APP][app.c:381] [ENV] T=25.25 C P=912.58 hPa UR=41.3 % | [IMU] 0/s (INT1 38, erros 534, resgates 534) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[73182][APP][app.c:381] [ENV] T=25.24 C P=912.58 hPa UR=41.3 % | [IMU] 0/s (INT1 38, erros 572, resgates 572) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[74191][APP][app.c:381] [ENV] T=25.24 C P=912.59 hPa UR=41.5 % | [IMU] 0/s (INT1 38, erros 610, resgates 610) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[75200][APP][app.c:381] [ENV] T=25.23 C P=912.60 hPa UR=41.2 % | [IMU] 0/s (INT1 38, erros 648, resgates 648) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[75559][APP][app.c:552] estado=LOGGING erros=0x00
+[76213][APP][app.c:381] [ENV] T=25.22 C P=912.60 hPa UR=40.6 % | [IMU] 0/s (INT1 38, erros 686, resgates 686) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[77222][APP][app.c:381] [ENV] T=25.21 C P=912.58 hPa UR=40.5 % | [IMU] 0/s (INT1 38, erros 724, resgates 724) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[78231][APP][app.c:381] [ENV] T=25.19 C P=912.58 hPa UR=40.8 % | [IMU] 0/s (INT1 38, erros 762, resgates 762) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[79240][APP][app.c:381] [ENV] T=25.18 C P=912.61 hPa UR=40.8 % | [IMU] 0/s (INT1 38, erros 800, resgates 800) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[80249][APP][app.c:381] [ENV] T=25.17 C P=912.59 hPa UR=40.1 % | [IMU] 0/s (INT1 38, erros 838, resgates 838) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[80582][APP][app.c:552] estado=LOGGING erros=0x00
+[81262][APP][app.c:381] [ENV] T=25.15 C P=912.58 hPa UR=39.8 % | [IMU] 0/s (INT1 38, erros 876, resgates 876) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[82271][APP][app.c:381] [ENV] T=25.14 C P=912.59 hPa UR=39.9 % | [IMU] 0/s (INT1 38, erros 914, resgates 914) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[83280][APP][app.c:381] [ENV] T=25.11 C P=912.57 hPa UR=39.4 % | [IMU] 0/s (INT1 38, erros 952, resgates 952) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[84289][APP][app.c:381] [ENV] T=25.10 C P=912.60 hPa UR=39.3 % | [IMU] 0/s (INT1 38, erros 990, resgates 990) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[85298][APP][app.c:381] [ENV] T=25.08 C P=912.59 hPa UR=39.4 % | [IMU] 0/s (INT1 38, erros 1028, resgates 1028) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[85605][APP][app.c:552] estado=LOGGING erros=0x00
+[86311][APP][app.c:381] [ENV] T=25.07 C P=912.59 hPa UR=39.7 % | [IMU] 0/s (INT1 38, erros 1066, resgates 1066) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[87320][APP][app.c:381] [ENV] T=25.06 C P=912.59 hPa UR=40.1 % | [IMU] 0/s (INT1 38, erros 1104, resgates 1104) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[88329][APP][app.c:381] [ENV] T=25.04 C P=912.60 hPa UR=40.6 % | [IMU] 0/s (INT1 38, erros 1142, resgates 1142) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[89338][APP][app.c:381] [ENV] T=25.03 C P=912.61 hPa UR=40.6 % | [IMU] 0/s (INT1 38, erros 1180, resgates 1180) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[90347][APP][app.c:381] [ENV] T=25.01 C P=912.59 hPa UR=40.1 % | [IMU] 0/s (INT1 38, erros 1218, resgates 1218) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[90628][APP][app.c:552] estado=LOGGING erros=0x00
+[91360][APP][app.c:381] [ENV] T=24.99 C P=912.59 hPa UR=39.6 % | [IMU] 0/s (INT1 38, erros 1256, resgates 1256) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[92369][APP][app.c:381] [ENV] T=24.96 C P=912.58 hPa UR=39.1 % | [IMU] 0/s (INT1 38, erros 1294, resgates 1294) acc=+0.540 +0.004 +1.465 g gyr=+269.29 -233.03 -222.88 dps | [LOG] LOG_0005.CSV 21703 linhas, 0 perdidas, buffer max 18
+[92390][APP][app.c:532] Botao
+[92419][LOGGER][logger.c:307] LOG_0005.CSV fechado: 21703 linhas, 0 perdidas
+[92426][LOGGER][app.c:422] Gravacao parada: pode remover o cartao
+[92432][APP][app.c:140] Estado LOGGING -> IDLE
