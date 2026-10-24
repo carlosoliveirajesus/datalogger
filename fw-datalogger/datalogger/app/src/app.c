@@ -12,11 +12,13 @@
 #include "app.h"
 
 #define APP_STATUS_PRINT_MS 5000U
+#define APP_SD_RETRY_MS     2000U
 
 static app_state_t app_state = APP_STATE_INIT;
 static uint32_t app_errors = APP_ERROR_NONE;
 static volatile bool app_btn_pressed = false;
 static uint32_t app_status_tmr = 0;
+static uint32_t app_sd_retry_tmr = 0;
 
 static const char* const app_state_names[] = {
     [APP_STATE_INIT] = "INIT",
@@ -155,6 +157,18 @@ static void app_state_error_exec(void)
     if((app_errors & APP_ERROR_SD_ABSENT) && hal_sd_is_present())
     {
         UTL_DBG_PRINTF(UTL_DBG_MOD_SD, "Cartao inserido\r\n");
+        app_sd_start();
+        app_leds_update();
+        if(app_errors == APP_ERROR_NONE)
+            app_state_set(APP_STATE_IDLE);
+    }
+
+    /* Falha ao iniciar o cartão (sem card detect, é o que acontece sem
+       cartão no slot): tenta de novo a cada APP_SD_RETRY_MS. */
+    if((app_errors & APP_ERROR_SD_INIT) && hal_time_elapsed_since_ms(app_sd_retry_tmr) >= APP_SD_RETRY_MS)
+    {
+        app_sd_retry_tmr = hal_time_get_ms();
+        hal_sd_deinit();
         app_sd_start();
         app_leds_update();
         if(app_errors == APP_ERROR_NONE)

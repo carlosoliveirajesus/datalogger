@@ -66,14 +66,14 @@ void Error_Handler(void);
 #define BME_SDA_GPIO_Port GPIOC
 #define VBAT_SENSE_Pin GPIO_PIN_0
 #define VBAT_SENSE_GPIO_Port GPIOA
-#define IMU_CS_Pin GPIO_PIN_4
-#define IMU_CS_GPIO_Port GPIOA
-#define IMU_SCK_Pin GPIO_PIN_5
-#define IMU_SCK_GPIO_Port GPIOA
-#define IMU_MISO_Pin GPIO_PIN_6
-#define IMU_MISO_GPIO_Port GPIOA
-#define IMU_MOSI_Pin GPIO_PIN_7
-#define IMU_MOSI_GPIO_Port GPIOA
+#define IMU_SPI_CS_Pin GPIO_PIN_4
+#define IMU_SPI_CS_GPIO_Port GPIOA
+#define IMU_SPI_SCK_Pin GPIO_PIN_5
+#define IMU_SPI_SCK_GPIO_Port GPIOA
+#define IMU_SPI_MISO_Pin GPIO_PIN_6
+#define IMU_SPI_MISO_GPIO_Port GPIOA
+#define IMU_SPI_MOSI_Pin GPIO_PIN_7
+#define IMU_SPI_MOSI_GPIO_Port GPIOA
 #define IMU_INT1_Pin GPIO_PIN_1
 #define IMU_INT1_GPIO_Port GPIOB
 #define IMU_INT1_EXTI_IRQn EXTI1_IRQn
@@ -84,24 +84,22 @@ void Error_Handler(void);
 #define LED_STATUS_GPIO_Port GPIOC
 #define SD_D0_Pin GPIO_PIN_8
 #define SD_D0_GPIO_Port GPIOC
-#define SD_D1_Pin GPIO_PIN_9
-#define SD_D1_GPIO_Port GPIOC
 #define SD_CD_Pin GPIO_PIN_8
 #define SD_CD_GPIO_Port GPIOA
 #define DBG_TX_Pin GPIO_PIN_9
 #define DBG_TX_GPIO_Port GPIOA
 #define DBG_RX_Pin GPIO_PIN_10
 #define DBG_RX_GPIO_Port GPIOA
-#define SD_D2_Pin GPIO_PIN_10
-#define SD_D2_GPIO_Port GPIOC
-#define SD_D3_Pin GPIO_PIN_11
-#define SD_D3_GPIO_Port GPIOC
 #define SD_CK_Pin GPIO_PIN_12
 #define SD_CK_GPIO_Port GPIOC
 #define SD_CMD_Pin GPIO_PIN_2
 #define SD_CMD_GPIO_Port GPIOD
 #define LED_ERROR_Pin GPIO_PIN_7
 #define LED_ERROR_GPIO_Port GPIOB
+#define IMU_I2C_SCL_Pin GPIO_PIN_8
+#define IMU_I2C_SCL_GPIO_Port GPIOB
+#define IMU_I2C_SDA_Pin GPIO_PIN_9
+#define IMU_I2C_SDA_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

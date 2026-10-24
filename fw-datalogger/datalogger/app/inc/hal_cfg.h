@@ -42,6 +42,22 @@
 #define HAL_LED_ON_LEVEL      true
 #define HAL_SD_CD_PRESENT_LVL false /* chave do slot fecha para GND */
 
+/* Cartão SD (SDMMC1):
+ *   HAL_SD_BUS_WIDTH   1 = 1 bit, só CLK/CMD/D0 (BFF da Adafruit no protótipo)
+ *                      4 = 4 bits (slot da PCB)
+ *   HAL_SD_CD_ENABLED  0 = sem card detect: o cartão é tratado como presente
+ *                          e a ausência aparece como falha ao iniciar
+ *                      1 = card detect no PA8 (HAL_GPIO_SD_CD)
+ *   HAL_SD_CLOCK_DIV   clock do cartão = 48 MHz / (2 x DIV) depois do init.
+ *                      8 = 3 MHz (jumpers), 2 = 12 MHz (PCB)
+ * O modo do SDMMC1 no CubeMX deve bater com HAL_SD_BUS_WIDTH ("SD 1 bit" ou
+ * "SD 4 bits Wide bus"). */
+#define HAL_SD_BUS_WIDTH  1
+#define HAL_SD_CD_ENABLED 0
+#define HAL_SD_CLOCK_DIV  8
+/* 1 = imprime CMD0/CMD8/CMD55/ACMD41 passo a passo quando o init falha. */
+#define HAL_SD_DIAG_ENABLED 1
+
 /* Número de LEDs controlados automaticamente por hal_led. */
 #define HAL_LED_NUM_AUTO_LEDS 2
 
@@ -62,7 +78,7 @@
  * INT1 (PB1) vale para os dois modos. */
 #define HAL_IMU_BUS_SPI 0
 #define HAL_IMU_BUS_I2C 1
-#define HAL_IMU_BUS     HAL_IMU_BUS_SPI
+#define HAL_IMU_BUS     HAL_IMU_BUS_I2C
 
 #define HAL_ENV_DEVS \
     HAL_ENV_DEV_BME280 = 0 /* I2C3 */

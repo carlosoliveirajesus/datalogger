@@ -107,7 +107,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
     PA6     ------> SPI1_MISO
     PA7     ------> SPI1_MOSI
     */
-    GPIO_InitStruct.Pin = IMU_SCK_Pin|IMU_MISO_Pin|IMU_MOSI_Pin;
+    GPIO_InitStruct.Pin = IMU_SPI_SCK_Pin|IMU_SPI_MISO_Pin|IMU_SPI_MOSI_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -136,7 +136,7 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* spiHandle)
     PA6     ------> SPI1_MISO
     PA7     ------> SPI1_MOSI
     */
-    HAL_GPIO_DeInit(GPIOA, IMU_SCK_Pin|IMU_MISO_Pin|IMU_MOSI_Pin);
+    HAL_GPIO_DeInit(GPIOA, IMU_SPI_SCK_Pin|IMU_SPI_MISO_Pin|IMU_SPI_MOSI_Pin);
 
   /* USER CODE BEGIN SPI1_MspDeInit 1 */
 
