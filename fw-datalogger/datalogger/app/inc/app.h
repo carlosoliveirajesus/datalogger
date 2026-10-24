@@ -23,6 +23,8 @@ typedef enum app_error_e
     APP_ERROR_ENV = (1 << 1),
     APP_ERROR_SD_ABSENT = (1 << 2),
     APP_ERROR_SD_INIT = (1 << 3),
+    APP_ERROR_SD_FS = (1 << 4),   /**< cartão sem FAT válido ou falha ao criar o arquivo */
+    APP_ERROR_SD_FULL = (1 << 5), /**< cartão cheio */
 } app_error_t;
 
 void app_dbg_init(void);

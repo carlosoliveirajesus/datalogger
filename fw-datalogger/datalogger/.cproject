@@ -52,6 +52,7 @@
 									<listOptionValue builtIn="false" value="../hal/inc"/>
 									<listOptionValue builtIn="false" value="../utl/inc"/>
 									<listOptionValue builtIn="false" value="../utl/printf"/>
+									<listOptionValue builtIn="false" value="../utl/fatfs"/>
 									<listOptionValue builtIn="false" value="../port/stm32u5a5"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1088032624" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
@@ -137,6 +138,7 @@
 									<listOptionValue builtIn="false" value="../hal/inc"/>
 									<listOptionValue builtIn="false" value="../utl/inc"/>
 									<listOptionValue builtIn="false" value="../utl/printf"/>
+									<listOptionValue builtIn="false" value="../utl/fatfs"/>
 									<listOptionValue builtIn="false" value="../port/stm32u5a5"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.874617006" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>

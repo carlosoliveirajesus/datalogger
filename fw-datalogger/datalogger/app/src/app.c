@@ -6,10 +6,12 @@
  *   LED status (verde) pisca 1x a cada 2 s = vivo, sem erro.
  *   LED erro (azul):  2 pulsos = sem cartão
  *                     3 pulsos = falha de sensor
- *                     rápido   = falha ao iniciar o cartão
+ *                     rápido   = falha ao iniciar o cartão ou sem FAT
+ *                     aceso    = cartão cheio
  */
 #include "hal.h"
 #include "app.h"
+#include "logger.h"
 
 #define APP_STATUS_PRINT_MS 5000U
 #define APP_SD_RETRY_MS     2000U
@@ -97,8 +99,10 @@ static void app_leds_update(void)
         err_mode = HAL_LED_MODE_BLINK_FAST_2X;
     else if(app_errors & (APP_ERROR_IMU | APP_ERROR_ENV))
         err_mode = HAL_LED_MODE_BLINK_FAST_3X;
-    else if(app_errors & APP_ERROR_SD_INIT)
+    else if(app_errors & (APP_ERROR_SD_INIT | APP_ERROR_SD_FS))
         err_mode = HAL_LED_MODE_BLINK_FAST;
+    else if(app_errors & APP_ERROR_SD_FULL)
+        err_mode = HAL_LED_MODE_ON;
 
     hal_led_mode_set(HAL_GPIO_LED_ERROR, err_mode);
     hal_led_mode_set(HAL_GPIO_LED_STATUS, app_errors ? HAL_LED_MODE_OFF : HAL_LED_MODE_BLINK_SLOW_1X);
@@ -109,7 +113,7 @@ static void app_sd_start(void)
     hal_sd_status_t st = hal_sd_init();
     hal_sd_info_t info;
 
-    app_errors &= ~(uint32_t) (APP_ERROR_SD_ABSENT | APP_ERROR_SD_INIT);
+    app_errors &= ~(uint32_t) (APP_ERROR_SD_ABSENT | APP_ERROR_SD_INIT | APP_ERROR_SD_FS | APP_ERROR_SD_FULL);
 
     if(st == HAL_SD_ERR_NO_CARD)
     {
@@ -130,6 +134,24 @@ static void app_sd_start(void)
         UTL_DBG_PRINTF(UTL_DBG_MOD_SD, "Cartao OK: %lu blocos de %lu B (%lu MB)\r\n", (unsigned long) info.block_count,
                        (unsigned long) info.block_size,
                        (unsigned long) (((uint64_t) info.block_count * info.block_size) / (1024U * 1024U)));
+    }
+
+    /* Monta o FAT e cria o arquivo deste boot (passo 4). */
+    switch(logger_start())
+    {
+        case LOGGER_OK:
+            break;
+        case LOGGER_ERR_FULL:
+            app_errors |= APP_ERROR_SD_FULL;
+            UTL_DBG_PRINTF(UTL_DBG_MOD_LOGGER, "Cartao cheio\r\n");
+            break;
+        case LOGGER_ERR_MOUNT:
+            app_errors |= APP_ERROR_SD_FS;
+            UTL_DBG_PRINTF(UTL_DBG_MOD_LOGGER, "Cartao sem FAT valido: formate em FAT32\r\n");
+            break;
+        default:
+            app_errors |= APP_ERROR_SD_FS;
+            break;
     }
 }
 
@@ -173,7 +195,7 @@ static void app_state_init_exec(void)
     app_sd_start();
     app_leds_update();
 
-    /* TODO passo 4: montar o FatFS. */
+    /* O FatFS é montado em app_sd_start() (logger_start). */
 
     app_state_set(app_errors ? APP_STATE_ERROR : APP_STATE_IDLE);
     app_status_tmr = hal_time_get_ms();
@@ -193,10 +215,13 @@ static void app_imu_poll(void)
         app_imu_read_cnt++;
 }
 
-/* Mostra IMU e T/P/UR no terminal a cada APP_PRINT_MS (teste dos passos 2 e 3;
-   depois o logger passa a gravar esses valores no CSV). */
+/* Mostra BME280 e IMU numa linha só, a cada APP_PRINT_MS (teste dos passos
+   2 e 3; depois o logger passa a gravar esses valores no CSV). Um sensor com
+   erro aparece como "--". */
 static void app_sensors_print(void)
 {
+    char env_txt[48] = "BME --";
+    char imu_txt[112] = "IMU --";
     hal_env_data_t env;
 
     if(hal_time_elapsed_since_ms(app_print_tmr) < APP_PRINT_MS)
@@ -204,27 +229,23 @@ static void app_sensors_print(void)
 
     app_print_tmr = hal_time_get_ms();
 
+    if((app_errors & APP_ERROR_ENV) == 0U && hal_env_read(HAL_ENV_DEV_BME280, &env))
+        utl_snprintf(env_txt, sizeof(env_txt), "[ENV] T=%.2f C P=%.2f hPa UR=%.1f %%", (double) env.temp_c,
+                     (double) (env.press_pa / 100.0f), (double) env.hum_rh);
+
     if((app_errors & APP_ERROR_IMU) == 0U)
     {
         uint32_t drdy = app_imu_drdy_cnt;
 
-        UTL_DBG_PRINTF(UTL_DBG_MOD_IMU,
-                       "%lu amostras/s (INT1 %lu)  acc=%+.3f %+.3f %+.3f g  gyr=%+.2f %+.2f %+.2f dps\r\n",
-                       (unsigned long) app_imu_read_cnt, (unsigned long) (drdy - app_imu_drdy_last),
-                       (double) app_imu_acc.x, (double) app_imu_acc.y, (double) app_imu_acc.z,
-                       (double) app_imu_gyr.x, (double) app_imu_gyr.y, (double) app_imu_gyr.z);
+        utl_snprintf(imu_txt, sizeof(imu_txt), "[IMU] %lu/s (INT1 %lu) acc=%+.3f %+.3f %+.3f g gyr=%+.2f %+.2f %+.2f dps",
+                     (unsigned long) app_imu_read_cnt, (unsigned long) (drdy - app_imu_drdy_last),
+                     (double) app_imu_acc.x, (double) app_imu_acc.y, (double) app_imu_acc.z,
+                     (double) app_imu_gyr.x, (double) app_imu_gyr.y, (double) app_imu_gyr.z);
         app_imu_read_cnt = 0;
         app_imu_drdy_last = drdy;
     }
 
-    if((app_errors & APP_ERROR_ENV) != 0U)
-        return;
-
-    if(hal_env_read(HAL_ENV_DEV_BME280, &env))
-        UTL_DBG_PRINTF(UTL_DBG_MOD_ENV, "T=%.2f C  P=%.2f hPa  UR=%.1f %%\r\n", (double) env.temp_c,
-                       (double) (env.press_pa / 100.0f), (double) env.hum_rh);
-    else
-        UTL_DBG_PRINTF(UTL_DBG_MOD_ENV, "leitura do BME280 falhou\r\n");
+    UTL_DBG_PRINTF(UTL_DBG_MOD_APP, "%s | %s\r\n", env_txt, imu_txt);
 }
 
 static void app_state_idle_exec(void)
@@ -258,9 +279,11 @@ static void app_state_error_exec(void)
 
     /* Falha ao iniciar o cartão (sem card detect, é o que acontece sem
        cartão no slot): tenta de novo a cada APP_SD_RETRY_MS. */
-    if((app_errors & APP_ERROR_SD_INIT) && hal_time_elapsed_since_ms(app_sd_retry_tmr) >= APP_SD_RETRY_MS)
+    if((app_errors & (APP_ERROR_SD_INIT | APP_ERROR_SD_FS)) &&
+       hal_time_elapsed_since_ms(app_sd_retry_tmr) >= APP_SD_RETRY_MS)
     {
         app_sd_retry_tmr = hal_time_get_ms();
+        logger_stop();
         hal_sd_deinit();
         app_sd_start();
         app_leds_update();
