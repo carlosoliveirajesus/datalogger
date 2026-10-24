@@ -58,6 +58,67 @@ static bool port_bme280_is_initialized(void)
     return bme280_dev.initialized;
 }
 
+/* Coeficiente do filtro IIR (0, 2, 4, 8, 16) -> código do registrador. */
+static uint8_t port_bme280_filter_code(uint8_t coef)
+{
+    if(coef >= 16)
+        return 4;
+    if(coef >= 8)
+        return 3;
+    if(coef >= 4)
+        return 2;
+    if(coef >= 2)
+        return 1;
+    return 0;
+}
+
+/* Tempo entre medições em ms -> o código mais próximo sem passar dele. */
+static bme280_standby_t port_bme280_standby_code(uint16_t ms)
+{
+    static const struct
+    {
+        uint16_t ms;
+        bme280_standby_t code;
+    } map[] = {
+        { 1000, BME280_STANDBY_1000MS }, { 500, BME280_STANDBY_500MS }, { 250, BME280_STANDBY_250MS },
+        { 125, BME280_STANDBY_125MS },   { 62, BME280_STANDBY_62MS5 },  { 20, BME280_STANDBY_20MS },
+        { 10, BME280_STANDBY_10MS },
+    };
+
+    for(size_t n = 0; n < UTL_ARRAY_SIZE(map); n++)
+    {
+        if(ms >= map[n].ms)
+            return map[n].code;
+    }
+
+    return BME280_STANDBY_0MS5;
+}
+
+static bool port_bme280_setup(const hal_env_config_t* cfg)
+{
+    /* hal_env_osr_t usa a mesma numeração do registrador (0 = skip, 5 = x16). */
+    bool ok = bme280_setup(&bme280_dev, (uint8_t) cfg->osr_temp, (uint8_t) cfg->osr_press, (uint8_t) cfg->osr_hum,
+                           port_bme280_filter_code(cfg->filter_coef), port_bme280_standby_code(cfg->standby_ms));
+
+    UTL_DBG_PRINTF(UTL_DBG_MOD_ENV, "BME280 setup %s\r\n", ok ? "OK" : "FALHA");
+
+    return ok;
+}
+
+static bool port_bme280_read(hal_env_data_t* data)
+{
+    bme280_data_t raw;
+
+    if(!bme280_read(&bme280_dev, &raw))
+        return false;
+
+    data->temp_c = (float) raw.temp_c100 / 100.0f;
+    data->press_pa = (float) raw.press_pa256 / 256.0f;
+    data->hum_rh = (float) raw.hum_rh1024 / 1024.0f;
+
+    return true;
+}
+
 /* ------------------------------------------------- tabela de chips */
 
 typedef struct port_env_driver_s
@@ -74,8 +135,8 @@ static const port_env_driver_t port_env_drv[HAL_ENV_NUM_DEVS] = {
         .init = port_bme280_init,
         .deinit = port_bme280_deinit,
         .is_initialized = port_bme280_is_initialized,
-        .setup = NULL, /* TODO passo 2 */
-        .read = NULL,  /* TODO passo 2 */
+        .setup = port_bme280_setup,
+        .read = port_bme280_read,
     },
 };
 

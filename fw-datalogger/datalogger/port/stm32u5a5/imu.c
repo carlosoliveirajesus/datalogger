@@ -166,6 +166,35 @@ static bool port_lsm6dsox_is_initialized(void)
     return lsm6dsox_dev.initialized;
 }
 
+static bool port_lsm6dsox_setup(const hal_imu_config_t* cfg)
+{
+    /* hal_imu_odr_t e as faixas da HAL usam a mesma numeração do driver. */
+    bool ok = lsm6dsox_setup(&lsm6dsox_dev, (uint8_t) cfg->odr, (lsm6dsox_xl_fs_t) cfg->accel_fs,
+                             (lsm6dsox_g_fs_t) cfg->gyro_fs, cfg->drdy_int1);
+
+    UTL_DBG_PRINTF(UTL_DBG_MOD_IMU, "LSM6DSOX setup %s\r\n", ok ? "OK" : "FALHA");
+
+    return ok;
+}
+
+static bool port_lsm6dsox_raw_read(hal_imu_raw_t* accel, hal_imu_raw_t* gyro)
+{
+    lsm6dsox_raw_t a;
+    lsm6dsox_raw_t g;
+
+    if(!lsm6dsox_raw_read(&lsm6dsox_dev, &a, &g))
+        return false;
+
+    accel->x = a.x;
+    accel->y = a.y;
+    accel->z = a.z;
+    gyro->x = g.x;
+    gyro->y = g.y;
+    gyro->z = g.z;
+
+    return true;
+}
+
 static float port_lsm6dsox_accel_scale_get(void)
 {
     return lsm6dsox_dev.accel_scale;
@@ -194,8 +223,8 @@ static const port_imu_driver_t port_imu_drv[HAL_IMU_NUM_DEVS] = {
         .init = port_lsm6dsox_init,
         .deinit = port_lsm6dsox_deinit,
         .is_initialized = port_lsm6dsox_is_initialized,
-        .setup = NULL,    /* TODO passo 3 */
-        .raw_read = NULL, /* TODO passo 3 */
+        .setup = port_lsm6dsox_setup,
+        .raw_read = port_lsm6dsox_raw_read,
         .accel_scale_get = port_lsm6dsox_accel_scale_get,
         .gyro_scale_get = port_lsm6dsox_gyro_scale_get,
     },
