@@ -1,0 +1,89 @@
+== LOG_0001.CSV: só o cabeçalho, nada para plotar
+== LOG_0002.CSV
+   linhas: 18678   duração: 110.4 s   taxa média: 169.14 Hz
+   intervalo entre linhas: min 2.409 ms, máx 1328.169 ms
+   lacunas (> 10 ms): 1924, maior 1.33 s
+   linhas sem BME280: 0
+   em repouso (759 amostras): |a| = 1.0212 g (desvio 0.0034 g), bias do giro = +0.19 / -0.05 / -0.11 °/s
+   T 24.52–26.43 °C   P 912.07–912.48 hPa   UR 36.6–64.6 %
+   gráfico: graficos/LOG_0002.png
+== LOG_0003.CSV
+   linhas: 40645   duração: 98.0 s   taxa média: 414.86 Hz
+   intervalo entre linhas: min 2.409 ms, máx 2.411 ms
+   lacunas (> 10 ms): 0
+   linhas sem BME280: 0
+   em repouso (4205 amostras): |a| = 1.0241 g (desvio 0.0060 g), bias do giro = +0.23 / +0.03 / -0.02 °/s
+   T 24.77–29.27 °C   P 911.09–912.53 hPa   UR 35.9–62.5 %
+   gráfico: graficos/LOG_0003.png
+== LOG_0004.CSV
+   linhas: 26632   duração: 64.2 s   taxa média: 414.87 Hz
+   intervalo entre linhas: min 2.410 ms, máx 2.411 ms
+   lacunas (> 10 ms): 0
+   linhas sem BME280: 0
+   em repouso (2004 amostras): |a| = 1.0215 g (desvio 0.0029 g), bias do giro = +0.19 / -0.03 / -0.08 °/s
+   T 24.89–26.32 °C   P 912.29–912.53 hPa   UR 34.7–51.6 %
+   gráfico: graficos/LOG_0004.png
+== LOG_0005.CSV
+   linhas: 21703   duração: 52.3 s   taxa média: 414.89 Hz
+   intervalo entre linhas: min 0.382 ms, máx 2.519 ms
+   lacunas (> 10 ms): 0
+   linhas sem BME280: 2513
+   em repouso (10639 amostras): |a| = 1.0224 g (desvio 0.0045 g), bias do giro = +0.20 / +0.06 / -0.02 °/s
+   T 24.08–27.74 °C   P 912.51–912.68 hPa   UR 38.2–46.8 %
+   gráfico: graficos/LOG_0005.png
+== LOG_0006.CSV
+   linhas: 19198   duração: 54.4 s   taxa média: 352.83 Hz
+   intervalo entre linhas: min 0.382 ms, máx 8141.000 ms
+   lacunas (> 10 ms): 1, maior 8.14 s
+   linhas sem BME280: 2099
+   em repouso (12391 amostras): |a| = 1.0233 g (desvio 0.0036 g), bias do giro = +0.20 / +0.06 / -0.02 °/s
+   T 24.22–24.74 °C   P 912.55–912.63 hPa   UR 37.9–44.8 %
+   gráfico: graficos/LOG_0006.png
+== LOG_0007.CSV
+   linhas: 5062   duração: 12.2 s   taxa média: 414.86 Hz
+   intervalo entre linhas: min 2.410 ms, máx 2.411 ms
+   lacunas (> 10 ms): 0
+   linhas sem BME280: 0
+   em repouso (3942 amostras): |a| = 1.0223 g (desvio 0.0029 g), bias do giro = +0.21 / +0.07 / -0.04 °/s
+   T 24.53–24.57 °C   P 913.12–913.20 hPa   UR 38.3–40.3 %
+   gráfico: graficos/LOG_0007.png
+== LOG_0008.CSV
+   linhas: 2944   duração: 7.1 s   taxa média: 414.86 Hz
+   intervalo entre linhas: min 2.410 ms, máx 2.411 ms
+   lacunas (> 10 ms): 0
+   linhas sem BME280: 0
+   em repouso (2453 amostras): |a| = 1.0225 g (desvio 0.0041 g), bias do giro = +0.22 / +0.07 / +0.01 °/s
+   T 24.30–24.38 °C   P 913.14–913.20 hPa   UR 37.3–38.5 %
+   gráfico: graficos/LOG_0008.png
+== LOG_0009.CSV
+   linhas: 3364   duração: 8.1 s   taxa média: 414.86 Hz
+   intervalo entre linhas: min 2.410 ms, máx 2.411 ms
+   lacunas (> 10 ms): 0
+   linhas sem BME280: 0
+   em repouso (2477 amostras): |a| = 1.0228 g (desvio 0.0061 g), bias do giro = +0.19 / +0.11 / -0.01 °/s
+   T 24.53–24.59 °C   P 913.16–913.21 hPa   UR 38.5–39.2 %
+   gráfico: graficos/LOG_0009.png
+== LOG_0010.CSV
+   linhas: 4642   duração: 11.2 s   taxa média: 414.86 Hz
+   intervalo entre linhas: min 2.409 ms, máx 2.412 ms
+   lacunas (> 10 ms): 0
+   linhas sem BME280: 0
+   em repouso (4309 amostras): |a| = 1.0216 g (desvio 0.0039 g), bias do giro = +0.21 / +0.07 / +0.00 °/s
+   T 24.23–24.44 °C   P 913.45–913.52 hPa   UR 39.3–46.7 %
+   gráfico: graficos/LOG_0010.png
+== LOG_0011.CSV
+   linhas: 10129   duração: 24.4 s   taxa média: 414.86 Hz
+   intervalo entre linhas: min 2.409 ms, máx 2.411 ms
+   lacunas (> 10 ms): 0
+   linhas sem BME280: 0
+   em repouso (8433 amostras): |a| = 1.0219 g (desvio 0.0033 g), bias do giro = +0.25 / +0.01 / -0.03 °/s
+   T 24.21–24.61 °C   P 913.45–913.52 hPa   UR 36.5–44.2 %
+   gráfico: graficos/LOG_0011.png
+== LOG_0012.CSV
+   linhas: 5414   duração: 13.0 s   taxa média: 414.87 Hz
+   intervalo entre linhas: min 2.410 ms, máx 2.411 ms
+   lacunas (> 10 ms): 0
+   linhas sem BME280: 0
+   em repouso (5097 amostras): |a| = 1.0216 g (desvio 0.0022 g), bias do giro = +0.25 / +0.02 / -0.05 °/s
+   T 23.90–24.05 °C   P 913.45–913.53 hPa   UR 35.9–36.3 %
+   gráfico: graficos/LOG_0012.png

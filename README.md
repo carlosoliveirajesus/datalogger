@@ -243,6 +243,20 @@ Todos os testes foram feitos na Nucleo, com a IMU em I2C e o SD em 1 bit. Os CSV
 - Os três arquivos estão íntegros (10 colunas, 414,9 Hz, sem lacunas). O `LOG_0012`, fechado pelo botão, tem exatamente as linhas que o terminal contou.
 - Cartão cheio: a lógica existe (`LOGGER_ERR_FULL`, LED de erro aceso), mas não foi testada.
 
+### Gráficos
+
+O script [`scripts/plot_log.py`](scripts/plot_log.py) lê os CSVs, imprime um resumo (taxa, lacunas, linhas sem BME280, |a| e bias do giro em repouso) e gera um gráfico por arquivo. Os gráficos de todos os testes estão em [`docs/testes/graficos/`](docs/testes/graficos/).
+
+```bash
+cd scripts
+pip install -r requirements.txt
+python plot_log.py ../docs/testes/csv/*.CSV -o ../docs/testes/graficos
+```
+
+`LOG_0006.CSV`: placa movimentada à mão, com perda e recuperação dos dois sensores. Os trechos sem BME280 aparecem em vermelho e o trecho sem IMU (8,1 s) em cinza.
+
+![Gráfico do LOG_0006](docs/testes/graficos/LOG_0006.png)
+
 ### Validação das leituras
 
 **IMU em repouso.** Foram usadas só as amostras com a placa parada (giro total < 2 °/s), em três gravações:
@@ -300,7 +314,7 @@ Todos os testes foram feitos na Nucleo, com a IMU em I2C e o SD em 1 bit. Os CSV
 ### Sensor deixa de responder durante a gravação (BME280 e LSM6DSOX)
 
 **Sintoma.** Com a placa em movimento ou com a mão sobre os módulos (protótipo na Nucleo, sensores ligados por jumpers), um sensor parava de responder no meio da gravação e não voltava mais:
-- `LOG_0003.CSV`: o BME280 congelou aos 43 s. As colunas de T/P/UR repetiram o último valor até o fim, sem nenhum aviso no terminal.
+- `LOG_0003.CSV`: o BME280 congelou aos 54,6 s da gravação e ficou parado nos últimos 43 s. As colunas de T/P/UR repetiram o último valor até o fim, sem nenhum aviso no terminal.
 - `LOG_0005.CSV`: o BME280 caiu e voltou (já com a recuperação descrita abaixo), mas a IMU travou aos ~58 s, depois de um movimento brusco (giro de +269 dps). Toda leitura passou a dar timeout no I2C1 (`[IMU] 0/s (INT1 38, erros 40, resgates 40)`), o CSV parou em 21 703 linhas e o estado continuou `LOGGING erros=0x00`.
 
 **Diagnóstico.**

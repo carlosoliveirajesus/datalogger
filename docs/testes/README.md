@@ -5,6 +5,7 @@ Arquivos reais gravados pelo datalogger no protótipo: NUCLEO-U5A5ZJ-Q, LSM6DSOX
 - `csv/`: os arquivos `LOG_nnnn.CSV` copiados do cartão, sem nenhuma edição.
 - `serial/`: o log da UART de debug (USART1, 115200 8N1) gravado junto com cada CSV.
 - `bancada/`: logs da UART da fase de bring-up, sem CSV associado.
+- `graficos/`: um PNG por CSV e o `resumo.txt`, gerados por [`scripts/plot_log.py`](../../scripts/plot_log.py) (`python plot_log.py ../docs/testes/csv/*.CSV -o ../docs/testes/graficos`).
 
 As versões de firmware mudaram entre os testes. Por isso o formato das linhas do terminal e alguns comportamentos (por exemplo, o data-ready pulsado do `LOG_0002`) não são os mesmos em todos os arquivos.
 
@@ -14,7 +15,7 @@ As versões de firmware mudaram entre os testes. Por isso o formato das linhas d
 |---|---|---|---|---|
 | `LOG_0001.CSV` | — | 0 | — | Primeiro teste do FatFs: só o cabeçalho, para validar a criação do arquivo. |
 | `LOG_0002.CSV` | `LOG_0002_serial.txt` | 18 678 | 110 s | Primeira gravação completa. O data-ready ainda era pulsado: média de ~170 amostras/s, com lacunas de até 1,3 s. Corrigido com o data-ready travado e o resgate do INT1. |
-| `LOG_0003.CSV` | `LOG_0003_0004_serial.txt` | 40 645 | 98 s | IMU perfeita (414,9 Hz), mas o BME280 congelou aos 43 s sem aviso, repetindo o último valor. Motivou a detecção de perda do BME280. |
+| `LOG_0003.CSV` | `LOG_0003_0004_serial.txt` | 40 645 | 98 s | IMU perfeita (414,9 Hz), mas o BME280 congelou aos 54,6 s sem aviso e ficou parado nos últimos 43 s, repetindo o último valor. Motivou a detecção de perda do BME280. |
 | `LOG_0004.CSV` | `LOG_0003_0004_serial.txt` | 26 632 | 64 s | Gravação de referência: 414,9 Hz, intervalos de 2,410–2,411 ms, 0 lacunas, 0 amostras perdidas. |
 | `LOG_0005.CSV` | `LOG_0005_serial.txt` | 21 703 | 52 s | O BME280 caiu e voltou (2 513 linhas com T/P/UR vazias). A IMU travou aos ~58 s e não voltou. Motivou a recuperação da IMU. |
 | `LOG_0006.CSV` | `LOG_0006_serial.txt` | 19 198 | 54 s | Perda e recuperação dos dois sensores: o BME280 caiu 2×, a IMU 1× (salto de 8,1 s em `t_ms`), e todos voltaram sem reset. IMU em repouso: \|a\| ≈ 1,02 g. |
