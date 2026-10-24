@@ -127,6 +127,33 @@ Os arquivos ficam em [`hw-datalogger/fabricacao/`](hw-datalogger/fabricacao/), g
 | Via covering | Tented |
 | Acabamento | ENIG (recomendado pelos pads de passo fino) ou HASL sem chumbo |
 
+## Firmware
+
+Projeto do STM32CubeIDE em `fw-datalogger/datalogger/`. Fica organizado em camadas, e a aplicação não depende do MCU.
+
+| Pasta | Papel |
+|---|---|
+| `Core/`, `Drivers/` | código gerado pelo CubeMX (HAL da ST). Só `main.c` foi tocado, nos blocos `USER CODE`: `hal_init()` e `hal_loop()` |
+| `app/` | máquina de estados (`app.c`), gravação do CSV (`logger.c`) e configuração da placa (`app/inc/hal_cfg.h`) |
+| `hal/` | interfaces genéricas (`hal_imu`, `hal_env`, `hal_sd`, `hal_gpio`, `hal_time`, `hal_led`, `hal_ser`, `hal_cpu`), cada uma uma `struct` de ponteiros de função |
+| `port/stm32u5a5/` | implementação das interfaces sobre a HAL da ST, e os drivers dos chips em `imu/lsm6dsox.c` e `env/bme280.c`. Os drivers recebem o barramento (SPI ou I2C) por injeção |
+| `utl/` | sem hardware: printf, buffer circular, debug por módulo e FatFs (`utl/fatfs/`, com `diskio.c` sobre `hal_sd`) |
+
+Bibliotecas de terceiros: HAL/CMSIS da ST (STM32CubeU5), FatFs R0.16 e printf (MIT). Os drivers dos sensores foram escritos a partir dos datasheets. Detalhes e licenças em [`docs/referencias.md`](docs/referencias.md).
+
+### Temporização
+
+O firmware não usa nenhum TIM. Isso é proposital: cada função de tempo já tem uma fonte de hardware melhor.
+
+| Função | Fonte | Por quê |
+|---|---|---|
+| Amostragem da IMU (416 Hz) | oscilador interno do LSM6DSOX, avisado pelo data-ready no INT1 (EXTI, sem polling) | A amostra é lida quando fica pronta. Um TIM para disparar a leitura correria em paralelo ao relógio da IMU, e o descompasso entre os dois faria amostras serem lidas repetidas ou puladas. |
+| Medição do BME280 (~15 ms por amostra) | modo normal do sensor (medição contínua com tempo de standby) | O sensor mede sozinho; o loop só lê o resultado mais recente a cada 20 ms. |
+| Timestamp do CSV (`t_ms`, resolução de 1 µs) | SysTick de 1 ms da HAL + contagem atual do SysTick (`SysTick->VAL`) | Dá µs sem gastar um timer. O SysTick tem a maior prioridade (0), acima do INT1 (5) e do botão (6), então o timestamp tirado na ISR é coerente. |
+| Tarefas periódicas (LEDs, `f_sync` a cada 1 s, novas tentativas de recuperação, debounce do botão) | `HAL_IncTick()` sobrescrita (callbacks de 100 ms e 1 s) e comparação de tempo no loop | Nenhuma tem requisito de tempo rígido. |
+
+O RTC (LSE de 32,768 kHz) está habilitado no `.ioc`, mas não é usado: o `t_ms` conta a partir do boot, e os arquivos levam data fixa no FAT (`FF_FS_NORTC`). Timestamps absolutos pelo RTC ficam como melhoria futura.
+
 ## Operação
 
 1. Ao ligar, o firmware inicia a IMU, o BME280 e o cartão. Se tudo estiver OK, o LED de status fica **aceso** e o terminal mostra `Pronto: aperte o botao para gravar`.
@@ -245,7 +272,7 @@ Enquanto um sensor estiver perdido, o LED de erro dá 3 pulsos e o LED de status
 - [x] Hardware: esquemático (ERC limpo)
 - [x] Hardware: layout da PCB (DRC limpo, Gerbers, BOM, posicionamento)
 - [x] Validação na Nucleo, com a IMU em I2C e o SD em 1 bit (`LOG_0004.CSV`: 64 s a 414,9 Hz, 0 lacunas; `LOG_0006.CSV`: perdas e recuperações de sensor)
-- [ ] Validação na PCB (IMU em SPI, SD em 4 bits, card detect)
+- ❌ ~~Validação na PCB (IMU em SPI, SD em 4 bits, card detect)~~: não será feita, porque não houve tempo de encomendar a placa e os componentes até a entrega. O firmware já tem os modos da PCB (`HAL_IMU_BUS_SPI`, `HAL_SD_BUS_WIDTH 4`, `HAL_SD_CD_ENABLED 1`), compilados mas não testados em hardware.
 - [ ] Documentação e apresentação final
 
 ## Referências
