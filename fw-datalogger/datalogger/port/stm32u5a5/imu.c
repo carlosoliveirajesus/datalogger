@@ -17,6 +17,9 @@
 #include "hal.h"
 #include "imu/lsm6dsox.h"
 
+#define IMU_INIT_TRIES    3U
+#define IMU_INIT_RETRY_MS 10U
+
 #if HAL_IMU_BUS == HAL_IMU_BUS_SPI
 /* ------------------------------------------------ barramento SPI1 */
 #include "spi.h"
@@ -67,6 +70,11 @@ static void imu_bus_print(void)
     UTL_DBG_PRINTF(UTL_DBG_MOD_IMU, "LSM6DSOX em SPI1\r\n");
 }
 
+static void imu_bus_recover(void)
+{
+    /* SPI não trava como o I2C: o CS sobe no fim de cada transferência. */
+}
+
 #elif HAL_IMU_BUS == HAL_IMU_BUS_I2C
 /* ------------------------------------------------- barramento I2C */
 #include "i2c.h"
@@ -74,15 +82,73 @@ static void imu_bus_print(void)
 /* Handle do I2C da IMU. Padrão: I2C1 no conector Arduino da Nucleo
  * (PB8 = D15 SCL, PB9 = D14 SDA), que precisa ser habilitado no CubeMX.
  * Alternativa sem mexer no CubeMX: hi2c3, o mesmo barramento do BME280
- * (PC0/PC1); os endereços não colidem (0x6A/0x6B contra 0x76/0x77). */
+ * (PC0/PC1); os endereços não colidem (0x6A/0x6B contra 0x76/0x77).
+ * Ao trocar o handle, troque junto a função de init e os pinos usados para
+ * destravar o barramento (imu_bus_recover). */
 #ifndef IMU_I2C_HANDLE
-#define IMU_I2C_HANDLE hi2c1
+#define IMU_I2C_HANDLE        hi2c1
+#define IMU_I2C_INIT          MX_I2C1_Init
+#define IMU_I2C_SCL_PORT      IMU_I2C_SCL_GPIO_Port
+#define IMU_I2C_SCL_PIN       IMU_I2C_SCL_Pin
+#define IMU_I2C_SDA_PORT      IMU_I2C_SDA_GPIO_Port
+#define IMU_I2C_SDA_PIN       IMU_I2C_SDA_Pin
 #endif
 
 #define IMU_I2C_TIMEOUT_MS 10U
 #define IMU_I2C_PROBE_TRIES 3U
+#define IMU_I2C_RECOVER_CLOCKS 9U
 
 static uint8_t imu_i2c_addr = 0; /* 7 bits; 0 = não detectado */
+
+static void imu_wait_us(uint32_t us)
+{
+    uint64_t t0 = hal_time_get_us();
+
+    while((hal_time_get_us() - t0) < us)
+    {
+    }
+}
+
+/* Destrava o I2C da IMU, como port_env_i2c_recover() faz no BME280. Um
+   transiente no meio de uma leitura (ex.: vibração forte nos jumpers) pode
+   deixar o LSM6DSOX segurando o SDA em 0 esperando clocks que não vêm; daí
+   em diante toda leitura dá timeout. Aqui o SCL vira GPIO e recebe até 9
+   pulsos até o SDA soltar, sai um STOP e o periférico é reiniciado. */
+static void imu_bus_recover(void)
+{
+    GPIO_InitTypeDef g = { 0 };
+
+    (void) HAL_I2C_DeInit(&IMU_I2C_HANDLE);
+
+    HAL_GPIO_WritePin(IMU_I2C_SCL_PORT, IMU_I2C_SCL_PIN, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(IMU_I2C_SDA_PORT, IMU_I2C_SDA_PIN, GPIO_PIN_SET);
+    g.Mode = GPIO_MODE_OUTPUT_OD;
+    g.Pull = GPIO_NOPULL;
+    g.Speed = GPIO_SPEED_FREQ_LOW;
+    g.Pin = IMU_I2C_SCL_PIN;
+    HAL_GPIO_Init(IMU_I2C_SCL_PORT, &g);
+    g.Pin = IMU_I2C_SDA_PIN;
+    HAL_GPIO_Init(IMU_I2C_SDA_PORT, &g); /* OD em 1 = solto, dá para ler */
+
+    for(uint32_t n = 0;
+        n < IMU_I2C_RECOVER_CLOCKS && HAL_GPIO_ReadPin(IMU_I2C_SDA_PORT, IMU_I2C_SDA_PIN) == GPIO_PIN_RESET; n++)
+    {
+        HAL_GPIO_WritePin(IMU_I2C_SCL_PORT, IMU_I2C_SCL_PIN, GPIO_PIN_RESET);
+        imu_wait_us(5);
+        HAL_GPIO_WritePin(IMU_I2C_SCL_PORT, IMU_I2C_SCL_PIN, GPIO_PIN_SET);
+        imu_wait_us(5);
+    }
+
+    /* STOP: SDA sobe com SCL alto. */
+    HAL_GPIO_WritePin(IMU_I2C_SDA_PORT, IMU_I2C_SDA_PIN, GPIO_PIN_RESET);
+    imu_wait_us(5);
+    HAL_GPIO_WritePin(IMU_I2C_SCL_PORT, IMU_I2C_SCL_PIN, GPIO_PIN_SET);
+    imu_wait_us(5);
+    HAL_GPIO_WritePin(IMU_I2C_SDA_PORT, IMU_I2C_SDA_PIN, GPIO_PIN_SET);
+    imu_wait_us(5);
+
+    IMU_I2C_INIT(); /* gerado pelo CubeMX: volta os pinos para AF do I2C */
+}
 
 static bool lsm6dsox_i2c_read(uint8_t reg, uint8_t* data, uint16_t len)
 {
@@ -143,11 +209,26 @@ static bool port_lsm6dsox_init(void)
     uint8_t id = 0;
     bool ok;
 
+    imu_bus_recover();
+
     if(!imu_bus_prepare())
         return false;
 
     imu_bus_print();
-    ok = lsm6dsox_init(&lsm6dsox_dev, &lsm6dsox_bus);
+
+    /* Até 3 tentativas: depois de um reset do MCU no meio da operação, a
+       primeira às vezes falha e a seguinte funciona. */
+    ok = false;
+    for(uint32_t n = 1; n <= IMU_INIT_TRIES && !ok; n++)
+    {
+        ok = lsm6dsox_init(&lsm6dsox_dev, &lsm6dsox_bus);
+        if(!ok)
+        {
+            UTL_DBG_PRINTF(UTL_DBG_MOD_IMU, "LSM6DSOX init tentativa %lu falhou no passo %u\r\n", (unsigned long) n,
+                           (unsigned) lsm6dsox_dev.fail_step);
+            HAL_Delay(IMU_INIT_RETRY_MS);
+        }
+    }
 
     (void) lsm6dsox_who_am_i_get(&lsm6dsox_dev, &id);
     UTL_DBG_PRINTF(UTL_DBG_MOD_IMU, "LSM6DSOX WHO_AM_I=0x%02X (esperado 0x%02X) %s\r\n", id,

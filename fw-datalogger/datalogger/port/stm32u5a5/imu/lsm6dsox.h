@@ -33,7 +33,7 @@
 #define LSM6DSOX_CTRL3_C_IF_INC   (1U << 2)
 #define LSM6DSOX_CTRL3_C_SW_RESET (1U << 0)
 #define LSM6DSOX_CTRL4_C_I2C_DIS  (1U << 2)
-#define LSM6DSOX_DATAREADY_PULSED (1U << 7) /* COUNTER_BDR_REG1 */
+#define LSM6DSOX_DATAREADY_PULSED (1U << 7) /* COUNTER_BDR_REG1 (não usado: ver lsm6dsox_setup) */
 #define LSM6DSOX_INT1_DRDY_XL     (1U << 0) /* INT1_CTRL */
 
 /* ODR (CTRL1_XL/CTRL2_G [7:4]): 0 = power-down, 1..8 = 12,5 / 26 / 52 /
@@ -82,7 +82,16 @@ typedef struct lsm6dsox_s
     float gyro_scale;  /**< dps/LSB */
     bool initialized;
     bool configured;
+    uint8_t fail_step; /**< onde o último init falhou (LSM6DSOX_STEP_*), 0 = ok */
 } lsm6dsox_t;
+
+/* Passos do lsm6dsox_init(), para diagnóstico. */
+#define LSM6DSOX_STEP_I2C_DIS    1
+#define LSM6DSOX_STEP_WHO_AM_I   2
+#define LSM6DSOX_STEP_POWER_DOWN 3
+#define LSM6DSOX_STEP_SW_RESET   4
+#define LSM6DSOX_STEP_RESET_WAIT 5
+#define LSM6DSOX_STEP_CONFIG     6
 
 /**
  * Confere o WHO_AM_I e faz reset por software. Em SPI (bus->is_spi) também
@@ -94,8 +103,8 @@ bool lsm6dsox_who_am_i_get(lsm6dsox_t* dev, uint8_t* id);
 
 /**
  * Liga acc e gyro no mesmo ODR e configura as faixas. Com drdy_int1, o pino
- * INT1 dá um pulso de ~75 µs a cada amostra nova do acelerômetro
- * (dataready_pulsed), adequado para EXTI por borda de subida.
+ * INT1 sobe a cada amostra nova do acelerômetro e fica alto até a leitura
+ * (data-ready travado), adequado para EXTI por borda de subida.
  */
 bool lsm6dsox_setup(lsm6dsox_t* dev, uint8_t odr, lsm6dsox_xl_fs_t xl_fs, lsm6dsox_g_fs_t g_fs, bool drdy_int1);
 

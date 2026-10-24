@@ -52,6 +52,7 @@ typedef struct hal_gpio_driver_s
     void (*set)(hal_gpio_pin_t pin, bool state);
     bool (*get)(hal_gpio_pin_t pin);
     void (*toggle)(hal_gpio_pin_t pin);
+    void (*interrupt_trigger)(hal_gpio_pin_t pin);
 } hal_gpio_driver_t;
 
 /**
@@ -65,3 +66,5 @@ void hal_gpio_interrupt_set(hal_gpio_pin_t pin, hal_gpio_interrupt_state_t state
 void hal_gpio_set(hal_gpio_pin_t pin, bool state);
 bool hal_gpio_get(hal_gpio_pin_t pin);
 void hal_gpio_toggle(hal_gpio_pin_t pin);
+/** Gera por software a interrupção do pino, como se a borda tivesse chegado. */
+void hal_gpio_interrupt_trigger(hal_gpio_pin_t pin);

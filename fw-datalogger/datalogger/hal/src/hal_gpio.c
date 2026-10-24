@@ -34,4 +34,9 @@ void hal_gpio_toggle(hal_gpio_pin_t pin)
     drv->toggle(pin);
 }
 
+void hal_gpio_interrupt_trigger(hal_gpio_pin_t pin)
+{
+    drv->interrupt_trigger(pin);
+}
+
 #endif

@@ -125,6 +125,14 @@ static void port_gpio_toggle(hal_gpio_pin_t pin)
         HAL_GPIO_TogglePin(gpios[pin].port, gpios[pin].pin);
 }
 
+/* Software interrupt da linha EXTI do pino: o HAL_GPIO_EXTI_IRQHandler trata
+   como uma borda de subida e chama o callback normalmente. */
+static void port_gpio_interrupt_trigger(hal_gpio_pin_t pin)
+{
+    if(pin < HAL_GPIO_NUM_PINS)
+        EXTI->SWIER1 = gpios[pin].pin;
+}
+
 /* Uma linha EXTI atende o mesmo número de pino em qualquer porta; chama o
    callback do pino lógico que usa essa linha. */
 static void port_gpio_exti_dispatch(uint16_t pin_mask)
@@ -156,4 +164,5 @@ hal_gpio_driver_t HAL_GPIO_DRIVER = {
     .set = port_gpio_set,
     .get = port_gpio_get,
     .toggle = port_gpio_toggle,
+    .interrupt_trigger = port_gpio_interrupt_trigger,
 };

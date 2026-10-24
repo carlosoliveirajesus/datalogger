@@ -25,6 +25,8 @@ typedef enum app_error_e
     APP_ERROR_SD_INIT = (1 << 3),
     APP_ERROR_SD_FS = (1 << 4),   /**< cartão sem FAT válido ou falha ao criar o arquivo */
     APP_ERROR_SD_FULL = (1 << 5), /**< cartão cheio */
+    APP_ERROR_ENV_LOST = (1 << 6), /**< BME280 parou de responder durante a operação (tenta recuperar) */
+    APP_ERROR_IMU_LOST = (1 << 7), /**< LSM6DSOX parou de responder durante a operação (tenta recuperar) */
 } app_error_t;
 
 void app_dbg_init(void);

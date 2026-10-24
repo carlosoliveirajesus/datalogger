@@ -14,6 +14,11 @@ uint32_t hal_time_get_ms(void)
     return drv->get_ms();
 }
 
+uint64_t hal_time_get_us(void)
+{
+    return drv->get_us();
+}
+
 uint32_t hal_time_elapsed_ms(uint32_t tmr_old_ms, uint32_t tmr_new_ms)
 {
     /* Aritmética sem sinal já trata o estouro do contador. */

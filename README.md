@@ -52,6 +52,15 @@ Os mesmos pinos são usados na Nucleo (STM32U5A5ZJT6Q, LQFP144) e na PCB (STM32U
 | Botão | PC13 | B1 |
 | Tensão da bateria | PA0 (ADC, com divisor) | |
 
+### Protótipo na Nucleo
+
+No protótipo, dois blocos usam ligações diferentes da PCB. As duas opções são selecionadas em `app/inc/hal_cfg.h`, sem mexer no resto do firmware.
+
+| Bloco | Protótipo (Nucleo) | Seleção em `hal_cfg.h` |
+|---|---|---|
+| LSM6DSOX | módulo montado para I2C, no I2C1: PB8 SCL (CN7 D15), PB9 SDA (CN7 D14), endereço 0x6B detectado no init; INT1 em PB1 com pull-down | `HAL_IMU_BUS` = `HAL_IMU_BUS_I2C` (PCB: `HAL_IMU_BUS_SPI`) |
+| microSD | módulo Adafruit microSD Card BFF em SDMMC 1 bit: PC12 CK, PD2 CMD, PC8 D0, CS/D3 em 3V3 | `HAL_SD_BUS_WIDTH` = 1 (PCB: 4), `HAL_SD_CD_ENABLED` = 0 |
+
 ## Hardware (PCB)
 
 Projeto no Altium Designer em `hw-datalogger/datalogger/` (folhas hierárquicas `00_Top`, `01_Power`, `02_MCU`, `03_Sensors`, `04_microSD`, `05_Interface`). Esquemático completo em PDF: [`hw-datalogger/fabricacao/dataloggerOutJob.PDF`](hw-datalogger/fabricacao/dataloggerOutJob.PDF).
@@ -118,9 +127,45 @@ Os arquivos ficam em [`hw-datalogger/fabricacao/`](hw-datalogger/fabricacao/), g
 | Via covering | Tented |
 | Acabamento | ENIG (recomendado pelos pads de passo fino) ou HASL sem chumbo |
 
+## Operação
+
+1. Ao ligar, o firmware inicia a IMU, o BME280 e o cartão. Se tudo estiver OK, o LED de status fica **aceso** e o terminal mostra `Pronto: aperte o botao para gravar`.
+2. **Botão B1:** começa a gravar num arquivo novo (`LOG_0001.CSV`, `LOG_0002.CSV`, …). O LED de status passa a **piscar 1x a cada 2 s**.
+3. **Botão B1 de novo:** grava o que estiver no buffer, fecha o arquivo e volta ao LED aceso. Nesse estado o cartão pode ser removido com segurança.
+
+| LED de erro | Significado |
+|---|---|
+| 2 pulsos | cartão ausente |
+| 3 pulsos | falha de sensor no boot, ou BME280/IMU perdido durante a operação. Com sensor perdido a gravação continua e há tentativa de recuperação a cada 1 s (ver Problemas conhecidos) |
+| piscando rápido | falha ao iniciar o cartão, ou cartão sem FAT (formatar em FAT32). Nova tentativa a cada 2 s; se estava gravando, continua num arquivo novo |
+| aceso | cartão cheio: a gravação é encerrada |
+
+A UART de debug (USART1, Virtual COM do ST-LINK, 115200 8N1) imprime uma linha por segundo com o BME280, a IMU (amostras/s, erros, resgates do INT1) e o arquivo (linhas, amostras perdidas, ocupação do buffer). A cada 5 s imprime também o estado e o código de erro.
+
 ## Formato do CSV
 
-_A definir._ Previsão: `timestamp_ms, ax_g, ay_g, az_g, gx_dps, gy_dps, gz_dps, temp_C, umid_pct, press_hPa`.
+Um arquivo `LOG_nnnn.CSV` por gravação, na raiz do cartão (FAT32, FatFs R0.16), com fim de linha CRLF. Há **uma linha por amostra da IMU (~415 Hz)**. O BME280 é lido a cada 20 ms, e cada linha repete a última leitura dele.
+
+```
+t_ms,ax_g,ay_g,az_g,gx_dps,gy_dps,gz_dps,temp_c,press_hpa,hum_rh
+11222.932,-0.2284,0.0112,0.9936,0.21,-0.14,-0.07,24.41,912.58,39.1
+11225.342,-0.2279,0.0137,0.9945,0.21,-0.21,-0.07,24.41,912.58,39.1
+```
+
+| Coluna | Unidade | Resolução | Faixa |
+|---|---|---|---|
+| `t_ms` | ms desde o boot, no instante do data-ready da IMU | 0,001 ms | — |
+| `ax_g`, `ay_g`, `az_g` | g | 0,0001 g (sensor: 0,488 mg/LSB) | ±16 g |
+| `gx_dps`, `gy_dps`, `gz_dps` | °/s | 0,01 °/s (sensor: 70 mdps/LSB) | ±2000 °/s |
+| `temp_c` | °C | 0,01 °C | −40 a 85 °C |
+| `press_hpa` | hPa | 0,01 hPa | 300 a 1100 hPa |
+| `hum_rh` | %UR | 0,1 % | 0 a 100 % |
+
+- **Configuração:** LSM6DSOX com ODR de 416 Hz (medido: ~414,9 Hz, intervalo de 2,41 ms). BME280 em modo normal com oversampling T×2, P×4, H×1 e filtro IIR 4.
+- **Escrita:** as amostras passam por um buffer circular de 1024 amostras (~2,4 s) e vão para o cartão em blocos de 512 B, com `f_sync` a cada 1 s. Numa queda de energia se perde no máximo ~1 s de dados.
+- **Sem dado válido:**
+  - BME280 ainda sem leitura, ou perdido: `temp_c,press_hpa,hum_rh` ficam vazias (a linha termina em `,,`).
+  - IMU perdida: não saem linhas e aparece um salto em `t_ms`.
 
 ## Build e gravação
 
@@ -134,15 +179,73 @@ _A definir._ Previsão: `timestamp_ms, ax_g, ay_g, az_g, gx_dps, gy_dps, gz_dps,
 3. **Project → Build Project**.
 4. Conecte a Nucleo pela porta USB do ST-LINK e use **Run → Debug** (ou **Run**) para gravar.
 
+## Problemas conhecidos
+
+### LSM6DSOX recusa a primeira escrita depois de um reset do MCU
+
+**Sintoma.** Com o módulo LSM6DSOX em I2C (protótipo na Nucleo), a inicialização da IMU falhava em uma partida e funcionava na seguinte, sempre alternando. No terminal aparecia `LSM6DSOX WHO_AM_I=0x6C (esperado 0x6C) FALHA`: o ID era lido corretamente, mas o init falhava logo depois.
+
+**Diagnóstico.**
+- O reset do STM32 (botão RESET ou nova gravação) não reseta a IMU, que continua alimentada e medindo a 416 Hz com o INT1 ativo, no estado deixado pela execução anterior.
+- Para localizar a falha, o `lsm6dsox_init()` passou a registrar o passo em que parou (`fail_step`). Em 17 resets seguidos, a 1ª tentativa falhou sempre no **passo 3**, a primeira escrita de registrador (desligar INT1, acelerômetro e giroscópio). A leitura do WHO_AM_I, feita antes, nunca falhou.
+- Uma 2ª tentativa, 10 ms depois, funcionou em todos os casos.
+- Sem um analisador lógico no barramento I2C, a causa exata dentro do chip ficou em aberto.
+
+**Solução adotada.**
+- `port/stm32u5a5/imu.c`: o init é tentado até 3 vezes (`IMU_INIT_TRIES`), com 10 ms entre as tentativas (`IMU_INIT_RETRY_MS`). Cada falha é registrada como `LSM6DSOX init tentativa N falhou no passo P`.
+- `port/stm32u5a5/imu/lsm6dsox.c`: antes do reset por software, o INT1 é desligado e o acelerômetro e o giroscópio vão para power-down, para o reset partir de um estado conhecido. Durante o reset, uma leitura sem resposta conta como "ainda resetando" (espera de até 50 ms), e o WHO_AM_I é lido até 3 vezes.
+
+| Passo (`fail_step`) | Etapa do `lsm6dsox_init()` |
+|---|---|
+| 1 | desligar a interface I2C do chip (só no modo SPI) |
+| 2 | WHO_AM_I |
+| 3 | power-down (INT1_CTRL, CTRL1_XL e CTRL2_G em 0) |
+| 4 | escrita do reset por software |
+| 5 | espera do fim do reset |
+| 6 | configuração final (BDU e IF_INC) |
+
+**Situação.** Contornado: todas as partidas terminam em `LSM6DSOX setup OK`. Na PCB a IMU usa SPI, e o comportamento ainda precisa ser verificado nessa interface.
+
+### Sensor deixa de responder durante a gravação (BME280 e LSM6DSOX)
+
+**Sintoma.** Com a placa em movimento ou com a mão sobre os módulos (protótipo na Nucleo, sensores ligados por jumpers), um sensor parava de responder no meio da gravação e não voltava mais:
+- `LOG_0003.CSV`: o BME280 congelou aos 43 s. As colunas de T/P/UR repetiram o último valor até o fim, sem nenhum aviso no terminal.
+- `LOG_0005.CSV`: o BME280 caiu e voltou (já com a recuperação descrita abaixo), mas a IMU travou aos ~58 s, depois de um movimento brusco (giro de +269 dps). Toda leitura passou a dar timeout no I2C1 (`[IMU] 0/s (INT1 38, erros 40, resgates 40)`), o CSV parou em 21 703 linhas e o estado continuou `LOGGING erros=0x00`.
+
+**Diagnóstico.**
+- Um transiente no barramento (mau contato de jumper, oscilação de alimentação ou GND) corta uma transferência I2C no meio. O sensor pode ficar segurando o SDA em 0, à espera de clocks que não vêm, e daí em diante o periférico I2C do STM32 só dá timeout. Ele também pode resetar e perder a configuração.
+- Na IMU, o data-ready travado só desce quando a amostra é lida. Com as leituras falhando, o INT1 fica alto e as interrupções param. O resgate por software do INT1 continuava tentando ler, e cada tentativa custava um timeout de 10 ms dentro da ISR.
+
+**Solução adotada.** Os dois sensores seguem o mesmo padrão: detectar a falha, sinalizar, continuar gravando e tentar recuperar a cada 1 s.
+
+| | BME280 (`app_env_poll`) | LSM6DSOX (`app_imu_poll`) |
+|---|---|---|
+| Detecção | 5 leituras falhas seguidas (100 ms) ou o mesmo valor de T e P por 2 s | nenhuma leitura boa por 100 ms (`APP_IMU_LOST_MS`) |
+| Bit de erro | `APP_ERROR_ENV_LOST` (0x40) | `APP_ERROR_IMU_LOST` (0x80) |
+| No CSV durante a perda | colunas `temp_c,press_hpa,hum_rh` vazias | sem linhas: salto em `t_ms` |
+| Recuperação (a cada 1 s) | destrava o I2C3 (até 9 pulsos de SCL e um STOP, `MX_I2C3_Init`), `hal_env_init` + `hal_env_setup` | a ISR para de acessar o barramento; destrava o I2C1 do mesmo jeito (`MX_I2C1_Init`), `hal_imu_init` + `hal_imu_setup` |
+| Mensagens | `BME280 perdido (...)` / `BME280 recuperado` | `LSM6DSOX perdido (...)` / `LSM6DSOX recuperado` |
+
+Enquanto um sensor estiver perdido, o LED de erro dá 3 pulsos e o LED de status continua mostrando a gravação. A perda não leva ao estado ERROR. A falha de um sensor já no boot continua exigindo reset.
+
+**Validação (`LOG_0006.CSV`, 54,4 s, 19 198 linhas, 0 amostras perdidas).**
+- O BME280 caiu aos 23,57 s e voltou aos 28,63 s: 2 099 linhas com as colunas dele vazias, enquanto a IMU seguiu a ~415 Hz.
+- Aos 37,27 s caíram os dois sensores, com 86 ms de diferença, cada um no seu barramento (I2C1 e I2C3). O BME280 voltou em 1 s. A IMU não respondeu nem ao próprio endereço em 7 tentativas e voltou aos 45,40 s: um salto de 8,1 s em `t_ms`, e a gravação continuou normal no mesmo arquivo.
+- Logo antes da perda da IMU ficaram 2 linhas repetidas (mesma amostra lida duas vezes, 0,38 ms de intervalo), que podem ser descartadas na análise.
+
+**Situação.** O firmware se recupera sozinho, sem reset e sem trocar de arquivo. A queda simultânea dos dois sensores em barramentos separados aponta para causa de hardware comum aos dois, como alimentação ou GND dos jumpers, e não para o firmware. Na PCB, sem jumpers, esse tipo de falha deve ser bem mais raro. Mesmo assim a recuperação fica como proteção para o voo.
+
 ## Status
 
 - [x] Repositório e estrutura inicial
-- [ ] Firmware: drivers do LSM6DSOX e do BME280
-- [ ] Firmware: SDMMC + FatFs + gravação de CSV
-- [ ] Firmware: tratamento de erros (cartão ausente, cartão cheio, falha de sensor)
+- [x] Firmware: arquitetura em camadas (app / hal / port / utl)
+- [x] Firmware: drivers do LSM6DSOX (SPI ou I2C) e do BME280
+- [x] Firmware: SDMMC + FatFs + gravação de CSV
+- [x] Firmware: tratamento de erros (cartão ausente, cartão cheio, falha de sensor no boot, perda e recuperação de sensor em operação)
 - [x] Hardware: esquemático (ERC limpo)
 - [x] Hardware: layout da PCB (DRC limpo, Gerbers, BOM, posicionamento)
-- [ ] Validação na Nucleo
+- [x] Validação na Nucleo, com a IMU em I2C e o SD em 1 bit (`LOG_0004.CSV`: 64 s a 414,9 Hz, 0 lacunas; `LOG_0006.CSV`: perdas e recuperações de sensor)
+- [ ] Validação na PCB (IMU em SPI, SD em 4 bits, card detect)
 - [ ] Documentação e apresentação final
 
 ## Referências

@@ -33,9 +33,62 @@ static bme280_t bme280_dev;
 
 /* ---------------------------------------- adaptadores do BME280 */
 
+/* Destrava o barramento I2C3. Se um transiente (ex.: dedo sobre o módulo)
+   corta uma transferência no meio, o BME280 pode ficar segurando o SDA em 0
+   esperando clocks que não vêm, e o I2C do STM32 passa a dar timeout. Aqui
+   o SCL vira GPIO e recebe até 9 pulsos até o SDA soltar, gera um STOP e o
+   periférico é reiniciado (MX_I2C3_Init, gerado pelo CubeMX). */
+static void port_env_wait_us(uint32_t us)
+{
+    uint64_t t0 = hal_time_get_us();
+
+    while((hal_time_get_us() - t0) < us)
+    {
+    }
+}
+
+static void port_env_i2c_recover(void)
+{
+    GPIO_InitTypeDef g = { 0 };
+
+    (void) HAL_I2C_DeInit(&hi2c3);
+    __HAL_RCC_GPIOC_CLK_ENABLE();
+
+    HAL_GPIO_WritePin(BME_SCL_GPIO_Port, BME_SCL_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(BME_SDA_GPIO_Port, BME_SDA_Pin, GPIO_PIN_SET);
+    g.Mode = GPIO_MODE_OUTPUT_OD;
+    g.Pull = GPIO_NOPULL;
+    g.Speed = GPIO_SPEED_FREQ_LOW;
+    g.Pin = BME_SCL_Pin;
+    HAL_GPIO_Init(BME_SCL_GPIO_Port, &g);
+    g.Pin = BME_SDA_Pin;
+    HAL_GPIO_Init(BME_SDA_GPIO_Port, &g); /* OD em 1 = solto, dá para ler */
+
+    for(uint32_t n = 0; n < 9U && HAL_GPIO_ReadPin(BME_SDA_GPIO_Port, BME_SDA_Pin) == GPIO_PIN_RESET; n++)
+    {
+        HAL_GPIO_WritePin(BME_SCL_GPIO_Port, BME_SCL_Pin, GPIO_PIN_RESET);
+        port_env_wait_us(5);
+        HAL_GPIO_WritePin(BME_SCL_GPIO_Port, BME_SCL_Pin, GPIO_PIN_SET);
+        port_env_wait_us(5);
+    }
+
+    /* STOP: SDA sobe com SCL alto. */
+    HAL_GPIO_WritePin(BME_SDA_GPIO_Port, BME_SDA_Pin, GPIO_PIN_RESET);
+    port_env_wait_us(5);
+    HAL_GPIO_WritePin(BME_SCL_GPIO_Port, BME_SCL_Pin, GPIO_PIN_SET);
+    port_env_wait_us(5);
+    HAL_GPIO_WritePin(BME_SDA_GPIO_Port, BME_SDA_Pin, GPIO_PIN_SET);
+    port_env_wait_us(5);
+
+    MX_I2C3_Init();
+}
+
 static bool port_bme280_init(void)
 {
-    bool ok = bme280_init(&bme280_dev, &bme280_bus);
+    bool ok;
+
+    port_env_i2c_recover();
+    ok = bme280_init(&bme280_dev, &bme280_bus);
 
     if(bme280_dev.addr == 0)
         UTL_DBG_PRINTF(UTL_DBG_MOD_ENV, "BME280 nao respondeu em 0x%02X/0x%02X\r\n", BME280_I2C_ADDR_PRIMARY,

@@ -39,9 +39,25 @@ static void port_cpu_reset_source_capture(void)
     __HAL_RCC_CLEAR_RESET_FLAGS();
 }
 
+/* Prioridades de interrupção (0 = mais alta). O CubeMX deixa o SysTick em 15
+   e os EXTI em 0; aqui isso é invertido de propósito:
+   - SysTick 0: o HAL_GetTick() precisa andar dentro da ISR do INT1, que lê a
+     IMU por I2C com timeout, e hal_time_get_us() depende disso;
+   - INT1 da IMU 5: lê a amostra assim que ela fica pronta, mesmo com o loop
+     ocupado gravando no cartão;
+   - botão 6. */
+static void port_cpu_irq_priorities_set(void)
+{
+    uwTickPrio = 0U;
+    HAL_NVIC_SetPriority(SysTick_IRQn, 0U, 0U);
+    HAL_NVIC_SetPriority(IMU_INT1_EXTI_IRQn, 5U, 0U);
+    HAL_NVIC_SetPriority(BTN_EXTI_IRQn, 6U, 0U);
+}
+
 static void port_cpu_init(void)
 {
     port_cpu_reset_source_capture();
+    port_cpu_irq_priorities_set();
 }
 
 static uint32_t port_cpu_reset_source_get(void)

@@ -42,6 +42,25 @@ static uint32_t port_time_get_ms(void)
     return HAL_GetTick();
 }
 
+/* ms do uwTick + a fração já contada pelo SysTick (que conta para baixo).
+   Se o SysTick estourar entre as duas leituras, o uwTick muda e a leitura é
+   refeita; por isso o SysTick precisa ter prioridade maior que a de quem
+   chama (ver port_cpu_init). */
+static uint64_t port_time_get_us(void)
+{
+    uint32_t ms;
+    uint32_t val;
+    uint32_t load = SysTick->LOAD;
+
+    do
+    {
+        ms = uwTick;
+        val = SysTick->VAL;
+    } while(ms != uwTick);
+
+    return (uint64_t) ms * 1000U + ((uint64_t) (load - val) * 1000U) / ((uint64_t) load + 1U);
+}
+
 static void port_time_cbk_register(hal_time_cbk_t cbk, hal_time_cbk_type_t type)
 {
     time_cbks[type] = cbk;
@@ -50,5 +69,6 @@ static void port_time_cbk_register(hal_time_cbk_t cbk, hal_time_cbk_type_t type)
 hal_time_driver_t HAL_TIME_DRIVER = {
     .init = port_time_init,
     .get_ms = port_time_get_ms,
+    .get_us = port_time_get_us,
     .cbk_register = port_time_cbk_register,
 };
