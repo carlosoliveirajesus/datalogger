@@ -214,7 +214,7 @@ Todos os testes foram feitos na Nucleo, com a IMU em I2C e o SD em 1 bit. Os CSV
 | Teste | Arquivo | Resultado |
 |---|---|---|
 | Gravação contínua, placa parada e movimentada | `LOG_0004.CSV` | 64,2 s, 26 632 linhas, 414,9 Hz, intervalos de 2,410–2,411 ms, 0 lacunas, 0 amostras perdidas |
-| IMU em repouso | `LOG_0006.CSV` | \|a\| ≈ 1,02 g (ax ≈ −0,23 g, az ≈ 0,99 g, placa levemente inclinada); giro < 1,5 °/s |
+| IMU em repouso e pressão contra referência | `LOG_0004`, `LOG_0006`, `LOG_0010`–`LOG_0012` | ver "Validação das leituras" abaixo |
 | Perda e recuperação de sensor | `LOG_0006.CSV` | BME280 caiu 2× e IMU 1×; todos voltaram sozinhos sem trocar de arquivo (ver Problemas conhecidos) |
 | Cartão removido durante a gravação (3×) | `LOG_0007.CSV` a `LOG_0009.CSV` | ver abaixo |
 
@@ -242,6 +242,33 @@ Todos os testes foram feitos na Nucleo, com a IMU em I2C e o SD em 1 bit. Os CSV
 - Com o cartão fora, cada tentativa falhava em ~30 ms e a seguinte vinha 2 s depois, sem travar o loop. Ao recolocar o cartão, a tentativa seguinte o iniciou, e a gravação continuou num arquivo novo.
 - Os três arquivos estão íntegros (10 colunas, 414,9 Hz, sem lacunas). O `LOG_0012`, fechado pelo botão, tem exatamente as linhas que o terminal contou.
 - Cartão cheio: a lógica existe (`LOGGER_ERR_FULL`, LED de erro aceso), mas não foi testada.
+
+### Validação das leituras
+
+**IMU em repouso.** Foram usadas só as amostras com a placa parada (giro total < 2 °/s), em três gravações:
+
+| Arquivo | Amostras paradas | ax / ay / az (g) | \|a\| (g) | Ruído de \|a\| (desvio) | Bias do giro gx / gy / gz (°/s) |
+|---|---|---|---|---|---|
+| `LOG_0004.CSV` | 2 004 | −0,303 / −0,000 / +0,976 | 1,0215 | 0,0029 g | +0,19 / −0,03 / −0,08 |
+| `LOG_0011.CSV` | 8 433 | −0,277 / +0,004 / +0,984 | 1,0219 | 0,0033 g | +0,25 / +0,01 / −0,03 |
+| `LOG_0012.CSV` | 5 097 | −0,252 / +0,013 / +0,990 | 1,0216 | 0,0022 g | +0,25 / +0,02 / −0,05 |
+
+- O módulo estava apoiado com ~15° de inclinação (por isso aparece parte da gravidade em `ax`), mas o módulo do vetor é o que importa: \|a\| = 1,022 g nas três gravações.
+- A gravidade local em Uberlândia (latitude −18,9°, ~870 m) é ≈ 9,783 m/s² = 0,998 g (fórmula internacional da gravidade com correção de altitude). O excesso de ~24 mg está na ordem do erro de zero-g do LSM6DSOX (±20 mg típico por eixo, datasheet Tabela 2), que o firmware não calibra.
+- O bias do giro em repouso fica abaixo de 0,3 °/s, dentro do zero-rate típico de ±1 °/s (mesma tabela).
+
+**Pressão contra o METAR do aeroporto de Uberlândia (SBUL).** Não há uma fonte pública com T, UR e pressão no mesmo ponto da bancada. Por isso a pressão foi comparada com o METAR horário do aeroporto, que informa o QNH (pressão reduzida ao nível do mar pela atmosfera padrão). Pela fórmula barométrica da atmosfera padrão, a pressão medida e o QNH dão a altitude do sensor, que pode ser conferida:
+
+| Gravação (hora local) | METAR SBUL | Pressão do BME280 | Altitude calculada |
+|---|---|---|---|
+| `LOG_0006` (~18h50, 21:50 UTC) | 2200Z: 28/20, Q1013 | 912,60 hPa | 872 m |
+| `LOG_0010`–`LOG_0012` (~20h00, 23:00 UTC) | 2300Z: 27/19, Q1014 | 913,48 hPa | 872 m |
+
+- A altitude calculada fica em 872 m ± 15 m, somando o arredondamento do QNH (±0,5 hPa) e a exatidão absoluta do BME280 (±1 hPa).
+- **Referência principal:** os testes foram feitos no bloco 1E da UFU (FEMEC, campus Santa Mônica), que fica a **873 m** segundo o [mapa topográfico de Uberlândia](https://pt-br.topographic-map.com/map-4qndn/Uberl%C3%A2ndia/?center=-18.91953%2C-48.25878&zoom=19&popup=-18.91955%2C-48.25886) (cota do terreno; o andar da bancada soma alguns metros). A diferença para os 872 m calculados é de ~1 m, ou ~0,1 hPa, bem abaixo da exatidão de ±1 hPa do sensor.
+- Para contexto, segundo a [Wikipédia](https://pt.wikipedia.org/wiki/Uberl%C3%A2ndia), a sede municipal de Uberlândia está a 863,18 m, e a altitude média do município é 887 m (entre 622 e 930 m).
+- Entre as duas gravações, o QNH subiu 1 hPa e a pressão medida subiu 0,9 hPa: o sensor acompanhou a variação real.
+- **Temperatura e umidade não foram comparadas.** O sensor estava dentro de casa (24 °C, 36–47 % UR), e o METAR mede o ar externo (27 °C, ponto de orvalho de 19 °C). Os dois ambientes não são comparáveis. Para essa validação seria preciso um termo-higrômetro de referência ao lado do sensor.
 
 ## Problemas conhecidos
 
