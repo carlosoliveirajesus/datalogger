@@ -4,7 +4,7 @@ Datalogger para o payload de um foguete: registra **temperatura, umidade e press
 
 Projeto desenvolvido para o **Desafio do Processo Seletivo da Payload — EPTA (Equipe de Propulsão e Tecnologia Aeroespacial, UFU)**. O enunciado está em [`docs/Desafio_Payload_Datalogger_STM32.pdf`](docs/Desafio_Payload_Datalogger_STM32.pdf).
 
-> 🚧 **Em desenvolvimento.** Entrega prevista para 24/10/2026.
+> ✅ **Entregue em 24/10/2026.** Firmware validado na NUCLEO-U5A5ZJ-Q com os dois sensores gravando no cartão (ver [Testes](#testes)); PCB projetada, com arquivos de fabricação gerados.
 
 ---
 
@@ -62,6 +62,12 @@ No protótipo, dois blocos usam ligações diferentes da PCB. As duas opções s
 | LSM6DSOX | módulo montado para I2C, no I2C1: PB8 SCL (CN7 D15), PB9 SDA (CN7 D14), endereço 0x6B detectado no init; INT1 em PB1 com pull-down | `HAL_IMU_BUS` = `HAL_IMU_BUS_I2C` (PCB: `HAL_IMU_BUS_SPI`) |
 | microSD | módulo Adafruit microSD Card BFF em SDMMC 1 bit: PC12 CK, PD2 CMD, PC8 D0, CS/D3 em 3V3 | `HAL_SD_BUS_WIDTH` = 1 (PCB: 4), `HAL_SD_CD_ENABLED` = 0 |
 
+**Montagem na bancada:** NUCLEO-U5A5ZJ-Q, módulo LSM6DSOX (I2C, placa verde), BME280 (placa roxa) e Adafruit microSD Card BFF na protoboard.
+
+| | | |
+|---|---|---|
+| ![Protótipo 1](docs/img/foto_prototipo1.jpeg) | ![Protótipo 2](docs/img/foto_prototipo2.jpeg) | ![Protótipo 3](docs/img/foto_prototipo3.jpeg) |
+
 ## Hardware (PCB)
 
 Projeto no Altium Designer em `hw-datalogger/datalogger/` (folhas hierárquicas `00_Top`, `01_Power`, `02_MCU`, `03_Sensors`, `04_microSD`, `05_Interface`). Esquemático completo em PDF: [`hw-datalogger/fabricacao/dataloggerOutJob.PDF`](hw-datalogger/fabricacao/dataloggerOutJob.PDF).
@@ -115,7 +121,7 @@ Resultado final: **ERC sem erros e DRC com 0 violações.**
 Os arquivos ficam em [`hw-datalogger/fabricacao/`](hw-datalogger/fabricacao/), gerados pelo `dataloggerOutJob.OutJob`:
 
 - `JLCPCB/` e `JLCPCB.zip`: Gerbers (GTL, GP1, GP2, GBL, máscaras, serigrafias, pastas, contorno GM1) e furação NC Drill (PTH/NPTH e fendas).
-- `BOM/`: lista de materiais com MPN (também em [`docs/datalogger.xlsx`](docs/datalogger.xlsx)).
+- `BOM/`: lista de materiais com MPN. A versão comentada está em [`docs/datalogger.xlsx`](docs/datalogger.xlsx), com a justificativa de cada componente (função, custo, disponibilidade, consumo e encapsulamento), o código Mouser, o preço, o estoque em 24/10/2026 e o link. São 38 itens e 74 peças, ~US$ 52 por placa na Mouser, sem PCB, frete e impostos; o STM32U5A5RJT6Q (US$ 17,88) e os dois sensores (US$ 9,30) somam mais da metade.
 - `Pick Place/`: posicionamento dos componentes.
 - `ExportSTEP/`: modelo 3D da placa montada.
 
@@ -141,6 +147,26 @@ Projeto do STM32CubeIDE em `fw-datalogger/datalogger/`. Fica organizado em camad
 | `utl/` | sem hardware: printf, buffer circular, debug por módulo e FatFs (`utl/fatfs/`, com `diskio.c` sobre `hal_sd`) |
 
 Bibliotecas de terceiros: HAL/CMSIS da ST (STM32CubeU5), FatFs R0.16 e printf (MIT). Os drivers dos sensores foram escritos a partir dos datasheets. Detalhes e licenças em [`docs/referencias.md`](docs/referencias.md).
+
+### Máquina de estados
+
+```mermaid
+stateDiagram-v2
+    [*] --> INIT
+    INIT --> IDLE: IMU, BME280 e cartão OK
+    INIT --> ERROR: falha de sensor ou de cartão
+    IDLE --> LOGGING: botão B1 / cria LOG_nnnn.CSV
+    LOGGING --> IDLE: botão B1 / grava o buffer e fecha o arquivo
+    LOGGING --> ERROR: escrita falhou (cartão removido) ou cartão cheio
+    ERROR --> LOGGING: cartão volta (tentativa a cada 2 s) e estava gravando / arquivo novo
+    ERROR --> IDLE: cartão volta e não estava gravando
+```
+
+Em todos os estados, o loop principal também faz:
+- **IMU:** a ISR do INT1 lê cada amostra e a põe no buffer circular. Se o INT1 parar por 10 ms, o loop o dispara por software. Sem leitura boa por 100 ms, a IMU é marcada como perdida (`0x80`), com uma tentativa de recuperação a cada 1 s.
+- **BME280:** lido a cada 20 ms. Com 5 falhas seguidas ou o valor congelado por 2 s, é marcado como perdido (`0x40`), com uma tentativa de recuperação a cada 1 s.
+- **Gravação:** com um sensor perdido, a gravação continua e o LED de erro dá 3 pulsos; não há mudança de estado. Falha de sensor já no boot exige reset.
+- **Terminal:** uma linha de status por segundo, com o estado e o código de erro a cada 5 s.
 
 ### Temporização
 
