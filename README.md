@@ -2,7 +2,7 @@
 
 Datalogger para o payload de um foguete: registra **temperatura, umidade e pressão** (BME280, I2C) e **aceleração e velocidade angular** (LSM6DSOX, SPI) durante todo o voo, gravando os dados em **CSV num cartão microSD** (SDMMC 4 bits + FatFs).
 
-Projeto desenvolvido para o **Desafio do Processo Seletivo da Payload — EPTA (Equipe de Propulsão e Tecnologia Aeroespacial, UFU)**. O enunciado está em [`docs/Desafio_Payload_Datalogger_STM32.pdf`](docs/Desafio_Payload_Datalogger_STM32.pdf).
+Projeto desenvolvido para o **Desafio do Processo Seletivo da Payload — EPTA (Equipe de Propulsão e Tecnologia Aeroespacial, UFU)**. O enunciado está em [`docs/Desafio_Payload_Datalogger_STM32.pdf`](docs/Desafio_Payload_Datalogger_STM32.pdf). O documento de apresentação (BOM, esquemático, PCB, firmware e testes) está em [`docs/Datalogger_EPTA_Apresentacao.pdf`](docs/Datalogger_EPTA_Apresentacao.pdf).
 
 > ✅ **Entregue em 24/10/2026.** Firmware validado na NUCLEO-U5A5ZJ-Q com os dois sensores gravando no cartão (ver [Testes](#testes)); PCB projetada, com arquivos de fabricação gerados.
 
@@ -389,7 +389,7 @@ Enquanto um sensor estiver perdido, o LED de erro dá 3 pulsos e o LED de status
 - [x] Hardware: layout da PCB (DRC limpo, Gerbers, BOM, posicionamento)
 - [x] Validação na Nucleo, com a IMU em I2C e o SD em 1 bit (`LOG_0004.CSV`: 64 s a 414,9 Hz, 0 lacunas; `LOG_0006.CSV`: perdas e recuperações de sensor)
 - ❌ ~~Validação na PCB (IMU em SPI, SD em 4 bits, card detect)~~: não será feita, porque não houve tempo de encomendar a placa e os componentes até a entrega. O firmware já tem os modos da PCB (`HAL_IMU_BUS_SPI`, `HAL_SD_BUS_WIDTH 4`, `HAL_SD_CD_ENABLED 1`), compilados mas não testados em hardware.
-- [ ] Documentação e apresentação final
+- [x] Documentação e apresentação final: [`docs/Datalogger_EPTA_Apresentacao.pdf`](docs/Datalogger_EPTA_Apresentacao.pdf)
 
 ## Referências
 
